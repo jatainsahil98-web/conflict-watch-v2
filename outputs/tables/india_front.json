@@ -1,0 +1,143 @@
+{
+ "records_india": 3955,
+ "note": "D10 keeps the deadlier records outside the focus countries, so India figures are a floor.",
+ "triggers": [
+  {
+   "date": "2016-09-18",
+   "area": "Jammu and Kashmir state",
+   "deaths": 22,
+   "civilians": 0,
+   "state_deaths_45d_before": 0,
+   "state_deaths_45d_after": 32,
+   "days_to_state_fighting": 11
+  },
+  {
+   "date": "2018-04-01",
+   "area": "Jammu and Kashmir state",
+   "deaths": 20,
+   "civilians": 4,
+   "state_deaths_45d_before": 12,
+   "state_deaths_45d_after": 1,
+   "days_to_state_fighting": 6
+  },
+  {
+   "date": "2018-10-21",
+   "area": "Jammu and Kashmir state",
+   "deaths": 20,
+   "civilians": 7,
+   "state_deaths_45d_before": 1,
+   "state_deaths_45d_after": 1,
+   "days_to_state_fighting": 12
+  },
+  {
+   "date": "2019-02-14",
+   "area": "Jammu and Kashmir state",
+   "deaths": 46,
+   "civilians": 0,
+   "state_deaths_45d_before": 8,
+   "state_deaths_45d_after": 40,
+   "days_to_state_fighting": 12
+  },
+  {
+   "date": "2020-06-15",
+   "area": "Jammu and Kashmir state",
+   "deaths": 24,
+   "civilians": 0,
+   "state_deaths_45d_before": 6,
+   "state_deaths_45d_after": 12,
+   "days_to_state_fighting": 5
+  },
+  {
+   "date": "2025-04-22",
+   "area": "Jammu and Kashmir state",
+   "deaths": 26,
+   "civilians": 26,
+   "state_deaths_45d_before": 0,
+   "state_deaths_45d_after": 35,
+   "days_to_state_fighting": 15
+  },
+  {
+   "date": "2025-05-07",
+   "area": "Jammu and Kashmir state",
+   "deaths": 15,
+   "civilians": 13,
+   "state_deaths_45d_before": 0,
+   "state_deaths_45d_after": 18,
+   "days_to_state_fighting": 1
+  }
+ ],
+ "yearly_recent": [
+  {
+   "year": 2014,
+   "jk_deaths": 51,
+   "india_all_deaths": 300,
+   "ind_pak_state_deaths": 18
+  },
+  {
+   "year": 2015,
+   "jk_deaths": 29,
+   "india_all_deaths": 210,
+   "ind_pak_state_deaths": 31
+  },
+  {
+   "year": 2016,
+   "jk_deaths": 116,
+   "india_all_deaths": 239,
+   "ind_pak_state_deaths": 70
+  },
+  {
+   "year": 2017,
+   "jk_deaths": 104,
+   "india_all_deaths": 315,
+   "ind_pak_state_deaths": 92
+  },
+  {
+   "year": 2018,
+   "jk_deaths": 160,
+   "india_all_deaths": 341,
+   "ind_pak_state_deaths": 44
+  },
+  {
+   "year": 2019,
+   "jk_deaths": 153,
+   "india_all_deaths": 281,
+   "ind_pak_state_deaths": 106
+  },
+  {
+   "year": 2020,
+   "jk_deaths": 118,
+   "india_all_deaths": 202,
+   "ind_pak_state_deaths": 99
+  },
+  {
+   "year": 2021,
+   "jk_deaths": 29,
+   "india_all_deaths": 134,
+   "ind_pak_state_deaths": 1
+  },
+  {
+   "year": 2022,
+   "jk_deaths": 13,
+   "india_all_deaths": 19,
+   "ind_pak_state_deaths": 0
+  },
+  {
+   "year": 2023,
+   "jk_deaths": 42,
+   "india_all_deaths": 143,
+   "ind_pak_state_deaths": 0
+  },
+  {
+   "year": 2024,
+   "jk_deaths": 18,
+   "india_all_deaths": 243,
+   "ind_pak_state_deaths": 0
+  },
+  {
+   "year": 2025,
+   "jk_deaths": 63,
+   "india_all_deaths": 344,
+   "ind_pak_state_deaths": 42
+  }
+ ]
+}

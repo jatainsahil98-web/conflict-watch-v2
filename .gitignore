@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+deck/demo_raw/
+.DS_Store
+.venv/
+web/node_modules/
+web/dist/
+web/dist-single/
+deck/promo_raw/
+
+# v2: never commit the issued dataset or data derived event-by-event from it
+data/raw/
+data/processed/
+data/econ/
+models/*.joblib
+dist/

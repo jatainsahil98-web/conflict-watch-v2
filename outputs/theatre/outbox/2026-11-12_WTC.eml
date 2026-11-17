@@ -1,0 +1,115 @@
+Subject: [CONFLICT WATCH] WTC daily brief 130600 IST NOV 26: AMBER
+ =?utf-8?b?4pa8?= (NOTIONAL)
+From: conflict-watch@localhost
+To: commander@example.invalid
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3437648765905051114=="
+
+--===============3437648765905051114==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+# Western Theatre Command (NOTIONAL): daily brief 130600 IST NOV 26
+
+**BLUF:** Western theatre AMBER =E2=96=BC (easing): GDELT violent events, Af=
+=E2=80=93Pak dyad down: 2/day over 7 days vs 13/day the 4 weeks before (=C3=
+=970.23); yesterday 3 (z -0.6). Recommend: task ISR on Kandahar, Balochistan,=
+ Kunar within 72h.
+
+## OBSERVE: top changes in the AOR
+1. GDELT violent events, Af=E2=80=93Pak dyad down: 2/day over 7 days vs 13/da=
+y the 4 weeks before (=C3=970.23); yesterday 3 (z -0.6) *(7d, GDELT, DATA)*
+2. Nifty 50 +6.8% over 5 sessions (median basis, z +3.8; close 25,299.35 on 2=
+026-11-12) *(7d, Markets, DATA)*
+3. Kandahar (AFG): P(escalation) 0.23, nowcast 0.22 - over threshold *(7d, Wa=
+rning model, MODEL)*
+4. Hilmand province (AFG): 10 deaths in the last UCDP week vs 0.0/week (data =
+to 30 Sep) *(7d, UCDP, DATA)*
+5. Balochistan (PAK): P(escalation) 0.21, nowcast 0.20 - over threshold *(7d,=
+ Warning model, MODEL)*
+
+## ORIENT: AMBER =E2=96=BC (easing), confidence MEDIUM
+- +4  Afghanistan=E2=80=93Pakistan monthly RAG AMBER (model scorecard, Oct 20=
+26)
+- +1  2 districts/sectors over the escalation threshold (0.20)
+
+Warning-model drivers (SHAP): recent trend in the area's deaths, country-wide=
+ tempo this month, 12-month level. GDELT tracks UCDP for this conflict and se=
+veral sources agree; UCDP itself stops at 30 Sep (lagged), so not HIGH.
+
+## DECIDE and ACT
+| # | Line | Action | Owner | Timeline | Trigger to escalate |
+|---|---|---|---|---|---|
+| 1 | ISR tasking | Re-task ISR (UAV, satellite revisit, SIGINT focus) onto K=
+andahar, Balochistan, Kunar; daily change detection. | Theatre J2 (Int) / ISR=
+ cell | 72h | Any area nowcast P >=3D 0.30, or GDELT material-conflict events=
+ in Pakistan above 301/day for 2 days -> FLASH to CDS |
+| 2 | Force posture | Raise readiness of LoC / IB holding formations one step=
+; review reserves and reaction times. | Theatre J3 (Ops) | 7d | RAG turns RED=
+, or two days of rising trend with >=3D 2 areas over 0.20 -> move to the next=
+ state |
+| 3 | Evacuation readiness | Refresh evacuation lists for Indian nationals in=
+ Afghanistan; confirm air bridge options. | Theatre J1 with MEA | 7d | Inters=
+tate strikes on Kabul or Kandahar -> activate |
+
+- NOTIONAL: India's theatre commands are not yet notified. AORs, owners and H=
+Qs are illustrative, based on public reporting.
+- Pakistan rupee left out of daily signals: Yahoo's daily PKR quotes alternat=
+e between two levels (268 / 276), which would raise false market-stress alert=
+s.
+- District nowcast is a heuristic adjustment of the back-tested model, not it=
+self back-tested.
+- UCDP data end 30 Sep 2026; GDELT and markets fill the gap to 12 Nov 2026.
+
+--===============3437648765905051114==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<div style=3D"font-family:Calibri,Arial;max-width:760px;background:#07131F;co=
+lor:#fff;padding:18px;border-radius:10px">
+<div style=3D"color:#F0B03A;letter-spacing:3px;font-weight:700;font-size:12px=
+">DATA ANALYTICS COMPETITION 2026 =C2=B7 CONFLICT WATCH</div>
+<h2 style=3D"margin:4px 0">Western Theatre Command (notional) =C2=B7 130600 I=
+ST NOV 26</h2>
+<div style=3D"border-left:6px solid #F0B03A;padding:6px 12px;background:#0F22=
+36"><b style=3D"color:#F0B03A">AMBER =E2=96=BC</b>
+ =C2=B7 confidence MEDIUM<br><b>BLUF:</b> Western theatre AMBER =E2=96=BC (ea=
+sing): GDELT violent events, Af=E2=80=93Pak dyad down: 2/day over 7 days vs 1=
+3/day the 4 weeks before (=C3=970.23); yesterday 3 (z -0.6). Recommend: task =
+ISR on Kandahar, Balochistan, Kunar within 72h.</div>
+<h3>OBSERVE</h3><ol><li>GDELT violent events, Af=E2=80=93Pak dyad down: 2/day=
+ over 7 days vs 13/day the 4 weeks before (=C3=970.23); yesterday 3 (z -0.6) =
+<i style=3D'color:#888'>(7d, DATA)</i></li><li>Nifty 50 +6.8% over 5 sessions=
+ (median basis, z +3.8; close 25,299.35 on 2026-11-12) <i style=3D'color:#888=
+'>(7d, DATA)</i></li><li>Kandahar (AFG): P(escalation) 0.23, nowcast 0.22 - o=
+ver threshold <i style=3D'color:#888'>(7d, MODEL)</i></li><li>Hilmand provinc=
+e (AFG): 10 deaths in the last UCDP week vs 0.0/week (data to 30 Sep) <i styl=
+e=3D'color:#888'>(7d, DATA)</i></li><li>Balochistan (PAK): P(escalation) 0.21=
+, nowcast 0.20 - over threshold <i style=3D'color:#888'>(7d, MODEL)</i></li><=
+/ol><h3>DECIDE / ACT</h3>
+<table border=3D"1" cellpadding=3D"5" style=3D"border-collapse:collapse;borde=
+r-color:#2B4763;font-size:13px">
+<tr><th>#</th><th>Action</th><th>Owner</th><th>When</th><th>Trigger</th></tr>=
+<tr><td>1</td><td><b>ISR tasking</b><br>Re-task ISR (UAV, satellite revisit, =
+SIGINT focus) onto Kandahar, Balochistan, Kunar; daily change detection.</td>=
+<td>Theatre J2 (Int) / ISR cell</td><td>72h</td><td>Any area nowcast P >=3D 0=
+.30, or GDELT material-conflict events in Pakistan above 301/day for 2 days -=
+> FLASH to CDS</td></tr><tr><td>2</td><td><b>Force posture</b><br>Raise readi=
+ness of LoC / IB holding formations one step; review reserves and reaction ti=
+mes.</td><td>Theatre J3 (Ops)</td><td>7d</td><td>RAG turns RED, or two days o=
+f rising trend with >=3D 2 areas over 0.20 -> move to the next state</td></tr=
+><tr><td>3</td><td><b>Evacuation readiness</b><br>Refresh evacuation lists fo=
+r Indian nationals in Afghanistan; confirm air bridge options.</td><td>Theatr=
+e J1 with MEA</td><td>7d</td><td>Interstate strikes on Kabul or Kandahar -> a=
+ctivate</td></tr></table>
+<p style=3D"color:#9FB2C6;font-size:11px">NOTIONAL: India's theatre commands =
+are not yet notified. AORs, owners and HQs are illustrative, based on public =
+reporting. Pakistan rupee left out of daily signals: Yahoo's daily PKR quotes=
+ alternate between two levels (268 / 276), which would raise false market-str=
+ess alerts. District nowcast is a heuristic adjustment of the back-tested mod=
+el, not itself back-tested. UCDP data end 30 Sep 2026; GDELT and markets fill=
+ the gap to 12 Nov 2026. UNCLASSIFIED - COMPETITION DATA ONLY.</p></div>
+
+--===============3437648765905051114==--

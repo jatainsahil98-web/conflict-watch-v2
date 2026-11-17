@@ -1,0 +1,37 @@
+id,table,check,category,rows_affected,rows_total,pct_affected,action,analytical_impact
+DQ01,conflict_events,File encoding: UTF-8 byte-order mark on header,Format,0,61055,0.0,Read with utf-8-sig so the first column is 'event_id' and not '\ufeffevent_id'.,Prevents silent join failures on event_id.
+DQ02,conflict_events,Duplicate primary key (event_id),Integrity,0,61055,0.0,Validated: none found.,
+DQ03,conflict_events,deaths_best equals sum of four component fields,Integrity,0,61055,0.0,Validated: identity holds for every row.,
+DQ04,conflict_events,Negative fatality values,Validity,0,61055,0.0,Validated: none found.,
+DQ05,conflict_events,Out-of-order low/best/high estimates (low<=best<=high violated),Validity,692,61055,1.13,"Raw values preserved. Corrected copies deaths_low_c = min(low,best,high) and deaths_high_c = max(low,best,high); row flagged flag_estimate_order.",Uncertainty-band features and the fatality uncertainty index use the corrected band.
+DQ06,conflict_events,date_end earlier than date_start,Validity,0,61055,0.0,Validated: none found.,
+DQ07,conflict_events,Event date range crosses a month boundary,Temporal,731,61055,1.2,Fatalities allocated across months in proportion to days in range (uniform-day disaggregation) instead of assigning everything to the start month.,"Avoids artificial spikes: 89,617 deaths would otherwise be stacked on start months."
+DQ08,conflict_events,Date range extends beyond the 30 Sep 2026 extract window,Temporal,1,61055,0.0,Kept. Only the in-window share of deaths enters the monthly panel; out-of-window share is logged.,
+DQ09,conflict_events,Low date precision (code 4-5: month or longer),Precision,792,61055,1.3,Kept and flagged. Used as a feature (share of imprecise events = reporting fog).,
+DQ10,conflict_events,Provisional UCDP Candidate records (Jan-Sep 2026),Provenance,4644,61055,7.61,"Flagged is_provisional. 2026 is used ONLY as the withheld test set, never for training the evaluated models.",Candidate counts can be revised (usually upward) at the annual release; holdout error includes this revision noise.
+DQ11,conflict_events,UCDP coding status under review ('Check ...'),Provenance,176,61055,0.29,Kept and flagged flag_coding_check; sensitivity analysis excludes them.,
+DQ12,conflict_events,Blank location_iso3 (code 666 ambiguous / international waters or airspace),Missing,38,61055,0.06,"Imputed join key: 'INTL' for international waters/airspace (precision 7), 'XXX' for ambiguous code 666. Source labels retained.",Rows stay in case totals; excluded only from country-level joins.
+DQ13,conflict_events,Administrative boundary change: FATA merged into Khyber Pakhtunkhwa (2018),Consistency,602,61055,0.99,Harmonised FATA to 'Khyber Pakhtunkwa province' (post-merger boundary) for a stable sub-national panel; raw admin1_name retained.,Removes a spurious 2018 structural break in the AF-PK hotspot series.
+DQ14,conflict_events,Blank admin1_name,Missing,3043,61055,4.98,Imputed category '(country-level / unspecified)' so the events remain in sub-national panels.,Sub-national hotspot ranking treats this as its own bucket.
+DQ15,conflict_events,Aggregate event records (event_clarity = 2),Granularity,5757,61055,9.43,Kept (they carry real deaths) and flagged; event COUNT features use clear events only.,
+DQ16,conflict_events,Extreme fatality records (> 99.9th pct = 1225),Outlier,62,61055,0.1,Kept: verified as multi-day aggregates (mostly RU-UA front-wide monthly totals). Models use log1p target and robust (MAE-based) evaluation.,"Treated as signal, not error; capping would erase the 2022 invasion."
+DQ17,conflict_events,Zero-fatality events (deaths_best = 0),Validity,1294,61055,2.12,Kept: UCDP retains events whose best estimate is 0 if low/high > 0 or in an active dyad.,
+DQ18,conflict_events,Monthly allocation outside panel window (after Sep 2026),Temporal,1,62218,0.0,"Dropped allocation rows after the window (0.5 deaths, i.e. the October share of a September-start record).",
+DQ19,event_sources,"Duplicate composite key (event_id, reference_order)",Integrity,0,85406,0.0,Validated: none found.,
+DQ20,event_sources,Orphan references (event_id not in events),Integrity,0,85406,0.0,Validated: none found.,
+DQ21,event_sources,source_count matches number of reference rows,Integrity,0,61055,0.0,Validated: matches for every event.,
+DQ22,event_sources,Publisher labels with spreadsheet 'Source:' prefix,Format,870,85406,1.02,Prefix stripped in publisher_norm.,
+DQ23,event_sources,"Publisher name variants (e.g. ITAR-TASS/Tass, UA Losses/UALosses)",Consistency,90,1714,5.25,"Normalised 1,714 raw labels to 1,624 outlets (case, punctuation, prefix, alias map).","Outlet diversity features count real outlets, not spelling variants."
+DQ24,event_sources,Same outlet + same date repeated within one event,Duplicates,7515,85406,8.8,Kept (README: references can repeat an outlet/date) but flagged; 'unique outlets' feature de-duplicates them.,
+DQ25,event_sources,Reference published before the event's end date,Temporal,253,85406,0.3,"Kept (README: references may precede an event, e.g. aggregate updates). Lag clipped at 0 for reporting-latency statistics.",
+DQ26,bilateral_displacement_stocks,"Duplicate key (year, origin, asylum)",Integrity,0,6273,0.0,Validated: none found.,
+DQ27,bilateral_displacement_stocks,Blank other_international_protection (source dash),Missing,6269,6273,99.94,Imputed 0: in UNHCR tables a dash denotes nil / not applicable (documented in data dictionary). Flag retained.,
+DQ28,unhcr_demographics,Duplicate unhcr_record_id,Integrity,0,19830,0.0,Validated: none found.,
+DQ29,unhcr_demographics,Unspecified sex/age cells ('_X'),Missing,6596,19830,33.26,Kept as an explicit 'Unspecified' level; shares computed over specified cells only and coverage reported alongside.,Avoids treating unreported as zero.
+DQ30,displacement_reference_stocks,Two non-comparable series (IDMC IDPs vs UNRWA registrations),Semantics,112,112,100.0,series_code kept as a key on every summary; the series are never summed.,
+DQ31,displacement_reference_stocks,Unknown reporting area (UNK),Missing,1,112,0.89,"Kept in series totals, excluded from country joins.",
+DQ32,country_year_context,Missing population_total,Missing,0,1764,0.0,Within-economy linear interpolation + edge fill; 0 remain blank (economy has no value in any year) and are left missing.,
+DQ33,country_year_context,Missing gdp_growth_annual_pct,Missing,36,1764,2.04,Within-economy linear interpolation + edge fill; 12 remain blank (economy has no value in any year) and are left missing.,
+DQ34,country_year_context,Missing consumer_inflation_annual_pct,Missing,124,1764,7.03,Within-economy linear interpolation + edge fill; 60 remain blank (economy has no value in any year) and are left missing.,
+DQ35,country_year_context,Context ends 2025; panel runs to Sep 2026,Temporal,0,1764,0.0,"Models use context lagged by one year, so 2026 months use 2025 values - no extrapolation and no leakage.",
+DQ36,cross-table,Event locations with no World Bank economy match,Join coverage,0,20,0.0,Unmatched: none. Context features left blank for these (LightGBM handles missing natively).,

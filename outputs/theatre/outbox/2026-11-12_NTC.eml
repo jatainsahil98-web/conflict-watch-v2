@@ -1,0 +1,118 @@
+Subject: [CONFLICT WATCH] NTC daily brief 130600 IST NOV 26: RED =?utf-8?q??=
+ =?utf-8?b?4pay?= (NOTIONAL)
+From: conflict-watch@localhost
+To: commander@example.invalid
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8640801643581678671=="
+
+--===============8640801643581678671==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+# Northern Theatre Command (NOTIONAL): daily brief 130600 IST NOV 26
+
+**BLUF:** Northern theatre RED =E2=96=B2 (rising): [SYNTHETIC] Yangtse (Tawan=
+g) (Arunachal Pradesh): 8 incidents in 7 days vs 0.2/week (8 face-off). Recom=
+mend: verify the surge with patrol and satellite reports within 24h.
+
+## OBSERVE: top changes in the AOR
+1. [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents in 7 days vs=
+ 0.2/week (8 face-off) *(24h, Synthetic LAC, SYNTHETIC)*
+2. [SYNTHETIC] Depsang Plains (Eastern Ladakh): 3 incidents in 7 days vs 0.0/=
+week (3 infrastructure activity) *(24h, Synthetic LAC, SYNTHETIC)*
+3. Nifty 50 +6.8% over 5 sessions (median basis, z +3.8; close 25,299.35 on 2=
+026-11-12) *(7d, Markets, DATA)*
+4. Rupee vs USD -0.9% over 5 sessions (median basis, z -1.6; close 93.70 on 2=
+026-11-12) *(7d, Markets, DATA)*
+5. GDELT material-conflict events in India down: 9/day over 7 days vs 13/day =
+the 4 weeks before (=C3=970.74); yesterday 11 (z -0.2) *(7d, GDELT, DATA)*
+
+## ORIENT: RED =E2=96=B2 (rising), confidence LOW
+- +4  Standing AMBER on the LAC: disengagement incomplete, forces forward (DO=
+MAIN assumption)
+- -1  GDELT conflict reporting down to =C3=970.74 of the 4 weeks before
+- +1  2 districts/sectors over the escalation threshold (0.20)
+- +2  [SYNTHETIC] LAC incidents =C3=976.5 in 7 days (12 vs 1.0 a week)
+
+No model covers the LAC: the warning model is trained on the four conflicts o=
+nly, so this rating is rules on [SYNTHETIC] counts. Picture is mostly [SYNTHE=
+TIC]; only India-wide GDELT and markets are real.
+
+## DECIDE and ACT
+| # | Line | Action | Owner | Timeline | Trigger to escalate |
+|---|---|---|---|---|---|
+| 1 | Verification | Because this view runs on [SYNTHETIC] data, first confir=
+m the surge with real patrol reports and satellite imagery before any posture=
+ change. | Theatre J2 (Int) | 24h | Confirmed by two independent sources -> F=
+LASH to CDS |
+| 2 | ISR tasking | Re-task ISR (UAV, satellite revisit, SIGINT focus) onto Y=
+angtse (Tawang), Depsang Plains, Galwan; daily change detection. | Theatre J2=
+ (Int) / ISR cell | 24h | Any area nowcast P >=3D 0.30, or GDELT material-con=
+flict events in India above 18/day for 2 days -> FLASH to CDS |
+| 3 | Force posture | Raise readiness of LAC forward formations (winter postu=
+re) one step; review reserves and reaction times. | Theatre J3 (Ops) | 24h | =
+RAG turns RED, or two days of rising trend with >=3D 2 areas over 0.20 -> mov=
+e to the next state |
+
+- NOTIONAL: India's theatre commands are not yet notified. AORs, owners and H=
+Qs are illustrative, based on public reporting.
+- SYNTHETIC: seeded generator (seed 2026), not real incidents. Shown only to =
+demonstrate the workflow.
+- District nowcast is a heuristic adjustment of the back-tested model, not it=
+self back-tested.
+- UCDP data end 30 Sep 2026; GDELT and markets fill the gap to 12 Nov 2026.
+
+--===============8640801643581678671==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<div style=3D"font-family:Calibri,Arial;max-width:760px;background:#07131F;co=
+lor:#fff;padding:18px;border-radius:10px">
+<div style=3D"color:#F0B03A;letter-spacing:3px;font-weight:700;font-size:12px=
+">DATA ANALYTICS COMPETITION 2026 =C2=B7 CONFLICT WATCH</div>
+<h2 style=3D"margin:4px 0">Northern Theatre Command (notional) =C2=B7 130600 =
+IST NOV 26</h2>
+<div style=3D"border-left:6px solid #FF4D5E;padding:6px 12px;background:#0F22=
+36"><b style=3D"color:#FF4D5E">RED =E2=96=B2</b>
+ =C2=B7 confidence LOW<br><b>BLUF:</b> Northern theatre RED =E2=96=B2 (rising=
+): [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents in 7 days vs=
+ 0.2/week (8 face-off). Recommend: verify the surge with patrol and satellite=
+ reports within 24h.</div>
+<h3>OBSERVE</h3><ol><li>[SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 i=
+ncidents in 7 days vs 0.2/week (8 face-off) <i style=3D'color:#888'>(24h, SYN=
+THETIC)</i></li><li>[SYNTHETIC] Depsang Plains (Eastern Ladakh): 3 incidents =
+in 7 days vs 0.0/week (3 infrastructure activity) <i style=3D'color:#888'>(24=
+h, SYNTHETIC)</i></li><li>Nifty 50 +6.8% over 5 sessions (median basis, z +3.=
+8; close 25,299.35 on 2026-11-12) <i style=3D'color:#888'>(7d, DATA)</i></li>=
+<li>Rupee vs USD -0.9% over 5 sessions (median basis, z -1.6; close 93.70 on =
+2026-11-12) <i style=3D'color:#888'>(7d, DATA)</i></li><li>GDELT material-con=
+flict events in India down: 9/day over 7 days vs 13/day the 4 weeks before (=
+=C3=970.74); yesterday 11 (z -0.2) <i style=3D'color:#888'>(7d, DATA)</i></li=
+></ol><h3>DECIDE / ACT</h3>
+<table border=3D"1" cellpadding=3D"5" style=3D"border-collapse:collapse;borde=
+r-color:#2B4763;font-size:13px">
+<tr><th>#</th><th>Action</th><th>Owner</th><th>When</th><th>Trigger</th></tr>=
+<tr><td>1</td><td><b>Verification</b><br>Because this view runs on [SYNTHETIC=
+] data, first confirm the surge with real patrol reports and satellite imager=
+y before any posture change.</td><td>Theatre J2 (Int)</td><td>24h</td><td>Con=
+firmed by two independent sources -> FLASH to CDS</td></tr><tr><td>2</td><td>=
+<b>ISR tasking</b><br>Re-task ISR (UAV, satellite revisit, SIGINT focus) onto=
+ Yangtse (Tawang), Depsang Plains, Galwan; daily change detection.</td><td>Th=
+eatre J2 (Int) / ISR cell</td><td>24h</td><td>Any area nowcast P >=3D 0.30, o=
+r GDELT material-conflict events in India above 18/day for 2 days -> FLASH to=
+ CDS</td></tr><tr><td>3</td><td><b>Force posture</b><br>Raise readiness of LA=
+C forward formations (winter posture) one step; review reserves and reaction =
+times.</td><td>Theatre J3 (Ops)</td><td>24h</td><td>RAG turns RED, or two day=
+s of rising trend with >=3D 2 areas over 0.20 -> move to the next state</td><=
+/tr></table>
+<p style=3D"color:#9FB2C6;font-size:11px">NOTIONAL: India's theatre commands =
+are not yet notified. AORs, owners and HQs are illustrative, based on public =
+reporting. SYNTHETIC: seeded generator (seed 2026), not real incidents. Shown=
+ only to demonstrate the workflow. District nowcast is a heuristic adjustment=
+ of the back-tested model, not itself back-tested. UCDP data end 30 Sep 2026;=
+ GDELT and markets fill the gap to 12 Nov 2026. UNCLASSIFIED - COMPETITION DA=
+TA ONLY.</p></div>
+
+--===============8640801643581678671==--

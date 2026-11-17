@@ -1,0 +1,113 @@
+Subject: [CONFLICT WATCH] CDS daily brief 130600 IST NOV 26: AMBER
+ =?utf-8?b?4pa8?= (NOTIONAL)
+From: conflict-watch@localhost
+To: commander@example.invalid
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4129533654372208993=="
+
+--===============4129533654372208993==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+# Chief of Defence Staff (NOTIONAL): daily brief 130600 IST NOV 26
+
+**BLUF:** All theatres: WTC AMBER=E2=96=BC; MTC AMBER=E2=96=BA; NTC RED=E2=96=
+=B2 (synthetic drill). Main effort WTC: GDELT violent events, Af=E2=80=93Pak =
+dyad down: 2/day over 7 days vs 13/day the 4 weeks before (=C3=970.23); yeste=
+rday 3 (z -0.6). Recommend: WTC: task ISR on Kandahar, Balochistan, Kunar wit=
+hin 72h.
+
+## OBSERVE: top changes in the AOR
+1. WTC: GDELT violent events, Af=E2=80=93Pak dyad down: 2/day over 7 days vs =
+13/day the 4 weeks before (=C3=970.23); yesterday 3 (z -0.6) *(7d, GDELT, DAT=
+A)*
+2. MTC: GDELT material-conflict events in Saudi Arabia down: 11/day over 7 da=
+ys vs 29/day the 4 weeks before (=C3=970.38); yesterday 9 (z -0.8) *(7d, GDEL=
+T, DATA)*
+3. NTC: [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents in 7 da=
+ys vs 0.2/week (8 face-off) *(24h, Synthetic LAC, SYNTHETIC)*
+4. Strategic: Russia=E2=80=93Ukraine RED, 6,780 deaths forecast for Oct 2026 =
+(sustainment of Russian-origin kit) *(7d, Forecast model, MODEL)*
+
+## ORIENT: AMBER =E2=96=BC (easing), confidence LOW
+- +5  WTC AMBER =E2=96=BC (score 5)
+- +4  MTC AMBER =E2=96=BA (score 4)
+- +6  NTC RED =E2=96=B2 (score 6)
+
+Warning-model drivers (SHAP): recent trend in the area's deaths, country-wide=
+ tempo this month, 12-month level. Rating and main effort use the real-data t=
+heatres (WTC, MTC); NTC runs on synthetic data and is shown as a drill.
+
+## DECIDE and ACT
+| # | Line | Action | Owner | Timeline | Trigger to escalate |
+|---|---|---|---|---|---|
+| 1 | ISR tasking | WTC: Re-task ISR (UAV, satellite revisit, SIGINT focus) o=
+nto Kandahar, Balochistan, Kunar; daily change detection. | Theatre J2 (Int) =
+/ ISR cell | 72h | Any area nowcast P >=3D 0.30, or GDELT material-conflict e=
+vents in Pakistan above 301/day for 2 days -> FLASH to CDS |
+| 2 | Evacuation readiness | MTC: Place a NEO task group (amphibious ship + e=
+scorts, notional) on 72 h notice; update Gulf diaspora lists with MEA and the=
+ missions. | Theatre J1 / NEO cell with MEA | 72h | Strikes on a GCC state ho=
+sting Indians, or Gulf GDELT reporting =C3=971.5 for 3 days (now =C3=970.75) =
+-> launch |
+| 3 | Verification | NTC: Because this view runs on [SYNTHETIC] data, first c=
+onfirm the surge with real patrol reports and satellite imagery before any po=
+sture change. | Theatre J2 (Int) | 24h | Confirmed by two independent sources=
+ -> FLASH to CDS |
+
+- NOTIONAL: India's theatre commands are not yet notified. AORs, owners and H=
+Qs are illustrative, based on public reporting.
+- Includes the NTC view, which runs on [SYNTHETIC] LAC data.
+
+--===============4129533654372208993==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<div style=3D"font-family:Calibri,Arial;max-width:760px;background:#07131F;co=
+lor:#fff;padding:18px;border-radius:10px">
+<div style=3D"color:#F0B03A;letter-spacing:3px;font-weight:700;font-size:12px=
+">DATA ANALYTICS COMPETITION 2026 =C2=B7 CONFLICT WATCH</div>
+<h2 style=3D"margin:4px 0">Chief of Defence Staff (notional) =C2=B7 130600 IS=
+T NOV 26</h2>
+<div style=3D"border-left:6px solid #F0B03A;padding:6px 12px;background:#0F22=
+36"><b style=3D"color:#F0B03A">AMBER =E2=96=BC</b>
+ =C2=B7 confidence LOW<br><b>BLUF:</b> All theatres: WTC AMBER=E2=96=BC; MTC =
+AMBER=E2=96=BA; NTC RED=E2=96=B2 (synthetic drill). Main effort WTC: GDELT vi=
+olent events, Af=E2=80=93Pak dyad down: 2/day over 7 days vs 13/day the 4 wee=
+ks before (=C3=970.23); yesterday 3 (z -0.6). Recommend: WTC: task ISR on Kan=
+dahar, Balochistan, Kunar within 72h.</div>
+<h3>OBSERVE</h3><ol><li>WTC: GDELT violent events, Af=E2=80=93Pak dyad down: =
+2/day over 7 days vs 13/day the 4 weeks before (=C3=970.23); yesterday 3 (z -=
+0.6) <i style=3D'color:#888'>(7d, DATA)</i></li><li>MTC: GDELT material-confl=
+ict events in Saudi Arabia down: 11/day over 7 days vs 29/day the 4 weeks bef=
+ore (=C3=970.38); yesterday 9 (z -0.8) <i style=3D'color:#888'>(7d, DATA)</i>=
+</li><li>NTC: [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents i=
+n 7 days vs 0.2/week (8 face-off) <i style=3D'color:#888'>(24h, SYNTHETIC)</i=
+></li><li>Strategic: Russia=E2=80=93Ukraine RED, 6,780 deaths forecast for Oc=
+t 2026 (sustainment of Russian-origin kit) <i style=3D'color:#888'>(7d, MODEL=
+)</i></li></ol><h3>DECIDE / ACT</h3>
+<table border=3D"1" cellpadding=3D"5" style=3D"border-collapse:collapse;borde=
+r-color:#2B4763;font-size:13px">
+<tr><th>#</th><th>Action</th><th>Owner</th><th>When</th><th>Trigger</th></tr>=
+<tr><td>1</td><td><b>ISR tasking</b><br>WTC: Re-task ISR (UAV, satellite revi=
+sit, SIGINT focus) onto Kandahar, Balochistan, Kunar; daily change detection.=
+</td><td>Theatre J2 (Int) / ISR cell</td><td>72h</td><td>Any area nowcast P >=
+=3D 0.30, or GDELT material-conflict events in Pakistan above 301/day for 2 d=
+ays -> FLASH to CDS</td></tr><tr><td>2</td><td><b>Evacuation readiness</b><br=
+>MTC: Place a NEO task group (amphibious ship + escorts, notional) on 72 h no=
+tice; update Gulf diaspora lists with MEA and the missions.</td><td>Theatre J=
+1 / NEO cell with MEA</td><td>72h</td><td>Strikes on a GCC state hosting Indi=
+ans, or Gulf GDELT reporting =C3=971.5 for 3 days (now =C3=970.75) -> launch<=
+/td></tr><tr><td>3</td><td><b>Verification</b><br>NTC: Because this view runs=
+ on [SYNTHETIC] data, first confirm the surge with real patrol reports and sa=
+tellite imagery before any posture change.</td><td>Theatre J2 (Int)</td><td>2=
+4h</td><td>Confirmed by two independent sources -> FLASH to CDS</td></tr></ta=
+ble>
+<p style=3D"color:#9FB2C6;font-size:11px">NOTIONAL: India's theatre commands =
+are not yet notified. AORs, owners and HQs are illustrative, based on public =
+reporting. Includes the NTC view, which runs on [SYNTHETIC] LAC data. UNCLASS=
+IFIED - COMPETITION DATA ONLY.</p></div>
+
+--===============4129533654372208993==--

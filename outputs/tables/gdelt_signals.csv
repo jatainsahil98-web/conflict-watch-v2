@@ -1,0 +1,13 @@
+case,month,days,violent_pd,events_pd,articles_pd,threats_pd,posture_pd,gw,tone,violent_change_vs_prev,gdelt_tracks_ucdp,flag
+Afghanistan–Pakistan,2026-09,30,16.9,82.9,647.8333,2.0333,0.1,-1.8784,-5.7373,,True,baseline (last UCDP month)
+Afghanistan–Pakistan,2026-10,31,15.3226,71.871,441.0323,1.5161,0.3226,-1.6846,-5.8614,-0.0933,True,STEADY
+Afghanistan–Pakistan,2026-11,12,3.8333,44.1667,213.25,3.0,0.0,1.1188,-4.6326,-0.7498,True,FALLING
+Israel–Hamas,2026-09,30,125.3333,419.9333,3724.0,15.4,1.9333,-3.2136,-5.1198,,False,baseline (last UCDP month)
+Israel–Hamas,2026-10,31,125.0968,435.4516,4614.8387,13.9677,1.7742,-2.9659,-5.2169,-0.0019,False,STEADY
+Israel–Hamas,2026-11,12,69.8333,269.0,2233.5,7.3333,0.1667,-2.7019,-5.0267,-0.4418,False,FALLING
+Russia–Ukraine,2026-09,30,162.3,654.2333,10994.5667,28.8,5.0333,-2.7335,-4.2614,,False,baseline (last UCDP month)
+Russia–Ukraine,2026-10,31,170.5484,858.6452,13113.4839,42.3226,4.3226,-1.9039,-4.455,0.0508,False,STEADY
+Russia–Ukraine,2026-11,12,129.4167,808.1667,16289.4167,25.5833,3.75,0.6458,-2.7412,-0.2412,False,STEADY
+US–Iran,2026-09,30,76.5667,581.3333,6568.1,38.3333,1.9,-0.0888,-4.1138,,True,baseline (last UCDP month)
+US–Iran,2026-10,31,44.0,422.6129,3502.2903,24.4839,1.4194,-0.108,-3.4205,-0.4253,True,FALLING
+US–Iran,2026-11,12,70.0,754.6667,7191.8333,52.1667,2.3333,0.0271,-3.5946,0.5909,True,RISING

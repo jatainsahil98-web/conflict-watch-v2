@@ -1,0 +1,6 @@
+PRIORITY - CW/CDS - DTG 130600 IST NOV 26
+THREAT AMBER EASING - CONF LOW
+SIT WTC: GDELT violent events, Af-Pak dyad down: 2/day over 7 days vs 13/day..
+WATCH Yangtse 0.83, Depsang Plains 0.47, Kandahar 0.22
+ACT J2 (Int): WTC: task ISR on Kandahar, Balochistan, Kunar NLT 160600 NOV
+ACK REQD - NOTIONAL/SYNTHETIC DRILL

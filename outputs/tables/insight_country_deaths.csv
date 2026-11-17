@@ -1,0 +1,120 @@
+conflict_case,country_iso3,ucdp_location_name,year,deaths,events
+Afghanistan–Pakistan,AFG,Afghanistan,2014,2,3
+Afghanistan–Pakistan,AFG,Afghanistan,2015,994,103
+Afghanistan–Pakistan,AFG,Afghanistan,2016,2844,267
+Afghanistan–Pakistan,AFG,Afghanistan,2017,3405,395
+Afghanistan–Pakistan,AFG,Afghanistan,2018,3868,781
+Afghanistan–Pakistan,AFG,Afghanistan,2019,1337,225
+Afghanistan–Pakistan,AFG,Afghanistan,2020,487,78
+Afghanistan–Pakistan,AFG,Afghanistan,2021,702,187
+Afghanistan–Pakistan,AFG,Afghanistan,2022,955,248
+Afghanistan–Pakistan,AFG,Afghanistan,2023,294,124
+Afghanistan–Pakistan,AFG,Afghanistan,2024,317,135
+Afghanistan–Pakistan,AFG,Afghanistan,2025,288,82
+Afghanistan–Pakistan,AFG,Afghanistan,2026,747,117
+Afghanistan–Pakistan,PAK,Pakistan,2014,2862,312
+Afghanistan–Pakistan,PAK,Pakistan,2015,2122,219
+Afghanistan–Pakistan,PAK,Pakistan,2016,877,115
+Afghanistan–Pakistan,PAK,Pakistan,2017,740,109
+Afghanistan–Pakistan,PAK,Pakistan,2018,430,65
+Afghanistan–Pakistan,PAK,Pakistan,2019,206,66
+Afghanistan–Pakistan,PAK,Pakistan,2020,217,77
+Afghanistan–Pakistan,PAK,Pakistan,2021,310,135
+Afghanistan–Pakistan,PAK,Pakistan,2022,563,185
+Afghanistan–Pakistan,PAK,Pakistan,2023,918,281
+Afghanistan–Pakistan,PAK,Pakistan,2024,1216,490
+Afghanistan–Pakistan,PAK,Pakistan,2025,2361,632
+Afghanistan–Pakistan,PAK,Pakistan,2026,2020,554
+Israel–Hamas,IRN,Iran,2024,2,1
+Israel–Hamas,ISR,Israel,2014,45,16
+Israel–Hamas,ISR,Israel,2015,3,3
+Israel–Hamas,ISR,Israel,2017,21,5
+Israel–Hamas,ISR,Israel,2018,1,1
+Israel–Hamas,ISR,Israel,2019,2,5
+Israel–Hamas,ISR,Israel,2020,4,2
+Israel–Hamas,ISR,Israel,2021,16,11
+Israel–Hamas,ISR,Israel,2022,2,1
+Israel–Hamas,ISR,Israel,2023,1272,55
+Israel–Hamas,ISR,Israel,2024,20,7
+Israel–Hamas,ISR,Israel,2025,3,4
+Israel–Hamas,ISR,Israel,2026,6,7
+Israel–Hamas,LBN,Lebanon,2023,5,1
+Israel–Hamas,LBN,Lebanon,2024,38,14
+Israel–Hamas,LBN,Lebanon,2025,8,4
+Israel–Hamas,LBN,Lebanon,2026,19,11
+Israel–Hamas,PSE,Israel,2014,2361,902
+Israel–Hamas,PSE,Israel,2015,14,10
+Israel–Hamas,PSE,Israel,2016,12,12
+Israel–Hamas,PSE,Israel,2017,4,3
+Israel–Hamas,PSE,Israel,2018,75,49
+Israel–Hamas,PSE,Israel,2019,81,39
+Israel–Hamas,PSE,Israel,2020,6,5
+Israel–Hamas,PSE,Israel,2021,265,96
+Israel–Hamas,PSE,Israel,2022,96,45
+Israel–Hamas,PSE,Israel,2023,26241,1355
+Israel–Hamas,PSE,Israel,2024,21542,3105
+Israel–Hamas,PSE,Israel,2025,14513,3165
+Israel–Hamas,PSE,Israel,2026,1164,655
+Israel–Hamas,QAT,Qatar,2025,6,1
+Israel–Hamas,SYR,Syria,2019,2,1
+Israel–Hamas,SYR,Syria,2020,6,1
+Israel–Hamas,SYR,Syria,2024,26,4
+Israel–Hamas,YEM,Yemen (North Yemen),2024,22,4
+Russia–Ukraine,POL,Poland,2022,2,1
+Russia–Ukraine,RUS,Russia (Soviet Union),2014,1,1
+Russia–Ukraine,RUS,Russia (Soviet Union),2020,1,1
+Russia–Ukraine,RUS,Russia (Soviet Union),2022,65,31
+Russia–Ukraine,RUS,Russia (Soviet Union),2023,100,49
+Russia–Ukraine,RUS,Russia (Soviet Union),2024,10358,701
+Russia–Ukraine,RUS,Russia (Soviet Union),2025,4420,530
+Russia–Ukraine,RUS,Russia (Soviet Union),2026,446,252
+Russia–Ukraine,UKR,Ukraine,2014,4858,1297
+Russia–Ukraine,UKR,Ukraine,2015,1893,870
+Russia–Ukraine,UKR,Ukraine,2016,699,514
+Russia–Ukraine,UKR,Ukraine,2017,447,216
+Russia–Ukraine,UKR,Ukraine,2018,243,153
+Russia–Ukraine,UKR,Ukraine,2019,311,199
+Russia–Ukraine,UKR,Ukraine,2020,196,145
+Russia–Ukraine,UKR,Ukraine,2021,208,167
+Russia–Ukraine,UKR,Ukraine,2022,100565,7497
+Russia–Ukraine,UKR,Ukraine,2023,76463,10756
+Russia–Ukraine,UKR,Ukraine,2024,91728,11100
+Russia–Ukraine,UKR,Ukraine,2025,90343,7503
+Russia–Ukraine,UKR,Ukraine,2026,64004,2559
+US–Iran,ARE,United Arab Emirates,2026,12,10
+US–Iran,BHR,Bahrain,2026,3,3
+US–Iran,IRN,Iran,2020,177,2
+US–Iran,IRN,Iran,2024,4,1
+US–Iran,IRN,Iran,2025,1190,35
+US–Iran,IRN,Iran,2026,3608,406
+US–Iran,IRQ,Iraq,2020,11,1
+US–Iran,IRQ,Iraq,2022,1,1
+US–Iran,IRQ,Iraq,2024,6,2
+US–Iran,IRQ,Iraq,2026,112,31
+US–Iran,ISR,Israel,2024,2,1
+US–Iran,ISR,Israel,2025,30,9
+US–Iran,ISR,Israel,2026,21,7
+US–Iran,JOR,Jordan,2024,3,1
+US–Iran,JOR,Jordan,2026,3,1
+US–Iran,KWT,Kuwait,2026,15,8
+US–Iran,LBN,Lebanon,2025,2,1
+US–Iran,LBN,Lebanon,2026,18,8
+US–Iran,LKA,Sri Lanka,2026,104,1
+US–Iran,OMN,Oman,2026,2,1
+US–Iran,PSE,Israel,2024,1,1
+US–Iran,PSE,Israel,2026,4,1
+US–Iran,SAU,Saudi Arabia,2026,5,3
+US–Iran,SYR,Syria,2017,2,2
+US–Iran,SYR,Syria,2018,111,9
+US–Iran,SYR,Syria,2019,138,16
+US–Iran,SYR,Syria,2020,272,37
+US–Iran,SYR,Syria,2021,166,24
+US–Iran,SYR,Syria,2022,55,19
+US–Iran,SYR,Syria,2023,160,39
+US–Iran,SYR,Syria,2024,535,89
+US–Iran,SYR,Syria,2026,5,1
+US–Iran,YEM,Yemen (North Yemen),2020,1,1
+US–Iran,YEM,Yemen (North Yemen),2022,0,1
+US–Iran,YEM,Yemen (North Yemen),2024,133,35
+US–Iran,YEM,Yemen (North Yemen),2025,945,81
+US–Iran,YEM,Yemen (North Yemen),2026,4,1

@@ -1,0 +1,6 @@
+PRIORITY - CW/MTC - DTG 130600 IST NOV 26
+THREAT AMBER STEADY - CONF MEDIUM
+SIT GDELT material-conflict events in Saudi Arabia down: 11/day over 7 days vs 29/day the 4 weeks before (x0.38); yesterday 9 (z -0.8)
+WATCH Hormozgan 0.17
+ACT J1: place the NEO task group on 72 h notice NLT 160600 NOV
+ACK REQD - NOTIONAL

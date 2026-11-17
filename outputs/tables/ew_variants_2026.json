@@ -1,0 +1,58 @@
+{
+ "A cases_only": [
+  {
+   "year": 2026,
+   "auc": 0.7947,
+   "pr": 0.1332,
+   "p10": 0.1444
+  }
+ ],
+ "B global all": [
+  {
+   "year": 2026,
+   "auc": 0.7741,
+   "pr": 0.1318,
+   "p10": 0.1222
+  }
+ ],
+ "C global since 2005": [
+  {
+   "year": 2026,
+   "auc": 0.7761,
+   "pr": 0.1346,
+   "p10": 0.1
+  }
+ ],
+ "D global, case weight 5": [
+  {
+   "year": 2026,
+   "auc": 0.7781,
+   "pr": 0.1393,
+   "p10": 0.1222
+  }
+ ],
+ "E global, more trees": [
+  {
+   "year": 2026,
+   "auc": 0.7984,
+   "pr": 0.1457,
+   "p10": 0.1667
+  }
+ ],
+ "F global, more trees, case w5": [
+  {
+   "year": 2026,
+   "auc": 0.7928,
+   "pr": 0.1415,
+   "p10": 0.2
+  }
+ ],
+ "G cases_only, more trees": [
+  {
+   "year": 2026,
+   "auc": 0.771,
+   "pr": 0.1251,
+   "p10": 0.1778
+  }
+ ]
+}

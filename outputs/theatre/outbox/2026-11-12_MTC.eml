@@ -1,0 +1,112 @@
+Subject: [CONFLICT WATCH] MTC daily brief 130600 IST NOV 26: AMBER
+ =?utf-8?b?4pa6?= (NOTIONAL)
+From: conflict-watch@localhost
+To: commander@example.invalid
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8075102389211832525=="
+
+--===============8075102389211832525==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+# Maritime Theatre Command (NOTIONAL): daily brief 130600 IST NOV 26
+
+**BLUF:** Maritime theatre AMBER =E2=96=BA (steady): GDELT material-conflict =
+events in Saudi Arabia down: 11/day over 7 days vs 29/day the 4 weeks before =
+(=C3=970.38); yesterday 9 (z -0.8). Recommend: place the NEO task group on 72=
+ h notice within 72h.
+
+## OBSERVE: top changes in the AOR
+1. GDELT material-conflict events in Saudi Arabia down: 11/day over 7 days vs=
+ 29/day the 4 weeks before (=C3=970.38); yesterday 9 (z -0.8) *(7d, GDELT, DA=
+TA)*
+2. Hormozgan (IRN): P(escalation) 0.16, nowcast 0.17 *(7d, Warning model, MOD=
+EL)*
+3. Rupee vs USD -0.9% over 5 sessions (median basis, z -1.6; close 93.70 on 2=
+026-11-12) *(7d, Markets, DATA)*
+4. Tanker equities (Frontline) -12.8% over 5 sessions (median basis, z -2.4; =
+close 46.76 on 2026-11-12) *(7d, Markets, DATA)*
+5. Brent crude -10.5% over 5 sessions (median basis, z -2.0; close 95.82 on 2=
+026-11-12) *(7d, Markets, DATA)*
+
+## ORIENT: AMBER =E2=96=BA (steady), confidence MEDIUM
+- +4  US=E2=80=93Iran monthly RAG AMBER (model scorecard, Oct 2026)
+
+Warning-model drivers (SHAP): recent trend in the area's deaths, country-wide=
+ tempo this month, 12-month level. GDELT tracks UCDP for this conflict and se=
+veral sources agree; UCDP itself stops at 30 Sep (lagged), so not HIGH.
+
+## DECIDE and ACT
+| # | Line | Action | Owner | Timeline | Trigger to escalate |
+|---|---|---|---|---|---|
+| 1 | Evacuation readiness | Place a NEO task group (amphibious ship + escort=
+s, notional) on 72 h notice; update Gulf diaspora lists with MEA and the miss=
+ions. | Theatre J1 / NEO cell with MEA | 72h | Strikes on a GCC state hosting=
+ Indians, or Gulf GDELT reporting =C3=971.5 for 3 days (now =C3=970.75) -> la=
+unch |
+| 2 | Maritime domain awareness | Surge maritime patrol sorties over Hormuz, =
+the Gulf of Oman and Chabahar approaches; prepare escort for Indian-flag tank=
+ers. | Theatre J3 Maritime / IFC-IOR | 7d | Attack on merchant shipping in th=
+e AOR, or tanker equities z >=3D 2.5 -> start escort |
+| 3 | Force posture | Raise readiness of Western Fleet units in the Arabian S=
+ea one step; review reserves and reaction times. | Theatre J3 (Ops) | 7d | RA=
+G turns RED, or two days of rising trend with >=3D 2 areas over 0.20 -> move =
+to the next state |
+
+- NOTIONAL: India's theatre commands are not yet notified. AORs, owners and H=
+Qs are illustrative, based on public reporting.
+- District nowcast is a heuristic adjustment of the back-tested model, not it=
+self back-tested.
+- UCDP data end 30 Sep 2026; GDELT and markets fill the gap to 12 Nov 2026.
+
+--===============8075102389211832525==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<div style=3D"font-family:Calibri,Arial;max-width:760px;background:#07131F;co=
+lor:#fff;padding:18px;border-radius:10px">
+<div style=3D"color:#F0B03A;letter-spacing:3px;font-weight:700;font-size:12px=
+">DATA ANALYTICS COMPETITION 2026 =C2=B7 CONFLICT WATCH</div>
+<h2 style=3D"margin:4px 0">Maritime Theatre Command (notional) =C2=B7 130600 =
+IST NOV 26</h2>
+<div style=3D"border-left:6px solid #F0B03A;padding:6px 12px;background:#0F22=
+36"><b style=3D"color:#F0B03A">AMBER =E2=96=BA</b>
+ =C2=B7 confidence MEDIUM<br><b>BLUF:</b> Maritime theatre AMBER =E2=96=BA (s=
+teady): GDELT material-conflict events in Saudi Arabia down: 11/day over 7 da=
+ys vs 29/day the 4 weeks before (=C3=970.38); yesterday 9 (z -0.8). Recommend=
+: place the NEO task group on 72 h notice within 72h.</div>
+<h3>OBSERVE</h3><ol><li>GDELT material-conflict events in Saudi Arabia down: =
+11/day over 7 days vs 29/day the 4 weeks before (=C3=970.38); yesterday 9 (z =
+-0.8) <i style=3D'color:#888'>(7d, DATA)</i></li><li>Hormozgan (IRN): P(escal=
+ation) 0.16, nowcast 0.17 <i style=3D'color:#888'>(7d, MODEL)</i></li><li>Rup=
+ee vs USD -0.9% over 5 sessions (median basis, z -1.6; close 93.70 on 2026-11=
+-12) <i style=3D'color:#888'>(7d, DATA)</i></li><li>Tanker equities (Frontlin=
+e) -12.8% over 5 sessions (median basis, z -2.4; close 46.76 on 2026-11-12) <=
+i style=3D'color:#888'>(7d, DATA)</i></li><li>Brent crude -10.5% over 5 sessi=
+ons (median basis, z -2.0; close 95.82 on 2026-11-12) <i style=3D'color:#888'=
+>(7d, DATA)</i></li></ol><h3>DECIDE / ACT</h3>
+<table border=3D"1" cellpadding=3D"5" style=3D"border-collapse:collapse;borde=
+r-color:#2B4763;font-size:13px">
+<tr><th>#</th><th>Action</th><th>Owner</th><th>When</th><th>Trigger</th></tr>=
+<tr><td>1</td><td><b>Evacuation readiness</b><br>Place a NEO task group (amph=
+ibious ship + escorts, notional) on 72 h notice; update Gulf diaspora lists w=
+ith MEA and the missions.</td><td>Theatre J1 / NEO cell with MEA</td><td>72h<=
+/td><td>Strikes on a GCC state hosting Indians, or Gulf GDELT reporting =C3=
+=971.5 for 3 days (now =C3=970.75) -> launch</td></tr><tr><td>2</td><td><b>Ma=
+ritime domain awareness</b><br>Surge maritime patrol sorties over Hormuz, the=
+ Gulf of Oman and Chabahar approaches; prepare escort for Indian-flag tankers=
+.</td><td>Theatre J3 Maritime / IFC-IOR</td><td>7d</td><td>Attack on merchant=
+ shipping in the AOR, or tanker equities z >=3D 2.5 -> start escort</td></tr>=
+<tr><td>3</td><td><b>Force posture</b><br>Raise readiness of Western Fleet un=
+its in the Arabian Sea one step; review reserves and reaction times.</td><td>=
+Theatre J3 (Ops)</td><td>7d</td><td>RAG turns RED, or two days of rising tren=
+d with >=3D 2 areas over 0.20 -> move to the next state</td></tr></table>
+<p style=3D"color:#9FB2C6;font-size:11px">NOTIONAL: India's theatre commands =
+are not yet notified. AORs, owners and HQs are illustrative, based on public =
+reporting. District nowcast is a heuristic adjustment of the back-tested mode=
+l, not itself back-tested. UCDP data end 30 Sep 2026; GDELT and markets fill =
+the gap to 12 Nov 2026. UNCLASSIFIED - COMPETITION DATA ONLY.</p></div>
+
+--===============8075102389211832525==--

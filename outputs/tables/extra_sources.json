@@ -1,0 +1,181 @@
+{
+  "D9": {
+    "rows": 149825,
+    "weeks": [
+      "2014-12-27",
+      "2026-06-27"
+    ],
+    "iran_inflation_2025_d6": 42.1712244965444,
+    "countries": 17,
+    "iran_unrest_deaths_dec25_jan26": 27646,
+    "iran_strategic_pre_2026": {
+      "pre4": 88,
+      "base4_mean": 17.384615384615383,
+      "ratio": 5.061946902654868
+    },
+    "iran_strategic_pre_2025": {
+      "pre4": 3,
+      "base4_mean": 3.6153846153846154,
+      "ratio": 0.8297872340425532
+    },
+    "gulf_violent_events": {
+      "H1_2025": 9,
+      "H1_2026": 322
+    },
+    "indian_ocean_violent_events": {
+      "H1_2025": 60,
+      "H1_2026": 74
+    },
+    "israel_palestine_rho": 0.8671524503709946,
+    "israel_palestine_months": 126
+  },
+  "D10": {
+    "rows": 200000,
+    "rows_stated": 209787,
+    "years": [
+      1989,
+      2025
+    ],
+    "focus_countries": [
+      "Afghanistan",
+      "Iran",
+      "Israel",
+      "Pakistan",
+      "Russia",
+      "Ukraine",
+      "United States"
+    ],
+    "d1_events_found": 0.9954618780025173,
+    "d1_events_2014_25": 56411,
+    "deaths_identical": 1.0,
+    "persist_10k": {
+      "n": 15,
+      "share_next_ge_1k": 1.0
+    },
+    "quiet_to_1k": {
+      "n": 82,
+      "share": 0.04878048780487805
+    },
+    "afpak_case_share_of_afghanistan": 0.08300695966182152,
+    "ukraine_years_ge_10k": [
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "D11": {
+    "rows": 3445,
+    "latest_ucdp_month": "2025-12",
+    "iran_ucdp_deaths_feb_apr_2026": 0,
+    "gdelt_months_before_feb2026": 50,
+    "gdelt_months_span": [
+      "2016-02",
+      "2026-04"
+    ],
+    "ucdp_match_share": 1.0,
+    "ucdp_country_months": 1896,
+    "multi_month_records_stacked": 1352,
+    "iran_ucdp_vs_protests_rho": -0.049385566618235774
+  },
+  "D12": {
+    "rows": 22,
+    "media_per_death_feb_apr_2026": {
+      "Afghanistan": {
+        "gdelt_events": 48690,
+        "d1_deaths": 608,
+        "events_per_death": 80.08223684210526
+      },
+      "Pakistan": {
+        "gdelt_events": 188469,
+        "d1_deaths": 535,
+        "events_per_death": 352.2785046728972
+      },
+      "Russia": {
+        "gdelt_events": 226256,
+        "d1_deaths": 142,
+        "events_per_death": 1593.3521126760563
+      },
+      "Ukraine": {
+        "gdelt_events": 152320,
+        "d1_deaths": 22262,
+        "events_per_death": 6.842152546940976
+      },
+      "Iran": {
+        "gdelt_events": 716485,
+        "d1_deaths": 3494,
+        "events_per_death": 205.0615340583858
+      },
+      "Israel": {
+        "gdelt_events": 509751,
+        "d1_deaths": 22,
+        "events_per_death": 23170.5
+      },
+      "United States": {
+        "gdelt_events": 3250431,
+        "d1_deaths": 0,
+        "events_per_death": 3250431.0
+      }
+    },
+    "ucdp_event_totals_match_d10": true
+  },
+  "GDELT": {
+    "prewar": {
+      "source": "Iran vs the US or Israel",
+      "base_days": 20,
+      "last_days": 7,
+      "events_per_day": [
+        936.15,
+        929.7142857142857
+      ],
+      "events_p": 0.9415268230965803,
+      "goldstein": [
+        0.70591,
+        -0.09795714285714283
+      ],
+      "goldstein_p": 0.007268987535713967,
+      "goldstein_w": [
+        1.63172,
+        0.09017142857142867
+      ]
+    },
+    "weekly_lead_p_by_case": {
+      "Afghanistan\u2013Pakistan": 0.022622515689981675,
+      "Israel\u2013Hamas": 0.6446365217083861,
+      "Russia\u2013Ukraine": 0.7320357627889698,
+      "US\u2013Iran": 0.6273537038595673
+    },
+    "weekly_lead_p_min": 0.022622515689981675,
+    "kuwait_conflict_per_day": [
+      0.7777777777777778,
+      58.34375
+    ],
+    "sri_lanka_peak_day": "2026-03-05"
+  },
+  "GDELT_OCT": {
+    "by_case": {
+      "Russia\u2013Ukraine": {
+        "gdelt_change": 0.05082193468884766,
+        "forecast_change": 0.41321483139532633,
+        "agree": true
+      },
+      "Israel\u2013Hamas": {
+        "gdelt_change": -0.001886968586959692,
+        "forecast_change": -0.11125936751006982,
+        "agree": true
+      },
+      "Afghanistan\u2013Pakistan": {
+        "gdelt_change": -0.09333727810650883,
+        "forecast_change": -0.253862566258661,
+        "agree": true
+      },
+      "US\u2013Iran": {
+        "gdelt_change": -0.4253376467837846,
+        "forecast_change": -0.23571383268085733,
+        "agree": true
+      }
+    },
+    "agree": 4,
+    "of": 4
+  }
+}

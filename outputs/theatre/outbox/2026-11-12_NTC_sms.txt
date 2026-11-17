@@ -1,0 +1,6 @@
+IMMEDIATE - CW/NTC - DTG 130600 IST NOV 26
+THREAT RED RISING - CONF LOW
+SIT [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents in 7 days..
+WATCH Yangtse 0.83, Depsang Plains 0.47, Galwan 0.15
+ACT J2 (Int): verify the surge with patrol and satellite reports NLT 140600 NOV
+ACK REQD - NOTIONAL/SYNTHETIC DRILL

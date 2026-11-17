@@ -1,0 +1,29 @@
+# Daily theatre briefs at 0600 IST (0030 UTC). Builds the briefs from the bundled data and uploads them as an
+# artefact. It does not commit or deploy anything. Real e-mail only if the CW_SMTP_* secrets are set.
+name: daily-theatre-briefs
+on:
+  schedule:
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+jobs:
+  briefs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - name: Build and send briefs
+        env:
+          CW_SMTP_HOST: ${{ secrets.CW_SMTP_HOST }}
+          CW_SMTP_USER: ${{ secrets.CW_SMTP_USER }}
+          CW_SMTP_PASS: ${{ secrets.CW_SMTP_PASS }}
+          CW_MAIL_FROM: ${{ secrets.CW_MAIL_FROM }}
+          CW_MAIL_TO_CDS: ${{ secrets.CW_MAIL_TO_CDS }}
+        run: |
+          if [ -n "$CW_SMTP_HOST" ]; then python scripts/daily_briefs.py --send-email; else python scripts/daily_briefs.py; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: theatre-briefs
+          path: outputs/theatre/

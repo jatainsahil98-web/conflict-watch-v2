@@ -1,0 +1,11 @@
+# Extra packages needed only to rebuild the figures, notebooks, report and deck (not needed by the dashboard).
+-r requirements.txt
+kaleido>=1.0        # static PNG export of figures (or: python run_pipeline.py --no-figs)
+nbformat>=5.9
+nbconvert>=7.16
+ipykernel>=6.29
+markdown>=3.5
+python-pptx>=1.0
+pillow>=10
+qrcode>=7.4         # QR code on the closing slide
+openpyxl>=3.1

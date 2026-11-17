@@ -1,0 +1,31 @@
+conflict_case,side_a_name,side_b_name,year,deaths_side_a,deaths_side_b,deaths_civilians,deaths_unknown_status,ratio_a_to_b
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2015,1,0,0,0,
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2016,3,1,2,0,3.0
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2017,0,0,8,0,
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2018,0,5,1,0,0.0
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2022,3,2,11,0,1.5
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2023,4,7,6,0,0.5714285714285714
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2024,14,8,21,18,1.75
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2025,42,38,56,42,1.105263157894737
+Afghanistan–Pakistan,Government of Afghanistan,Government of Pakistan,2026,84,104,463,34,0.8076923076923077
+Israel–Hamas,Government of Israel,Hamas,2014,74,671,1263,142,0.11028315946348734
+Israel–Hamas,Government of Israel,Hamas,2015,0,4,2,1,0.0
+Israel–Hamas,Government of Israel,Hamas,2016,0,3,3,0,0.0
+Israel–Hamas,Government of Israel,Hamas,2017,1,5,0,0,0.2
+Israel–Hamas,Government of Israel,Hamas,2018,4,31,6,12,0.12903225806451613
+Israel–Hamas,Government of Israel,Hamas,2019,1,10,12,0,0.1
+Israel–Hamas,Government of Israel,Hamas,2020,0,0,0,3,
+Israel–Hamas,Government of Israel,Hamas,2021,2,74,155,2,0.02702702702702703
+Israel–Hamas,Government of Israel,Hamas,2022,3,4,4,1,0.75
+Israel–Hamas,Government of Israel,Hamas,2023,567,181,17151,8456,3.132596685082873
+Israel–Hamas,Government of Israel,Hamas,2024,230,113,9740,10878,2.0353982300884956
+Israel–Hamas,Government of Israel,Hamas,2025,85,299,3217,10526,0.2842809364548495
+Israel–Hamas,Government of Israel,Hamas,2026,4,320,227,502,0.0125
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2014,1,2,0,0,0.5
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2016,2,0,0,0,
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2022,41929,21844,18163,17537,1.9194744552279803
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2023,49995,23795,2357,107,2.1010716537087624
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2024,76666,22771,2609,74,3.3668262263405206
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2025,77679,14150,2856,56,5.489681978798586
+Russia–Ukraine,Government of Russia (Soviet Union),Government of Ukraine,2026,56321,5351,2746,21,10.525322369650533
+US–Iran,Government of Iran,"Government of Israel, Government of United States of America",2026,1274,11,1774,800,115.81818181818181

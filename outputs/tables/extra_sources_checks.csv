@@ -1,0 +1,92 @@
+key,value
+D9.rows,149825
+D9.weeks,"['2014-12-27', '2026-06-27']"
+D9.iran_inflation_2025_d6,42.171224
+D9.countries,17
+D9.iran_unrest_deaths_dec25_jan26,27646
+D9.iran_strategic_pre_2026.pre4,88
+D9.iran_strategic_pre_2026.base4_mean,17.384615
+D9.iran_strategic_pre_2026.ratio,5.061947
+D9.iran_strategic_pre_2025.pre4,3
+D9.iran_strategic_pre_2025.base4_mean,3.615385
+D9.iran_strategic_pre_2025.ratio,0.829787
+D9.gulf_violent_events.H1_2025,9
+D9.gulf_violent_events.H1_2026,322
+D9.indian_ocean_violent_events.H1_2025,60
+D9.indian_ocean_violent_events.H1_2026,74
+D9.israel_palestine_rho,0.867152
+D9.israel_palestine_months,126
+D10.rows,200000
+D10.rows_stated,209787
+D10.years,"[1989, 2025]"
+D10.focus_countries,"['Afghanistan', 'Iran', 'Israel', 'Pakistan', 'Russia', 'Ukraine', 'United States']"
+D10.d1_events_found,0.995462
+D10.d1_events_2014_25,56411
+D10.deaths_identical,1.0
+D10.persist_10k.n,15
+D10.persist_10k.share_next_ge_1k,1.0
+D10.quiet_to_1k.n,82
+D10.quiet_to_1k.share,0.04878
+D10.afpak_case_share_of_afghanistan,0.083007
+D10.ukraine_years_ge_10k,"[2022, 2023, 2024, 2025]"
+D11.rows,3445
+D11.latest_ucdp_month,2025-12
+D11.iran_ucdp_deaths_feb_apr_2026,0
+D11.gdelt_months_before_feb2026,50
+D11.gdelt_months_span,"['2016-02', '2026-04']"
+D11.ucdp_match_share,1.0
+D11.ucdp_country_months,1896
+D11.multi_month_records_stacked,1352
+D11.iran_ucdp_vs_protests_rho,-0.049386
+D12.rows,22
+D12.media_per_death_feb_apr_2026.Afghanistan.gdelt_events,48690
+D12.media_per_death_feb_apr_2026.Afghanistan.d1_deaths,608
+D12.media_per_death_feb_apr_2026.Afghanistan.events_per_death,80.082237
+D12.media_per_death_feb_apr_2026.Pakistan.gdelt_events,188469
+D12.media_per_death_feb_apr_2026.Pakistan.d1_deaths,535
+D12.media_per_death_feb_apr_2026.Pakistan.events_per_death,352.278505
+D12.media_per_death_feb_apr_2026.Russia.gdelt_events,226256
+D12.media_per_death_feb_apr_2026.Russia.d1_deaths,142
+D12.media_per_death_feb_apr_2026.Russia.events_per_death,1593.352113
+D12.media_per_death_feb_apr_2026.Ukraine.gdelt_events,152320
+D12.media_per_death_feb_apr_2026.Ukraine.d1_deaths,22262
+D12.media_per_death_feb_apr_2026.Ukraine.events_per_death,6.842153
+D12.media_per_death_feb_apr_2026.Iran.gdelt_events,716485
+D12.media_per_death_feb_apr_2026.Iran.d1_deaths,3494
+D12.media_per_death_feb_apr_2026.Iran.events_per_death,205.061534
+D12.media_per_death_feb_apr_2026.Israel.gdelt_events,509751
+D12.media_per_death_feb_apr_2026.Israel.d1_deaths,22
+D12.media_per_death_feb_apr_2026.Israel.events_per_death,23170.5
+D12.media_per_death_feb_apr_2026.United States.gdelt_events,3250431
+D12.media_per_death_feb_apr_2026.United States.d1_deaths,0
+D12.media_per_death_feb_apr_2026.United States.events_per_death,3250431.0
+D12.ucdp_event_totals_match_d10,True
+GDELT.prewar.source,Iran vs the US or Israel
+GDELT.prewar.base_days,20
+GDELT.prewar.last_days,7
+GDELT.prewar.events_per_day,"[936.15, 929.7142857142857]"
+GDELT.prewar.events_p,0.941527
+GDELT.prewar.goldstein,"[0.70591, -0.09795714285714283]"
+GDELT.prewar.goldstein_p,0.007269
+GDELT.prewar.goldstein_w,"[1.63172, 0.09017142857142867]"
+GDELT.weekly_lead_p_by_case.Afghanistan–Pakistan,0.022623
+GDELT.weekly_lead_p_by_case.Israel–Hamas,0.644637
+GDELT.weekly_lead_p_by_case.Russia–Ukraine,0.732036
+GDELT.weekly_lead_p_by_case.US–Iran,0.627354
+GDELT.weekly_lead_p_min,0.022623
+GDELT.kuwait_conflict_per_day,"[0.7777777777777778, 58.34375]"
+GDELT.sri_lanka_peak_day,2026-03-05
+GDELT_OCT.by_case.Russia–Ukraine.gdelt_change,0.050822
+GDELT_OCT.by_case.Russia–Ukraine.forecast_change,0.413215
+GDELT_OCT.by_case.Russia–Ukraine.agree,True
+GDELT_OCT.by_case.Israel–Hamas.gdelt_change,-0.001887
+GDELT_OCT.by_case.Israel–Hamas.forecast_change,-0.111259
+GDELT_OCT.by_case.Israel–Hamas.agree,True
+GDELT_OCT.by_case.Afghanistan–Pakistan.gdelt_change,-0.093337
+GDELT_OCT.by_case.Afghanistan–Pakistan.forecast_change,-0.253863
+GDELT_OCT.by_case.Afghanistan–Pakistan.agree,True
+GDELT_OCT.by_case.US–Iran.gdelt_change,-0.425338
+GDELT_OCT.by_case.US–Iran.forecast_change,-0.235714
+GDELT_OCT.by_case.US–Iran.agree,True
+GDELT_OCT.agree,4
+GDELT_OCT.of,4

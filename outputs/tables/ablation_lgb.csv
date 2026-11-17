@@ -1,0 +1,7 @@
+variant,RMSLE Track A (1-step),RMSLE Track B (1-9 step)
+"A. Level target, L2, full features (default ML)",1.232,1.197
+"B. Δ target, L2, full features",0.993,1.26
+"C. Δ target, L2, full features, regularised",0.955,1.283
+"D. Δ target, Huber, compact features",0.896,1.143
+"E. Δ target, L1, compact features (selected)",0.902,1.128
+"F. Tweedie on raw counts, full features",1.331,1.263

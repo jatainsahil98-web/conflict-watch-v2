@@ -1,0 +1,366 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Conflict Watch – Team FCE – Analysis Report</title><style>
+@page { size: A4; margin: 10mm 11mm 12mm 11mm; }
+body { font-family: Carlito, Calibri, 'Segoe UI', Arial, sans-serif; color: #1b2733; font-size: 10pt; line-height: 1.36; }
+p { margin: 3px 0 4px 0; } ul { margin: 2px 0 4px 0; padding-left: 16px; }
+h2 { color: #07131F; border-bottom: 2px solid #F0B03A; padding-bottom: 1px; margin: 9px 0 4px 0; font-size: 12pt; page-break-after: avoid; }
+table { border-collapse: collapse; width: 100%; margin: 4px 0 6px 0; font-size: 8.5pt; line-height: 1.22; }
+th { background: #0F2236; color: #fff; text-align: left; padding: 2px 5px; }
+td { border-bottom: 1px solid #d6dee8; padding: 2px 5px; vertical-align: top; }
+tr { page-break-inside: avoid; } tr:nth-child(even) td { background: #f4f7fa; }
+figure { margin: 3px 0 4px 0; page-break-inside: avoid; } figure img { width: 100%; display: block; }
+figcaption { font-size: 7.9pt; color: #5E7B99; margin-top: 1px; }
+.pair { display: flex; gap: 10px; page-break-inside: avoid; } .pair figure { flex: 1; min-width: 0; }
+code { background: #f0f3f7; border-radius: 3px; font-size: 8pt; padding: 0 2px; }
+.red { color: #d7263d; } .amber { color: #c77d00; } .green { color: #1f9e83; }
+.banner { background: #07131F; color: #fff; padding: 8px 14px; border-radius: 4px; margin-bottom: 6px; }
+.banner .kick { color: #F0B03A; font-weight: 700; letter-spacing: 1.4px; font-size: 7.5pt; }
+.banner .title { font-size: 22pt; font-weight: 700; letter-spacing: 1.5px; line-height: 1.1; }
+.banner .subtitle { color: #D5DEE8; font-size: 10.5pt; } .banner .meta { color: #9FB2C6; font-size: 7.8pt; margin-top: 3px; }
+.bluf { border-left: 4px solid #F0B03A; background: #fff8ea; padding: 5px 10px; margin: 5px 0; }
+</style></head><body><div class="banner"><div class="kick">LT GEN MS SODHI MEDAL · DATA ANALYTICS COMPETITION 2026 · ANALYSIS REPORT · TEAM FCE</div>
+<div class="title">CONFLICT WATCH</div>
+<div class="subtitle">When and where will conflict deaths rise next, and what does it mean for India?</div>
+<div class="meta">Maj Shivam Mehta · Capt Siddharth Sangwan · Capt Sahil Singh · Data to 30 Sep 2026 (UCDP), 12 Nov 2026 (GDELT) · Issued competition data only · Run CW-F6C2C2CC</div></div>
+
+<div class="bluf">
+<p><strong>Bottom line.</strong> Russia–Ukraine stays <strong>RED</strong> (about 6,780 deaths in Oct 2026). Afghanistan–Pakistan is <strong>AMBER</strong> and is the front that matters most to India: Pakistan now fights the TTP inside and Afghanistan across the Durand Line. US–Iran and Israel–Hamas are <strong>GREEN</strong> on the monthly model, but US–Iran is a "sudden war": history cannot forecast its onset, so a daily news tripwire watches it. Our forecast cut error by <strong>29%</strong> against "no change" on withheld 2026 data (90% interval 2% to 41%); the area watch-list is <strong>4.1×</strong> better than chance.</p>
+<p><strong>Act now.</strong> (1) Task ISR on the monthly top-10 areas (Kandahar, Kunar, Kabul lead). (2) Treat any J&amp;K attack with 15+ deaths as the start of a 15-day escalation watch. (3) Keep Gulf evacuation plans current and act the day the tripwire turns RED, not when deaths are published six weeks later.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Conflict</th>
+<th>Oct 2026</th>
+<th>Forecast deaths</th>
+<th>80% range</th>
+<th>vs last 6 months</th>
+<th>Top watch area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Russia–Ukraine</strong></td>
+<td><b class="red">RED</b></td>
+<td>6,780</td>
+<td>3,316–16,708</td>
+<td>+7%</td>
+<td>Chernihiv (16%)</td>
+</tr>
+<tr>
+<td><strong>Israel–Hamas</strong></td>
+<td><b class="green">GREEN</b></td>
+<td>128</td>
+<td>62–317</td>
+<td>-4%</td>
+<td>West Bank (14%)</td>
+</tr>
+<tr>
+<td><strong>Afghanistan–Pakistan</strong></td>
+<td><b class="amber">AMBER</b></td>
+<td>318</td>
+<td>155–786</td>
+<td>+12%</td>
+<td>Kandahar (25%)</td>
+</tr>
+<tr>
+<td><strong>US–Iran</strong></td>
+<td><b class="green">GREEN</b></td>
+<td>26</td>
+<td>12–66</td>
+<td>-78%</td>
+<td>Hormozgan (13%)</td>
+</tr>
+</tbody>
+</table>
+<h2>1 · Problem understanding</h2>
+<p>The brief is open: frame our own questions from four conflicts. We framed it as <strong>decision support for India</strong> and asked five questions, each tied to a decision. <strong>Q1</strong> How intense is each war and where is it heading (force posture, watch levels)? <strong>Q2</strong> Which areas will escalate next month (ISR tasking)? <strong>Q3</strong> Can we see a change of state before deaths are published (warning time)? <strong>Q4</strong> How far can the record be trusted (confidence in Q1–Q3)? <strong>Q5</strong> What touches India: the Pakistan front, the Gulf and the sea lanes? Every claim of predictive skill had to survive data the model had never seen: <strong>all of 2026 was withheld</strong> from every modelling choice.</p>
+<h2>2 · Data preparation and feature engineering</h2>
+<p><strong>Twelve issued files, one rule: providers are never joined on event IDs.</strong> Cross-provider keys are only country and day, week, month or year; the pre-joined panels (D11–D12) are audited, not trusted (the supplied panel shows 0 UCDP deaths for 2026, so we rebuilt from events).</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Issued file</th>
+<th>Rows</th>
+<th>Period</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>conflict_events (UCDP GED 26.1 + Candidate 2026)</td>
+<td>61,055</td>
+<td>Jan 2014 – Sep 2026</td>
+<td>Fatality ground truth; models; 2026 withheld</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>event_sources</td>
+<td>85,406</td>
+<td>2014 – Oct 2026</td>
+<td>Source dependence; reporting lag (§3.5)</td>
+</tr>
+<tr>
+<td>D3–D5</td>
+<td>UNHCR stocks, demographics; IDMC/UNRWA</td>
+<td>26,215</td>
+<td>2014 – 2025</td>
+<td>Displacement, HADR planning</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>country_year_context (World Bank)</td>
+<td>1,764</td>
+<td>2014 – 2025</td>
+<td>Population, growth, inflation (lagged)</td>
+</tr>
+<tr>
+<td>D7–D8</td>
+<td>GDELT focus files (two)</td>
+<td>13,507,238</td>
+<td>Feb – Nov 2026</td>
+<td>Attention; daily tripwire (§4.4)</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>Middle East weekly (ACLED-style)</td>
+<td>149,825</td>
+<td>Dec 2014 – Jun 2026</td>
+<td>Second source; Gulf spill-over</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>UCDP GED long file</td>
+<td>200,000</td>
+<td>1989 – 2025</td>
+<td>Transfer learning (§4.5); India's front (§3.3)</td>
+</tr>
+<tr>
+<td>D11–D12</td>
+<td>Pre-joined country panels</td>
+<td>3,467</td>
+<td>1989 – Jun 2026</td>
+<td>Audited, used only for checks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cleaning.</strong> 36 checks are logged with the rows affected and the action (code: <code>src/cleaning.py</code>); 23 found something. The ones that change results:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Issue</th>
+<th>Rows</th>
+<th>What we did</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DQ05</td>
+<td>Out-of-order low/best/high estimates (low&lt;=best&lt;=high violated)</td>
+<td>692</td>
+<td>Raw values preserved</td>
+</tr>
+<tr>
+<td>DQ07</td>
+<td>Event date range crosses a month boundary</td>
+<td>731</td>
+<td>Fatalities allocated across months in proportion to days in range (uniform-day disaggregation) instead of assigning everything to the start month.</td>
+</tr>
+<tr>
+<td>DQ10</td>
+<td>Provisional UCDP Candidate records (Jan-Sep 2026)</td>
+<td>4,644</td>
+<td>Flagged is_provisional</td>
+</tr>
+<tr>
+<td>DQ13</td>
+<td>Administrative boundary change: FATA merged into Khyber Pakhtunkhwa (2018)</td>
+<td>602</td>
+<td>Harmonised FATA to 'Khyber Pakhtunkwa province' (post-merger boundary) for a stable sub-national panel; raw admin1_name retained.</td>
+</tr>
+<tr>
+<td>DQ14</td>
+<td>Blank admin1_name</td>
+<td>3,043</td>
+<td>Imputed category '(country-level / unspecified)' so the events remain in sub-national panels.</td>
+</tr>
+<tr>
+<td>DQ15</td>
+<td>Aggregate event records (event_clarity = 2)</td>
+<td>5,757</td>
+<td>Kept (they carry real deaths) and flagged; event COUNT features use clear events only.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Imputation.</strong> Months with no UCDP event are true zeros (UCDP is an event register). Blank areas become an explicit "(country-level / unspecified)" level, never a guessed place. The GDELT gap of 1–16 May 2026 stays missing. World Bank gaps are interpolated inside each economy only, and lagged one year so a forecast never sees the future. Raw values are never overwritten: corrected copies sit beside them.</p>
+<p><strong>Features</strong> (all known at the end of the forecast month): recent level (log deaths now, 1 and 2 months ago), rolling means (3, 6, 12 months, exponential), volatility and 12-month peak, momentum (3 vs 12 months) and acceleration, months since the last death, reporting intensity (events, sources), seasonality and horizon. The area model adds the parent conflict's tempo, the country's tempo and the area's share of its conflict. A 40-feature set with displacement and macro data overfit and was dropped (ablation in §4).</p>
+<h2>3 · Exploratory analysis and insights</h2>
+<p>Each finding ends in a <strong>deduction</strong> and an <strong>action</strong>.</p>
+<p><strong>3.1 Four wars, four shapes.</strong> Russia–Ukraine holds 81% of 554,396 recorded deaths and is flat at 6–8k a month; Israel–Hamas fell 92% after the Oct 2025 ceasefire; Afghanistan–Pakistan has already passed its 2025 total (2,767 vs 2,649); US–Iran recorded 3,965 deaths in 2026, mostly in 39 days from 28 Feb. Civilians are 49% of Israel–Hamas deaths against 7% in Russia–Ukraine. <em>Deduction:</em> one watch level cannot fit all four. <em>Action:</em> attrition watch for RU–UA, onset watch for US–Iran, standing watch for Af–Pak.</p>
+<div class="pair"><figure><img src="figs/monthly_deaths.png" alt="Monthly deaths by conflict, log scale; shaded = 2026 withheld test window [D1]"/><figcaption>Monthly deaths by conflict, log scale; shaded = 2026 withheld test window [D1]</figcaption></figure><figure><img src="figs/afpak_interstate.png" alt="Afghanistan–Pakistan: state-on-state deaths since Oct 2025 [D1]"/><figcaption>Afghanistan–Pakistan: state-on-state deaths since Oct 2025 [D1]</figcaption></figure></div>
+
+<p><strong>3.2 Pakistan now fights on two fronts.</strong> TTP violence in Khyber Pakhtunkhwa grew every year since 2021, and since Oct 2025 the two governments fight each other directly (peak 411 deaths in Mar 2026). FATA was merged into KP in 2018; we harmonised the 602 affected records (DQ13) so the area series do not break. <em>Deduction:</em> a stretched Pakistan raises the risk of miscalculation on the LoC. <em>Action:</em> treat Af–Pak hotspots as a standing LoC indicator.</p>
+<div class="pair"><figure><img src="figs/afpak_provinces.png" alt="Af–Pak deaths by province: KP and Balochistan carry the rise [D1]"/><figcaption>Af–Pak deaths by province: KP and Balochistan carry the rise [D1]</figcaption></figure><figure><img src="figs/india_exposure.png" alt="Where the four wars touch India: LoC-adjoining areas, Gulf, Hormuz, Sri Lanka [D1]"/><figcaption>Where the four wars touch India: LoC-adjoining areas, Gulf, Hormuz, Sri Lanka [D1]</figcaption></figure></div>
+
+<p><strong>3.3 India's own front: a 15-day clock.</strong> From D10, every J&amp;K incident with 15+ deaths since 2014 (7 incidents). After Uri, Pulwama, Pahalgam, India–Pakistan state fighting with 30+ deaths followed within 11–15 days; state deaths had been near zero in the 45 days before. D10 keeps only the deadlier records outside the focus countries, so these are floors, and cross-border firing was routine in 2016–20: a pattern to watch, not proof of cause. <em>Action:</em> start a 15-day escalation watch after any such attack.</p>
+<p><strong>3.4 The 2026 war reached India's neighbourhood.</strong> US–Iran deaths were recorded in 14 countries in 2026 (4 in 2025), including 5 Gulf states and 104 killed off Sri Lanka on 4 Mar 2026. The ACLED-style file (D9) shows Gulf violent events rising from 9 to 322 (H1 2025 to H1 2026). <em>Action:</em> keep Gulf evacuation plans and sea-lane escorts tied to the tripwire.</p>
+<p><strong>3.5 The record arrives late, and unevenly.</strong> Only 40% of Russia–Ukraine deaths are known 90 days after the event, against 93% for Af–Pak (D2 publication dates). <em>Deduction:</em> the 2026 Russia–Ukraine "decline" is mostly late reporting. <em>Action:</em> read recent months as a floor; never brief a fall in RU–UA deaths from the last quarter alone.</p>
+<p><strong>3.6 News follows politics, not deaths.</strong> US–Iran drew 781 GDELT articles per death against 25 for Russia–Ukraine. Weekly news moves with deaths only for Af–Pak and US–Iran (ρ 0.93 and 0.86). <em>Action:</em> use news to see a change of state, never to size a war (§4.4).</p>
+<div class="pair"><figure><img src="figs/media_gap.png" alt="Attention vs deaths: source references per 100 deaths [D1, D2]"/><figcaption>Attention vs deaths: source references per 100 deaths [D1, D2]</figcaption></figure><figure><img src="figs/displacement.png" alt="Displacement by origin: refugees abroad and IDPs [D3–D5]"/><figcaption>Displacement by origin: refugees abroad and IDPs [D3–D5]</figcaption></figure></div>
+
+<h2>4 · Model and prediction</h2>
+<p><strong>4.1 Protocol.</strong> Walk-forward: for each year Y the models are fitted on data to Dec Y−1 and scored on Jan–Sep of Y (back-test 2022–2025, holdout 2026). Choices were made on the back-test only.</p>
+<p><strong>4.2 Choice and justification.</strong> Four series of about 150 months each are too few for a deep model. We combine three members with different errors: a 3-month mean (robust), damped ETS on log deaths (each war's own trend) and <strong>LightGBM-Δ</strong>, one model pooled across the four wars that predicts the <em>change</em> in log deaths with an L1 loss. The Δ target and compact features won the ablation (back-test RMSLE 0.902 vs 1.232 for the default ML set-up). The ensemble is the log-space mean. SARIMA was tested and not selected on the back-test. Bands are split-conformal, built from the models' real past errors.</p>
+<p><strong>4.3 Performance on withheld 2026 data (1 month ahead).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>RMSLE</th>
+<th>MAE cut vs naive</th>
+<th>90% interval</th>
+<th>Diebold–Mariano p</th>
+<th>80% band coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ensemble (adopted)</td>
+<td>0.845</td>
+<td>29%</td>
+<td>2% to 41%</td>
+<td>0.053</td>
+<td>81%</td>
+</tr>
+<tr>
+<td>No change (naive)</td>
+<td>0.961</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>ETS alone</td>
+<td>0.897</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LightGBM-Δ alone</td>
+<td>0.908</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>By conflict the cut is RU–UA 30%, IL–Hamas 55%, Af–Pak 4%, US–Iran 31%. <strong>Reliability:</strong> the forecast is good for protracted wars one month ahead; bands widen fast beyond that, and US–Iran's onset fell outside its band (22% coverage). That limit is why §4.4 exists.</p>
+<div class="pair"><figure><img src="figs/forecast_ru.png" alt="Russia–Ukraine: 1-month forecasts on withheld 2026, 80% band, forward forecast"/><figcaption>Russia–Ukraine: 1-month forecasts on withheld 2026, 80% band, forward forecast</figcaption></figure><figure><img src="figs/forecast_afpak.png" alt="Afghanistan–Pakistan: same view"/><figcaption>Afghanistan–Pakistan: same view</figcaption></figure></div>
+
+<p><strong>4.4 The fast clock: a news tripwire for a change of state.</strong> RED fires when violent GDELT events per day reach 4× their 14-day median (and at least 100); AMBER when military-posture reports reach 4× their 28-day median. Rules were fixed before testing and not tuned. Of 5 RED alerts in Feb–Sep 2026, <strong>4 were confirmed</strong> by a UCDP escalation within ±3 days (chance: 1.6; permutation p = 0.018). US–Iran: AMBER on 2026-02-25, RED on 28 Feb, the first day of the war; UCDP published those deaths weeks later. It misses most routine insurgent escalations (Af–Pak 5 of 21 days), so it complements the forecast, it does not replace it.</p>
+<div class="pair"><figure><img src="figs/tripwire_usir.png" alt="US–Iran tripwire: AMBER and RED lines against UCDP deaths [D7, D8, D1]"/><figcaption>US–Iran tripwire: AMBER and RED lines against UCDP deaths [D7, D8, D1]</figcaption></figure><figure><img src="figs/completeness.png" alt="How much of the record is known k days on [D1, D2]"/><figcaption>How much of the record is known k days on [D1, D2]</figcaption></figure></div>
+
+<p><strong>4.5 Where next: the area escalation warning.</strong> An area escalates if next month's deaths are ≥ 10 and ≥ 1.5× its 3-month mean (about 4% of area-months). A LightGBM classifier ranks 222 areas in 22 countries. <strong>New in v2: transfer learning.</strong> The four cases hold too few escalations to learn from, so the classifier also trains on 1,450 areas in 110 other countries from D10 (1990–2025, focus countries removed to avoid double counting). The variant was <strong>pre-registered</strong>: chosen on the 2023–25 back-test by a rule written before 2026 was scored (file hash <code>8700f6dc157c…</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Escalation model</th>
+<th>Back-test PR-AUC</th>
+<th>Back-test ROC-AUC</th>
+<th>2026 PR-AUC</th>
+<th>2026 ROC-AUC</th>
+<th>2026 top-10 precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Competition-day model (cases only)</td>
+<td>0.208</td>
+<td>0.853</td>
+<td>0.133</td>
+<td>0.795</td>
+<td>14.4%</td>
+</tr>
+<tr>
+<td><strong>v2: cases + world areas (pre-registered)</strong></td>
+<td><strong>0.241</strong></td>
+<td><strong>0.862</strong></td>
+<td><strong>0.146</strong></td>
+<td><strong>0.798</strong></td>
+<td><strong>16.7%</strong></td>
+</tr>
+<tr>
+<td>Rule: rank by last month's deaths</td>
+<td></td>
+<td></td>
+<td>0.088</td>
+<td>0.727</td>
+<td>4.4%</td>
+</tr>
+</tbody>
+</table>
+<p>Base rate 4.1%, so the top-10 list is 4.1× better than chance. After scoring we added Platt calibration fitted on the back-test only, because the larger model over-stated probabilities above the scorecard's 15% hotspot line; it does not change the ranking, and the file records that it was added after seeing 2026. <strong>Sealed claims:</strong> the Oct–Dec 2026 forecasts and the watch-list are hashed (<code>d215dfe6cbf7c416…</code>) so they can be scored when UCDP publishes.</p>
+<div class="pair"><figure><img src="figs/ew_curves.png" alt="Escalation warning on 2026: ROC and precision–recall vs the rule of thumb"/><figcaption>Escalation warning on 2026: ROC and precision–recall vs the rule of thumb</figcaption></figure><figure><img src="figs/shap_ew.png" alt="What drives the warning (mean |SHAP|)"/><figcaption>What drives the warning (mean |SHAP|)</figcaption></figure></div>
+
+<p><strong>4.6 The scorecard.</strong> Points: intensity (forecast ≥1,000 → 2; ≥100 → 1), trend vs the last 6 months (≥+20% → +1; ≤−20% → −1), hotspots (areas with P ≥ 15%: ≥3 → 2; ≥1 → 1), spread (more countries than last year → 1) and volatility (a 1,000-death month in the last year → 1). <strong>RED</strong> if the forecast is ≥1,000 deaths or points ≥5; <strong>AMBER</strong> if points ≥2; otherwise GREEN. US–Iran scores 1 (spread +1, volatility +1, trend −1): GREEN on the monthly rule, which is why the daily tripwire guards it. Rules are in the report, the code and the dashboard, and the dashboard re-checks its ratings against the pipeline on load.</p>
+<h2>5 · Innovation and tools</h2>
+<p><strong>Two clocks:</strong> a monthly forecast sizes the war; a daily tripwire flags its change of state, each with its own test. <strong>Transfer learning</strong> from the wider world for a small-sample warning model. <strong>Honest-by-design:</strong> pre-registered model choice, sealed forecasts, a completeness curve that tells the reader when not to trust the latest month. <strong>Ops site</strong> (single offline HTML file and Streamlit app): a one-screen commander view with CDS and two notional theatre views, three depths of detail, an Ops console (brief, theatre, warning, map, area, forecast, what-if, scorecard, data quality) and the fast-clock panel. Python (pandas, LightGBM, statsmodels, scikit-learn, plotly), DuckDB for the 5.7 GB GDELT files, TypeScript/ECharts for the site.</p>
+<h2>6 · Recommendations</h2>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Action</th>
+<th>Evidence</th>
+<th>Trigger</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SENSE</td>
+<td>Task ISR and analysts on the monthly top-10 areas; run the daily tripwire</td>
+<td>Top-10 precision 17% vs 4% base rate; 4 of 5 RED alerts confirmed</td>
+<td>Monthly list; RED alert</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>WARN</td>
+<td>Treat Af–Pak hotspots and any J&amp;K attack with 15+ deaths as LoC indicators; 15-day watch</td>
+<td>§3.2–3.3: two-front Pakistan; 11–15 days to state fighting</td>
+<td>Af–Pak AMBER/RED; J&amp;K attack</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>SHIELD</td>
+<td>Keep Gulf evacuation and sea-lane plans current; act on RED, not on published deaths</td>
+<td>§3.4, §4.4: war reached 14 countries; tripwire fired on day 0</td>
+<td>US–Iran RED or AMBER</td>
+<td>High</td>
+</tr>
+<tr>
+<td>SUSTAIN</td>
+<td>Plan Russian-platform spares on a long RU–UA war (DOMAIN)</td>
+<td>RU–UA RED, 6–8k deaths a month, no sign of decline once late reports arrive</td>
+<td>RU–UA stays RED</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>ADAPT</td>
+<td>Brief recent months as floors; re-run when UCDP publishes Oct–Dec and score the sealed claims</td>
+<td>Only 40% of RU–UA deaths known at 90 days</td>
+<td>Each UCDP release</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h2>7 · Limitations, reproducibility and AI declaration</h2>
+<p><strong>Limitations.</strong> 2026 UCDP data are provisional and will rise. Four conflict series give small samples: one-month-ahead bands are usable, longer ones are wide. The tripwire rests on 5 alerts in 8 months. D10 is a capped extract that favours deadlier records outside the focus countries. GDELT counts reports, not incidents, and is US-heavy. Theatre commands in the site are notional. No outside data are used anywhere in this entry.</p>
+<p><strong>Reproducibility.</strong> One command, <code>python run_pipeline.py</code>, rebuilds every table, model and figure from the raw files in about 3–4 minutes (seed 42); <code>python scripts/export_web.py</code> rebuilds the site data and stops if any headline number drifts; <code>python scripts/check_submission.py</code> is the compliance gate (pages, names, files, declarations). Run ID <code>CW-F6C2C2CC</code> is a hash of the result tables and appears on every product.</p>
+<p><strong>AI tools declaration.</strong> The team used Anthropic's Claude (an AI assistant) to help write and debug code, draft text and design the site and slides. The team set the questions, made the design decisions and checked every number against the pipeline outputs.</p></body></html>

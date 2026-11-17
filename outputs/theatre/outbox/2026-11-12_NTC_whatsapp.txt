@@ -1,0 +1,32 @@
+*IMMEDIATE · CONFLICT WATCH SITREP*
+FROM: CW Ops Cell   TO: Cdr NTC
+DTG: 130600 IST NOV 26   UNCLAS · NOTIONAL · SYNTHETIC DRILL
+
+🔴 *THREAT RED ▲ RISING* · CONFIDENCE LOW
+
+*1. SITUATION*
+• [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents in 7 days vs 0.2/week (8 face-off) _[SYNTHETIC, 24h]_
+• [SYNTHETIC] Depsang Plains (Eastern Ladakh): 3 incidents in 7 days vs 0.0/week (3 infrastructure activity) _[SYNTHETIC, 24h]_
+• GDELT material-conflict events in India down: 9/day over 7 days vs 13/day the 4 weeks before (×0.74); yesterday 11 (z -0.2) _[DATA, 7d]_
+
+*2. WATCH AREAS* (escalation probability, nowcast)
+• ◆ Yangtse (Tawang) (IND) — 0.83
+• ◆ Depsang Plains (IND) — 0.47
+• ◆ Galwan (IND) — 0.15
+
+*3. ASSESSMENT*
+• Standing AMBER on the LAC: disengagement incomplete, forces forward (DOMAIN assumption) (+4)
+• [SYNTHETIC] LAC incidents ×6.5 in 7 days (12 vs 1.0 a week) (+2)
+
+*4. ACTIONS* (who · what · by when)
+A1. *J2 (Int)* · Verify the surge with patrol and satellite reports · *NLT 140600 NOV* (24h)
+A2. *J2 (Int)* · Task ISR on Yangtse (Tawang), Depsang Plains, Galwan · *NLT 140600 NOV* (24h)
+A3. *J3 (Ops)* · Raise readiness of LAC forward formations (winter posture) · *NLT 140600 NOV* (24h)
+
+*5. ESCALATE IF*
+A1. Confirmed by two independent sources -> FLASH to CDS
+A2. Any area nowcast P >= 0.30, or GDELT material-conflict events in India above 18/day for 2 days -> FLASH to CDS
+A3. RAG turns RED, or two days of rising trend with >= 2 areas over 0.20 -> move to the next state
+
+*ACK:* reply ACK-NTC. Full brief: Ops Console ▸ Theatre.
+_UNCLAS · NOTIONAL · SYNTHETIC DRILL theatre · competition data._

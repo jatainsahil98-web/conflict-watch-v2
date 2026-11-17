@@ -1,0 +1,251 @@
+{
+  "coverage": {
+    "start": "2026-02-01",
+    "end": "2026-11-12",
+    "gap": "2026-05-01 to 2026-05-16",
+    "days": 269,
+    "events": 541275
+  },
+  "monthly": {
+    "by_case": {
+      "Russia\u2013Ukraine": {
+        "months": 8,
+        "rho_level": -0.880952380952381,
+        "rho_change": -0.3214285714285715,
+        "articles_per_death": 25.432707499350453
+      },
+      "Israel\u2013Hamas": {
+        "months": 8,
+        "rho_level": -0.30952380952380953,
+        "rho_change": -0.10714285714285716,
+        "articles_per_death": 778.1745877788554
+      },
+      "Afghanistan\u2013Pakistan": {
+        "months": 8,
+        "rho_level": 0.6428571428571429,
+        "rho_change": 0.9285714285714288,
+        "articles_per_death": 103.81259426847662
+      },
+      "US\u2013Iran": {
+        "months": 8,
+        "rho_level": 0.6428571428571429,
+        "rho_change": 0.8571428571428573,
+        "articles_per_death": 780.9255989911727
+      }
+    },
+    "pooled_change_r": 0.6434998112210444,
+    "pooled_change_p": 0.00022064229278724663,
+    "n": 28
+  },
+  "weekly": {
+    "weeks": 30,
+    "n": 120,
+    "lead_coef": 0.09357776139250355,
+    "lead_p": 0.5522745605767798,
+    "nowcast_coef": 0.6140328014622698,
+    "nowcast_p": 1.071127720656627e-05,
+    "r2_base": 0.6401172602460683,
+    "r2_nowcast": 0.6966036326411342,
+    "oos_mae_log": {
+      "lead (GDELT week before)": 0.5834,
+      "nowcast (GDELT same week)": 0.662,
+      "persistence+case": 0.5777
+    },
+    "oos_weeks": 20,
+    "oos_gain_nowcast": -0.14586781933029602,
+    "oos_gain_lead": -0.009749741483033425,
+    "oos_by_case": {
+      "Afghanistan\u2013Pakistan": -0.7410906059237665,
+      "Israel\u2013Hamas": 0.050345861905837674,
+      "Russia\u2013Ukraine": -0.2603037055017512,
+      "US\u2013Iran": 0.05984893984944539
+    }
+  },
+  "signals": [
+    {
+      "case": "Afghanistan\u2013Pakistan",
+      "month": "2026-09",
+      "days": 30,
+      "violent_pd": 16.9,
+      "events_pd": 82.9,
+      "articles_pd": 647.8333,
+      "threats_pd": 2.0333,
+      "posture_pd": 0.1,
+      "gw": -1.8784,
+      "tone": -5.7373,
+      "violent_change_vs_prev": NaN,
+      "gdelt_tracks_ucdp": true,
+      "flag": "baseline (last UCDP month)"
+    },
+    {
+      "case": "Afghanistan\u2013Pakistan",
+      "month": "2026-10",
+      "days": 31,
+      "violent_pd": 15.3226,
+      "events_pd": 71.871,
+      "articles_pd": 441.0323,
+      "threats_pd": 1.5161,
+      "posture_pd": 0.3226,
+      "gw": -1.6846,
+      "tone": -5.8614,
+      "violent_change_vs_prev": -0.0933,
+      "gdelt_tracks_ucdp": true,
+      "flag": "STEADY"
+    },
+    {
+      "case": "Afghanistan\u2013Pakistan",
+      "month": "2026-11",
+      "days": 12,
+      "violent_pd": 3.8333,
+      "events_pd": 44.1667,
+      "articles_pd": 213.25,
+      "threats_pd": 3.0,
+      "posture_pd": 0.0,
+      "gw": 1.1188,
+      "tone": -4.6326,
+      "violent_change_vs_prev": -0.7498,
+      "gdelt_tracks_ucdp": true,
+      "flag": "FALLING"
+    },
+    {
+      "case": "Israel\u2013Hamas",
+      "month": "2026-09",
+      "days": 30,
+      "violent_pd": 125.3333,
+      "events_pd": 419.9333,
+      "articles_pd": 3724.0,
+      "threats_pd": 15.4,
+      "posture_pd": 1.9333,
+      "gw": -3.2136,
+      "tone": -5.1198,
+      "violent_change_vs_prev": NaN,
+      "gdelt_tracks_ucdp": false,
+      "flag": "baseline (last UCDP month)"
+    },
+    {
+      "case": "Israel\u2013Hamas",
+      "month": "2026-10",
+      "days": 31,
+      "violent_pd": 125.0968,
+      "events_pd": 435.4516,
+      "articles_pd": 4614.8387,
+      "threats_pd": 13.9677,
+      "posture_pd": 1.7742,
+      "gw": -2.9659,
+      "tone": -5.2169,
+      "violent_change_vs_prev": -0.0019,
+      "gdelt_tracks_ucdp": false,
+      "flag": "STEADY"
+    },
+    {
+      "case": "Israel\u2013Hamas",
+      "month": "2026-11",
+      "days": 12,
+      "violent_pd": 69.8333,
+      "events_pd": 269.0,
+      "articles_pd": 2233.5,
+      "threats_pd": 7.3333,
+      "posture_pd": 0.1667,
+      "gw": -2.7019,
+      "tone": -5.0267,
+      "violent_change_vs_prev": -0.4418,
+      "gdelt_tracks_ucdp": false,
+      "flag": "FALLING"
+    },
+    {
+      "case": "Russia\u2013Ukraine",
+      "month": "2026-09",
+      "days": 30,
+      "violent_pd": 162.3,
+      "events_pd": 654.2333,
+      "articles_pd": 10994.5667,
+      "threats_pd": 28.8,
+      "posture_pd": 5.0333,
+      "gw": -2.7335,
+      "tone": -4.2614,
+      "violent_change_vs_prev": NaN,
+      "gdelt_tracks_ucdp": false,
+      "flag": "baseline (last UCDP month)"
+    },
+    {
+      "case": "Russia\u2013Ukraine",
+      "month": "2026-10",
+      "days": 31,
+      "violent_pd": 170.5484,
+      "events_pd": 858.6452,
+      "articles_pd": 13113.4839,
+      "threats_pd": 42.3226,
+      "posture_pd": 4.3226,
+      "gw": -1.9039,
+      "tone": -4.455,
+      "violent_change_vs_prev": 0.0508,
+      "gdelt_tracks_ucdp": false,
+      "flag": "STEADY"
+    },
+    {
+      "case": "Russia\u2013Ukraine",
+      "month": "2026-11",
+      "days": 12,
+      "violent_pd": 129.4167,
+      "events_pd": 808.1667,
+      "articles_pd": 16289.4167,
+      "threats_pd": 25.5833,
+      "posture_pd": 3.75,
+      "gw": 0.6458,
+      "tone": -2.7412,
+      "violent_change_vs_prev": -0.2412,
+      "gdelt_tracks_ucdp": false,
+      "flag": "STEADY"
+    },
+    {
+      "case": "US\u2013Iran",
+      "month": "2026-09",
+      "days": 30,
+      "violent_pd": 76.5667,
+      "events_pd": 581.3333,
+      "articles_pd": 6568.1,
+      "threats_pd": 38.3333,
+      "posture_pd": 1.9,
+      "gw": -0.0888,
+      "tone": -4.1138,
+      "violent_change_vs_prev": NaN,
+      "gdelt_tracks_ucdp": true,
+      "flag": "baseline (last UCDP month)"
+    },
+    {
+      "case": "US\u2013Iran",
+      "month": "2026-10",
+      "days": 31,
+      "violent_pd": 44.0,
+      "events_pd": 422.6129,
+      "articles_pd": 3502.2903,
+      "threats_pd": 24.4839,
+      "posture_pd": 1.4194,
+      "gw": -0.108,
+      "tone": -3.4205,
+      "violent_change_vs_prev": -0.4253,
+      "gdelt_tracks_ucdp": true,
+      "flag": "FALLING"
+    },
+    {
+      "case": "US\u2013Iran",
+      "month": "2026-11",
+      "days": 12,
+      "violent_pd": 70.0,
+      "events_pd": 754.6667,
+      "articles_pd": 7191.8333,
+      "threats_pd": 52.1667,
+      "posture_pd": 2.3333,
+      "gw": 0.0271,
+      "tone": -3.5946,
+      "violent_change_vs_prev": 0.5909,
+      "gdelt_tracks_ucdp": true,
+      "flag": "RISING"
+    }
+  ],
+  "tracks_ucdp": [
+    "Afghanistan\u2013Pakistan",
+    "US\u2013Iran"
+  ],
+  "caveat": "GDELT counts media-coded reports, not incidents; it is a narrative/attention signal and is compared with UCDP, never joined on events. These are new results, not part of the submitted models."
+}

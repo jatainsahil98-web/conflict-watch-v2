@@ -1,0 +1,68 @@
+{
+ "rules": {
+  "red_ratio": 4.0,
+  "red_window": 14,
+  "red_min": 100,
+  "amber_ratio": 4.0,
+  "amber_window": 28,
+  "amber_min": 40,
+  "esc_ratio": 3.0,
+  "esc_window": 28,
+  "esc_min": 20,
+  "tolerance_days": 3,
+  "n_perm": 20000,
+  "seed": 42
+ },
+ "window": [
+  "2026-02-01",
+  "2026-09-30"
+ ],
+ "red_episodes": 5,
+ "red_confirmed": 4,
+ "p_value": 0.0185,
+ "perm_mean_hits": 1.5729,
+ "by_case": {
+  "Russia\u2013Ukraine": {
+   "escalation_days": 2,
+   "caught": 0
+  },
+  "Israel\u2013Hamas": {
+   "escalation_days": 1,
+   "caught": 0
+  },
+  "Afghanistan\u2013Pakistan": {
+   "escalation_days": 21,
+   "caught": 5
+  },
+  "US\u2013Iran": {
+   "escalation_days": 4,
+   "caught": 3
+  }
+ },
+ "latest": [
+  {
+   "case": "Israel\u2013Hamas",
+   "date": "2026-11-12",
+   "ratio": 1.33,
+   "red": false
+  },
+  {
+   "case": "Afghanistan\u2013Pakistan",
+   "date": "2026-11-12",
+   "ratio": 0.6,
+   "red": false
+  },
+  {
+   "case": "Russia\u2013Ukraine",
+   "date": "2026-11-12",
+   "ratio": 1.13,
+   "red": false
+  },
+  {
+   "case": "US\u2013Iran",
+   "date": "2026-11-12",
+   "ratio": 1.07,
+   "red": false
+  }
+ ]
+}

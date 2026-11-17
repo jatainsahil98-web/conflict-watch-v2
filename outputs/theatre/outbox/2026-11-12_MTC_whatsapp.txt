@@ -1,0 +1,28 @@
+*PRIORITY · CONFLICT WATCH SITREP*
+FROM: CW Ops Cell   TO: Cdr MTC
+DTG: 130600 IST NOV 26   UNCLAS · NOTIONAL
+
+🟠 *THREAT AMBER ► STEADY* · CONFIDENCE MEDIUM
+
+*1. SITUATION*
+• GDELT material-conflict events in Saudi Arabia down: 11/day over 7 days vs 29/day the 4 weeks before (×0.38); yesterday 9 (z -0.8) _[DATA, 7d]_
+• Hormozgan (IRN): P(escalation) 0.16, nowcast 0.17 _[MODEL, 7d]_
+
+*2. WATCH AREAS* (escalation probability, nowcast)
+• Hormozgan (IRN) — 0.17
+
+*3. ASSESSMENT*
+• US–Iran monthly RAG AMBER (model scorecard, Oct 2026) (+4)
+
+*4. ACTIONS* (who · what · by when)
+A1. *J1* · Place the NEO task group on 72 h notice · *NLT 160600 NOV* (72h)
+A2. *J3 Maritime* · Surge MDA over Hormuz and the Arabian Sea · *NLT 200600 NOV* (7d)
+A3. *J3 (Ops)* · Raise readiness of Western Fleet units in the Arabian Sea · *NLT 200600 NOV* (7d)
+
+*5. ESCALATE IF*
+A1. Strikes on a GCC state hosting Indians, or Gulf GDELT reporting ×1.5 for 3 days (now ×0.75) -> launch
+A2. Attack on merchant shipping in the AOR, or tanker equities z >= 2.5 -> start escort
+A3. RAG turns RED, or two days of rising trend with >= 2 areas over 0.20 -> move to the next state
+
+*ACK:* reply ACK-MTC. Full brief: Ops Console ▸ Theatre.
+_UNCLAS · NOTIONAL theatre · competition data._

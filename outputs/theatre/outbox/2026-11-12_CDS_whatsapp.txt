@@ -1,0 +1,32 @@
+*PRIORITY · CONFLICT WATCH SITREP*
+FROM: CW Ops Cell   TO: Cdr CDS
+DTG: 130600 IST NOV 26   UNCLAS · NOTIONAL · SYNTHETIC DRILL
+
+🟠 *THREAT AMBER ▼ EASING* · CONFIDENCE LOW
+
+*1. SITUATION*
+• WTC: GDELT violent events, Af–Pak dyad down: 2/day over 7 days vs 13/day the 4 weeks before (×0.23); yesterday 3 (z -0.6) _[DATA, 7d]_
+• MTC: GDELT material-conflict events in Saudi Arabia down: 11/day over 7 days vs 29/day the 4 weeks before (×0.38); yesterday 9 (z -0.8) _[DATA, 7d]_
+• NTC: [SYNTHETIC] Yangtse (Tawang) (Arunachal Pradesh): 8 incidents in 7 days vs 0.2/week (8 face-off) _[SYNTHETIC, 24h]_
+
+*2. WATCH AREAS* (escalation probability, nowcast)
+• ◆ Yangtse (Tawang) (IND) — 0.83
+• ◆ Depsang Plains (IND) — 0.47
+• Kandahar (AFG) — 0.22
+
+*3. ASSESSMENT*
+• NTC RED ▲ (score 6) (+6)
+• WTC AMBER ▼ (score 5) (+5)
+
+*4. ACTIONS* (who · what · by when)
+A1. *J2 (Int)* · WTC: task ISR on Kandahar, Balochistan, Kunar · *NLT 160600 NOV* (72h)
+A2. *J1* · MTC: place the NEO task group on 72 h notice · *NLT 160600 NOV* (72h)
+A3. *J2 (Int)* · NTC: verify the surge with patrol and satellite reports · *NLT 140600 NOV* (24h)
+
+*5. ESCALATE IF*
+A1. Any area nowcast P >= 0.30, or GDELT material-conflict events in Pakistan above 301/day for 2 days -> FLASH to CDS
+A2. Strikes on a GCC state hosting Indians, or Gulf GDELT reporting ×1.5 for 3 days (now ×0.75) -> launch
+A3. Confirmed by two independent sources -> FLASH to CDS
+
+*ACK:* reply ACK-CDS. Full brief: Ops Console ▸ Theatre.
+_UNCLAS · NOTIONAL · SYNTHETIC DRILL theatre · competition data._

@@ -1,0 +1,9 @@
+case,date,light,confirmed,lead_days
+Afghanistan–Pakistan,2026-02-22,RED,True,
+Afghanistan–Pakistan,2026-02-26,RED,True,
+Afghanistan–Pakistan,2026-06-29,RED,True,
+Afghanistan–Pakistan,2026-06-11,AMBER,True,17.0
+US–Iran,2026-02-28,RED,True,
+US–Iran,2026-09-02,RED,False,
+US–Iran,2026-02-25,AMBER,True,3.0
+US–Iran,2026-03-02,AMBER,True,2.0

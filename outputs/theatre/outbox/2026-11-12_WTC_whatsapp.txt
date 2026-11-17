@@ -1,0 +1,32 @@
+*PRIORITY · CONFLICT WATCH SITREP*
+FROM: CW Ops Cell   TO: Cdr WTC
+DTG: 130600 IST NOV 26   UNCLAS · NOTIONAL
+
+🟠 *THREAT AMBER ▼ EASING* · CONFIDENCE MEDIUM
+
+*1. SITUATION*
+• GDELT violent events, Af–Pak dyad down: 2/day over 7 days vs 13/day the 4 weeks before (×0.23); yesterday 3 (z -0.6) _[DATA, 7d]_
+• Kandahar (AFG): P(escalation) 0.23, nowcast 0.22 - over threshold _[MODEL, 7d]_
+• Hilmand province (AFG): 10 deaths in the last UCDP week vs 0.0/week (data to 30 Sep) _[DATA, 7d]_
+
+*2. WATCH AREAS* (escalation probability, nowcast)
+• Kandahar (AFG) — 0.22
+• Balochistan (PAK) — 0.20
+• Kunar (AFG) — 0.20
+
+*3. ASSESSMENT*
+• Afghanistan–Pakistan monthly RAG AMBER (model scorecard, Oct 2026) (+4)
+• 2 districts/sectors over the escalation threshold (0.20) (+1)
+
+*4. ACTIONS* (who · what · by when)
+A1. *J2 (Int)* · Task ISR on Kandahar, Balochistan, Kunar · *NLT 160600 NOV* (72h)
+A2. *J3 (Ops)* · Raise readiness of LoC / IB holding formations · *NLT 200600 NOV* (7d)
+A3. *J1 with MEA* · Refresh the Afghanistan evacuation plan · *NLT 200600 NOV* (7d)
+
+*5. ESCALATE IF*
+A1. Any area nowcast P >= 0.30, or GDELT material-conflict events in Pakistan above 301/day for 2 days -> FLASH to CDS
+A2. RAG turns RED, or two days of rising trend with >= 2 areas over 0.20 -> move to the next state
+A3. Interstate strikes on Kabul or Kandahar -> activate
+
+*ACK:* reply ACK-WTC. Full brief: Ops Console ▸ Theatre.
+_UNCLAS · NOTIONAL theatre · competition data._

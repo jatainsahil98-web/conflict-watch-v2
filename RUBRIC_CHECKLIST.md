@@ -1,0 +1,19 @@
+# Rubric self-audit (100 marks)
+
+Each line names where the judges will find the evidence.
+
+| Criterion (marks) | What we deliver | Where |
+|---|---|---|
+| Problem framing (5) | Operational question for an Army audience; five sub-questions; DATA and DOMAIN tags on every claim | Report §2; deck slides 2–5 (approach and pipeline on 4–5) |
+| Cleaning / imputation (10) | 36 logged checks; raw values kept beside fixes; day-weighted month allocation; FATA→KP harmonisation; publisher normalisation; World Bank interpolation; provisional 2026 flagged | `outputs/tables/data_quality_log.csv`; notebook 01; report §3 and App. A; dashboard page 12 |
+| Feature engineering (5) | Two panels (4 conflicts, 222 area series); nine feature families with a military rationale; no leakage (features known at origin; context lagged 1 year); ablation | Notebook 02; report §4 and §7.2; `src/features.py` |
+| EDA (10) | Intensity, tempo, seasonality, front geography, attrition, spread, Af–Pak interstate front, fog of war, displacement, demographics | Notebook 03; report §5 (incl. §5.5 GDELT vs UCDP); dashboard pages 2–7; Ops site GDELT chapter |
+| Actionable insights (15) | India impact table; Sense/Warn/Shield/Sustain with lead agencies and Now/90 days/6–12 months; RAG scorecard; watch-list | Report §6, §9; commander's brief; theatre 0600 briefs in OODA form with owners, timelines and triggers (report §8.1); deck slides 10, 17–21 |
+| Model choice / justification (8) | 7 models from naive to LightGBM-Δ and bottom-up; ablation explains the change target; ensemble chosen on back-test only | Report §7.1–7.2; deck backup "Why each method"; notebook 04 |
+| Performance incl. withheld data (12) | 2026 holdout scored once; two tracks; MAE, RMSE, MAPE, sMAPE, MASE, RMSLE; −29% error vs naive; classifier AUC 0.79 vs 0.73 rule | Report §7.3, §8.1; `forecast_scores.csv`; dashboard pages 8–9 |
+| Reliability for trend forecasting (5) | Conformal intervals (83% inside 80% band); direction accuracy 72%; stability by fold; SHAP; known failure mode stated; month-block bootstrap (pooled gain 2–41%), Diebold–Mariano, late-data test, warning calibration | Report §7.4, App. B; `robustness.json`; deck slide 22 and annex |
+| Originality (5) | Attention Gap Index; fog-of-war finding; change-target LightGBM; sub-national escalation warning; India exposure tagging; what-if and live re-train; GDELT nowcast past UCDP's cut-off; `score_holdout.py` for future months | Report §5.3, §8; dashboard pages 3, 7, 9, 10, 11 |
+| Dashboards / visualisation (5) | 15-page offline Streamlit dashboard (page 13: economic front; pages 14–15: notional theatre commander briefs in OODA form, 7-day history, side-by-side commanders, OODA loop) with a commander login that filters every page to the AOR, in the deck's theme with drill-down, live thresholds, scenario and rule sliders, animation and CSV downloads; 46 figures (PNG + interactive HTML) | `app/app.py`; `outputs/figures/` |
+| Report / reproducibility (5) | 10-page report + appendices, run ID on every output; one-command pipeline (about 1–2.5 min); fixed seeds; README; requirements; executed notebooks; verified to run from the project folder | `report/`; `README.md`; `run_pipeline.py` |
+| Presentation / storytelling (10) | 21 main slides + 12 support + 5 backups + 19 annex (flow: method, validation, demo, theatre commander view, India findings, economic front, recommendations, OODA loop, scorecard): native animated charts, Morph transitions, automatic build-ins, radar and map GIFs in the reference style, large fonts for Meet; logos of the Corps of Signals and MCTE on every slide | `deck/Conflict_Watch_Jury_Deck.pptx` / `.pdf` |
+| Q&A / teamwork (5) | 49 prepared answers; speaker split; run of show; backup demo video | `brief/QA_Prep_and_Speaker_Split.pdf`; `deck/Conflict_Watch_Demo.mp4` |

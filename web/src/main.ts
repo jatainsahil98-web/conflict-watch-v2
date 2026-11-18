@@ -34,7 +34,38 @@ function preloader() {
   };
 }
 
+/** A reload inside an embedding frame (Streamlit serves the site as an about:srcdoc iframe) drops the
+ *  URL hash, so the view switch was lost and the Commander view came back. The target hash is kept in
+ *  window.name, which survives a reload of the same frame, and restored before the view is chosen. */
+const KEEP = "cw-hash:";
+export function reloadKeepingHash() { try { window.name = KEEP + location.hash; } catch {} location.reload(); }
+function restoreHash() {
+  try {
+    if (window.name.startsWith(KEEP)) {
+      const h = window.name.slice(KEEP.length); window.name = "";
+      if (h && !location.hash) { try { history.replaceState(null, "", h); } catch { location.hash = h; } }
+    }
+  } catch {}
+}
+
+/** In an about:srcdoc frame (Streamlit), a plain <a href="#x"> resolves against the parent page's URL and
+ *  loads the whole Streamlit app inside the frame. Same-page hash links are therefore applied by script. */
+function keepHashLinksInPage() {
+  document.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const a = (e.target as Element).closest?.("a[href^='#']") as HTMLAnchorElement | null;
+    if (!a || a.target === "_blank") return;
+    e.preventDefault();
+    const h = a.getAttribute("href")!;
+    if (h === "#" ) return;
+    if (location.hash === h) { const t = document.getElementById(decodeURIComponent(h.slice(1))); t?.scrollIntoView(); return; }
+    location.hash = h;
+  });
+}
+
 async function boot() {
+  keepHashLinksInPage();
+  restoreHash();
   initTheme();
   const P = preloader();
   try {
@@ -49,7 +80,7 @@ async function boot() {
     }
     // Inside the console, page links are plain hashes (#theatre, #map): they must not be read as story chapters.
     const next = () => (was === "console" && location.hash !== "#cmd" && !isStoryOnly() ? "console" : mode());
-    addEventListener("hashchange", () => { if (next() !== was) location.reload(); });
+    addEventListener("hashchange", () => { if (next() !== was) reloadKeepingHash(); });
     P.done();
   } catch (e) {
     console.error(e);

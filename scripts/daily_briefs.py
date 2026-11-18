@@ -34,7 +34,7 @@ from src import theatre as TH  # noqa: E402
 
 def _message(b: dict, to: list[str]) -> EmailMessage:
     m = EmailMessage()
-    m["Subject"] = f"[CONFLICT WATCH] {b['code']} daily brief {b['dtg']}: {b['rating']} {b['arrow']} (NOTIONAL)"
+    m["Subject"] = f"[CONFLICT EW] {b['code']} daily brief {b['dtg']}: {b['rating']} {b['arrow']} (NOTIONAL)"
     m["From"] = os.environ.get("CW_MAIL_FROM", "conflict-watch@localhost")
     m["To"] = ", ".join(to) or "commander@example.invalid"
     m.set_content(TH.to_markdown(b))

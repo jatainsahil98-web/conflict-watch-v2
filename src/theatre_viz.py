@@ -173,7 +173,7 @@ def fig_rag_history(H: dict, height=300):
 def fig_ooda(height=420):
     tot = TH.ooda_totals()
     fig = go.Figure()
-    y0, y1 = "Today (staff cycle)", "With Conflict Watch"
+    y0, y1 = "Today (staff cycle)", "With Conflict EW"
     s0 = s1 = 0.0
     cols = [T["cyan"], T["amber"], T["teal"], T["violet"]]
     for i, st in enumerate(TH.OODA):

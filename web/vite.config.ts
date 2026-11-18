@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
           workbox: { globPatterns: ["**/*.{js,css,html,json,geojson,woff2,png,svg}"], maximumFileSizeToCacheInBytes: 6_000_000,
                      navigateFallbackDenylist: [/^\/console/] },
           manifest: {
-            name: "Conflict Watch Console", short_name: "Conflict Watch", start_url: "./console/index.html", scope: "./",
+            name: "Conflict EW Console", short_name: "Conflict EW", start_url: "./console/index.html", scope: "./",
             display: "standalone", background_color: "#05070A", theme_color: "#05070A",
             description: "Four-theatre conflict forecasting, early warning and India-impact console.",
             icons: [{ src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },

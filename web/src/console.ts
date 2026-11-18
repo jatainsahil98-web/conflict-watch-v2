@@ -1,3 +1,4 @@
+import { mountOutlook } from "./outlook";
 import { type Data, type Score, CASES, CASE_COLOR, CASE_SHORT, CASE_NAME, RAG_COLOR, fmt, fmtM, pct } from "./data";
 import { verify, DOCTRINE } from "./rules";
 import { mount, update, axis, csv, resizeAll } from "./charts";
@@ -30,14 +31,14 @@ const CSS = `
 `;
 
 const PAGES = [["brief", "◉", "Brief", "DECIDE"], ["theatre", "✪", "Theatre", "DECIDE"], ["warning", "⚠", "Warning", "DECIDE"],
-  ["map", "◎", "Map", "EXPLORE"], ["area", "⌖", "Area", "EXPLORE"], ["forecast", "↗", "Forecast", "EXPLORE"], ["whatif", "⚗", "What-if", "EXPLORE"],
+  ["map", "◎", "Map", "EXPLORE"], ["area", "⌖", "Area", "EXPLORE"], ["forecast", "↗", "Forecast", "EXPLORE"], ["outlook", "◷", "2027 Outlook", "EXPLORE"], ["whatif", "⚗", "What-if", "EXPLORE"],
   ["scorecard", "▦", "Scorecard", "VERIFY"], ["dq", "✓", "Data quality", "VERIFY"], ["about", "ⓘ", "About", "VERIFY"]] as const;
 
 export function renderConsole(D: Data) {
   const F = D.facts;
   document.head.insertAdjacentHTML("beforeend", `<style>${CSS}</style>`);
   document.body.insertAdjacentHTML("beforeend", `${strip(F)}${navBar(F, "console")}
-    <div class="con"><nav class="rail" aria-label="Console pages">${PAGES.map(([id, ic, l, g], i) => `${i === 0 || PAGES[i - 1][3] !== g ? `<div class="rail-g">${g}</div>` : ""}<a href="#${id}" data-p="${id}"><span>${ic}</span>${l}</a>`).join("")}
+    <div class="con"><nav class="rail" aria-label="Console pages">${PAGES.map(([id, ic, l, g], i) => `${i === 0 || PAGES[i - 1][3] !== g ? `<div class="rail-g">${g}</div>` : ""}<a href="${D.inline ? "#console/" : "#"}${id}" data-p="${id}"><span>${ic}</span>${l}</a>`).join("")}
       <div class="k">CTRL/⌘ K · command<br>/ · search areas<br><span style="display:flex;gap:8px;align-items:center"><span class="radar"></span>WATCH ACTIVE</span></div></nav>
       <div class="page" id="page"></div></div>
     <div class="palette" id="pal" role="dialog" aria-label="Command palette"><div class="box"><input id="pal-i" placeholder="Jump to a page or area…" aria-label="Search"><ul id="pal-l"></ul></div></div>
@@ -112,6 +113,15 @@ export function renderConsole(D: Data) {
       const W = warningPanel($("#w-box"), D, { month: q.get("month") ?? "2026-03", thr: q.get("thr") ? +q.get("thr")! : 0.15, onArea: (id) => { location.hash = "area?id=" + encodeURIComponent(id); } });
       if (q.get("mode")) W.set(undefined, undefined, q.get("mode") as any);
     },
+    outlook(q) {
+      const roles = ["CDS", "WTC", "MTC", "NTC"].filter((x) => x === "CDS" || D.theatre?.theatres?.[x]); let r = q.get("r") && roles.includes(q.get("r")!) ? q.get("r")! : "CDS";
+      P.innerHTML = `<div class="eyebrow">2027 OUTLOOK · SCENARIO RANGE FROM HISTORY</div><h2>How the wars reach India in 2027</h2>
+        <div class="sub">Pick a theatre and a period. Not a validated forecast: what happened next to similar conflicts in 117 countries.</div>
+        <div class="seg" id="ol-r" style="margin:6px 0 14px">${roles.map((x) => `<button data-r="${x}" class="${x === r ? "on" : ""}">${x}</button>`).join("")}</div><div id="ol-p"></div>`;
+      const go = () => { mountOutlook($("#ol-p"), D, r); document.querySelectorAll<HTMLElement>("#ol-r button").forEach((b) => b.classList.toggle("on", b.dataset.r === r)); };
+      document.querySelectorAll<HTMLElement>("#ol-r button").forEach((b) => b.addEventListener("click", () => { r = b.dataset.r!; go(); }));
+      if (D.outlook) go(); else $("#ol-p").innerHTML = `<p class="muted">2027 outlook not built.</p>`;
+    },
     whatif(q) {
       P.innerHTML = `<div class="eyebrow">DECISION ROOM</div><h2>What-if simulator</h2><div class="sub">The exact submitted ensemble, for every slider position.</div><div id="wi"></div>`;
       whatIf($("#wi"), D, { c: q.get("c") ?? "afpak", shock: +(q.get("shock") ?? 30), k: +(q.get("m") ?? 3) });
@@ -126,7 +136,7 @@ export function renderConsole(D: Data) {
       $("#dq-c").addEventListener("click", () => csv("data_quality_log.csv", D.dq));
     },
     about() {
-      P.innerHTML = `<div class="eyebrow">ABOUT</div><h2>Conflict Watch Console</h2><div class="sub">${F.competition} · ${F.team.join(" · ")}</div>
+      P.innerHTML = `<div class="eyebrow">ABOUT</div><h2>Conflict EW Console</h2><div class="sub">${F.competition} · ${F.team.join(" · ")}</div>
         <div class="grid g2"><div class="panel hud mono small">RUN ${F.run_id}<br>EXPORTED ${F.exported}<br>DATA AS OF ${F.data_as_of}<br>BUILD ${D.inline ? "single-file offline" : "web / PWA"}<br><br>${Object.entries(D.manifest.files).map(([k, v]: any) => `${k}<br><span class="muted" style="font-size:11px;word-break:break-all">${v.sha256}</span>`).join("<br>")}</div>
         <div class="panel"><p class="small muted">Sources: ${F.sources}. ${F.licence}.</p><p class="small muted">Limits: ${F.limits.join(" ")}</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" id="ab-qa">Jury Q&amp;A ▸</button><button class="btn" id="ab-inst" style="display:none">⤓ Install app</button></div></div></div>`;
@@ -157,7 +167,8 @@ export function renderConsole(D: Data) {
     const [id, qs] = h.split("?");
     const pg = pages[id] ? id : "brief";
     // Keep the "#console/" prefix in the single-file build so a refresh reopens the console, not the story.
-    if (D.inline && !/^#console/.test(location.hash)) history.replaceState(null, "", "#console/" + h);
+    // In an about:srcdoc frame (Streamlit) replaceState to a hash URL throws, so it is optional here.
+    if (D.inline && !/^#console/.test(location.hash)) { try { history.replaceState(null, "", "#console/" + h); } catch {} }
     $$(".rail a").forEach((a) => a.classList.toggle("on", a.dataset.p === pg));
     pages[pg](new URLSearchParams(qs ?? "")); sumbar(pg);
     if (!matchMedia("(prefers-reduced-motion: reduce)").matches) P.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: document.documentElement.classList.contains("pres") ? 120 : 260, easing: "cubic-bezier(.2,.7,.2,1)" });

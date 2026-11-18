@@ -7,6 +7,8 @@ import { rate, verify, DOCTRINE } from "./rules";
 import { mount, axis, csv, C } from "./charts";
 import { regionMap, el, tip } from "./maps";
 import { strip, navBar, footer } from "./chrome";
+import { openDocsModal } from "./orders";
+import { openOutlookModal } from "./outlook";
 
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fast = () => document.documentElement.classList.contains("pres");
@@ -112,6 +114,26 @@ export function renderCommander(D: Data) {
         <div class="tile-more"><div class="tile-tr">Confidence ${brief.confidence}</div><div class="tile-r">${brief.confidence_why}</div></div>
       </button>` : "";
     const ids = [...cases, ...ctx];
+    const IMPACT: Record<string, [string, string, string]> = {
+      WTC: ["~15 days", "from a qualifying terror attack to India–Pakistan state fighting (3 of 4 times since 2016)", "Pakistan fighting on two fronts → LoC diversion risk"],
+      MTC: ["14", "countries hit by the US–Iran war in 2026 (4 in 2025), 5 of them Gulf states", "Oil bill ≈ +$52 B a year if 2026 prices hold (est.) · Gulf diaspora · Hormuz sea lanes"],
+      NTC: ["1", "fatal LAC clash in the data since 1975: Galwan, 15 Jun 2020 (24 killed)", "Fatality data cannot warn of the next one → add non-fatal LAC indicators"],
+      CDS: ["$52 B", "a year on India's oil bill if the 2026 Gulf-war price rise holds (est.)", "Main effort West & sea · 6 of 7 Indian evacuations were on our list a month ahead"] };
+    const big2 = () => {
+      const main0 = brief && cases.length ? byId[cases[0]] : null;
+      const imp = IMPACT[role] ?? IMPACT.CDS, sitCol = "var(--amber)";
+      const sit = `<div class="b2-v" style="color:${sitCol}">${imp[0]}</div><div class="b2-s">${imp[1]}</div>`;
+      const fc = main0
+        ? `<div class="b2-v" style="color:${RAG_COLOR[main0.rating]}" data-count="${main0.forecast}">${fmt(main0.forecast)}</div>
+           <div class="b2-s">deaths forecast · ${main0.name} · ${main0.month}</div>
+           <div class="b2-t">${trend(main0)}${watch[0] ? ` · hotspot <b>${watch[0].name} ${pct(watch[0].p)}</b>` : ""}</div>`
+        : brief && watch[0]
+        ? `<div class="b2-v" style="color:${RAG_COLOR[brief.rating]}">${pct(watch[0].p)}</div><div class="b2-s">chance of escalation next month · ${watch[0].name}</div><div class="b2-t">SYNTHETIC drill · real data hold only 1 LAC clash (Galwan 2020)</div>`
+        : `<div class="b2-rows">${S.map((s) => `<div><span>${s.name}</span><b style="color:${RAG_COLOR[s.rating]}">${fmt(s.forecast)}</b><em>${s.trend_pct > 0 ? "+" : ""}${s.trend_pct}%</em></div>`).join("")}</div><div class="b2-s">deaths forecast, ${S[0].month}</div>`;
+      const ev1 = brief ? "t:brief" : `c:${S[0].id}`, ev2 = main0 ? `c:${main0.id}` : brief ? "w:all" : `c:${S[0].id}`;
+      return `<button class="b2" data-ev="${ev1}" style="--lc:${sitCol}"><div class="b2-h">IMPACT ON INDIA</div>${sit}<div class="b2-i">${imp[2]}</div></button>
+        <button class="b2" data-ev="${ev2}" style="--lc:var(--teal)"><div class="b2-h">NEAR FORECAST · NEXT MONTH</div>${fc}</button>`;
+    };
     main.innerHTML = `
     <header class="cmd-h">
       <div>
@@ -121,6 +143,10 @@ export function renderCommander(D: Data) {
       </div>
       <div class="cmd-hr">
         ${hasT ? `<button class="btn" id="cmd-role" title="Change the view (V)">VIEW · ${role} ▾</button>` : ""}
+        ${hasT ? `<button class="btn primary" data-doc="sitrep" title="Today's brief as a SITREP (S)">SITREP</button>
+        <button class="btn" data-doc="warno" title="Warning Order to forward troops">WARNING ORDER</button>
+        <button class="btn" data-doc="opo" title="Operation Order to CDS, Chiefs and commanders">OP ORDER</button>` : ""}
+        ${D.outlook ? `<button class="btn" id="cmd-2027" title="What our analysis projects for this theatre in 2027 (Y)">2027 OUTLOOK</button>` : ""}
         <button class="btn" id="cmd-detail" aria-pressed="false" title="Show or hide trends, reasons, leads and the full watch-list (D)">MORE DETAIL · OFF</button>
       </div>
     </header>
@@ -132,12 +158,15 @@ export function renderCommander(D: Data) {
         <div class="ph"><span class="t">${brief ? `${T.front}: area of responsibility` : "Where it touches India"}</span><span class="tag data">${brief && brief.synthetic ? "SYNTHETIC" : "DATA"}</span></div>
         <div class="mapbox" id="cmd-map" aria-label="Map"></div>
       </div>
-      <aside class="cmd-side" aria-label="Orders and watch-list">
+      <aside class="cmd-side" aria-label="Situation and near forecast">
+        ${big2()}
+        <div class="side-old">
         <div class="side-h">${brief ? "DECIDE TODAY" : "ORDERS THIS MONTH"}</div>
         ${orders.map((o) => `<button class="order" data-ev="${o.key}" style="--lc:${o.color}">
           <span class="o-l">${o.label}</span><span class="o-w">${o.chip}</span><span class="o-a">${o.title}</span><span class="o-m">${o.meta}</span></button>`).join("")}
         <div class="side-h" style="margin-top:6px">${brief ? "WATCH IN THE AOR" : "WATCH NEXT MONTH"} <button class="lnk" data-ev="w:all">ALL ${watch.length} ▸</button></div>
         <div class="wl">${watch.map((a, i) => wlRow(a, i, maxP)).join("")}</div>
+        </div>
       </aside>
     </section>
     <nav class="cmd-go" aria-label="Trust">
@@ -197,13 +226,13 @@ export function renderCommander(D: Data) {
   const gate = $("#gate");
   const pick = (r: string) => { role = r; try { localStorage.setItem("cw-role", r); sessionStorage.setItem("cw-role-set", "1"); } catch {} gate.classList.remove("open"); close(); paint(); };
   const openGate = () => {
-    gate.innerHTML = `<div class="gate-in"><div class="eyebrow">CONFLICT WATCH</div><h2 class="gate-t">Select your view</h2>
+    gate.innerHTML = `<div class="gate-in"><div class="eyebrow">CONFLICT EW</div><h2 class="gate-t">Select your view</h2>
       <p class="gate-p">Each view shows only what that commander needs. You can switch at any time.</p>
       <div class="gate-g">${ROLES.map((r) => { const T = X.theatres[r], b = X.briefs[r][X.briefs[r].length - 1];
         return `<button class="gate-c${r === "CDS" ? " cds" : ""}" data-role="${r}" style="--rc:${T.color}">
           <span class="g-code">${r}</span><span class="g-name">${T.name}</span><span class="g-front">${T.front}</span>
           <span class="g-sec">${r === "CDS" ? "All four conflicts · all theatres · strategic picture" : (T.sectors as string[]).slice(0, 4).join(" · ")}</span>
-          <span class="g-go">${r === "CDS" ? "FULL PICTURE" : b.synthetic ? "AOR ONLY · SYNTHETIC DRILL" : "AOR ONLY"} ▸</span></button>`; }).join("")}</div>
+          <span class="g-go">${r === "CDS" ? "FULL PICTURE" : b.synthetic ? "SYNTHETIC DRILL" : "AOR ONLY"} ▸</span></button>`; }).join("")}</div>
       <p class="gate-n">Role views only: there is no password and all data here is unclassified. ${X.meta.notional}</p></div>`;
     gate.classList.add("open"); setTimeout(() => (gate.querySelector(`[data-role="${role}"]`) as HTMLElement)?.focus(), 60);
   };
@@ -337,6 +366,8 @@ export function renderCommander(D: Data) {
     const x = e.target as Element;
     if (x.closest("#cmd-detail")) return setDetail(!root.classList.contains("cmd-detail"));
     if (x.closest("#cmd-role")) return openGate();
+    if (x.closest("#cmd-2027")) return openOutlookModal(D, role);
+    const dk = x.closest("[data-doc]") as HTMLElement | null; if (dk && hasT) return openDocsModal(D, X, role, dk.dataset.doc as any);
     const t = x.closest("[data-ev]") as HTMLElement | null; if (t) open(t.dataset.ev!, t);
   });
   document.addEventListener("keydown", (e) => {
@@ -346,6 +377,8 @@ export function renderCommander(D: Data) {
     if (tg === "INPUT" || tg === "SELECT" || tg === "TEXTAREA" || e.metaKey || e.ctrlKey) return;
     if (e.key === "d" || e.key === "D") setDetail(!root.classList.contains("cmd-detail"));
     if ((e.key === "v" || e.key === "V") && hasT) openGate();
+    if ((e.key === "y" || e.key === "Y") && D.outlook && !document.getElementById("ol-modal")) openOutlookModal(D, role);
+    if ((e.key === "s" || e.key === "S") && hasT && !document.getElementById("docs-modal")) openDocsModal(D, X, role, "sitrep");
   });
   sbg.addEventListener("click", close);
 

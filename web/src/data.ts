@@ -29,19 +29,19 @@ export interface Data {
   facts: any; monthly: Record<string, { months: string[]; deaths: number[]; low: number[]; high: number[]; events: number[]; civ: number[]; countries: number[] }>;
   areas: { months: string[]; ew_months: string[]; areas: Area[] };
   admin1: any; world: any; points: [string, number, number, number, number][]; front: Record<string, Record<string, number>>;
-  leaderboard: any; holdout: any[]; whatif: any; dq: any[]; manifest: any; theatre: any; inline: boolean;
+  leaderboard: any; holdout: any[]; whatif: any; dq: any[]; manifest: any; theatre: any; outlook: any; inline: boolean;
 }
 
 let P: Promise<Data> | null = null;
 export function loadData(onProgress?: (f: number) => void): Promise<Data> {
   if (P) return P;
   const files = ["facts.json", "monthly_conflict.json", "areas.json", "admin1.geojson", "world_ind.geojson",
-    "events_points.json", "front_shares.json", "leaderboard.json", "holdout_paths.json", "whatif.json", "dq_log.json", "manifest.json", "theatre.json"];
+    "events_points.json", "front_shares.json", "leaderboard.json", "holdout_paths.json", "whatif.json", "dq_log.json", "manifest.json", "theatre.json", "outlook2027.json"];
   let done = 0;
-  P = Promise.all(files.map((f) => getFile(f).then((x) => { done++; onProgress?.(done / files.length); return x; })))
-    .then(([facts, monthly, areas, admin1, world, points, front, leaderboard, holdout, whatif, dq, manifest, theatre]) =>
+  P = Promise.all(files.map((f) => getFile(f).catch((e) => { if (f === "outlook2027.json") return null; throw e; }).then((x) => { done++; onProgress?.(done / files.length); return x; })))
+    .then(([facts, monthly, areas, admin1, world, points, front, leaderboard, holdout, whatif, dq, manifest, theatre, outlook]) =>
       ({ facts, monthly, areas, admin1: rewind(admin1), world: rewind(world), points, front, leaderboard, holdout, whatif, dq, manifest,
-         theatre: theatre && theatre.aor ? { ...theatre, aor: rewind(theatre.aor) } : theatre, inline: INLINE }));
+         theatre: theatre && theatre.aor ? { ...theatre, aor: rewind(theatre.aor) } : theatre, outlook, inline: INLINE }));
   return P;
 }
 

@@ -755,7 +755,7 @@ def to_whatsapp(b: dict) -> str:
     """Five-paragraph signal: situation, hot areas, assessment, actions (who / what / by when), escalation triggers."""
     obs = _tactical_obs(b) or b["observe"]
     tag = "NOTIONAL" + (" · SYNTHETIC DRILL" if b["synthetic"] else "")
-    L = [f"*{PRECEDENCE[b['rating']]} · CONFLICT WATCH SITREP*",
+    L = [f"*{PRECEDENCE[b['rating']]} · CONFLICT EW SITREP*",
          f"FROM: CW Ops Cell   TO: Cdr {b['code']}",
          f"DTG: {b['dtg']}   UNCLAS · {tag}",
          "",
@@ -811,7 +811,7 @@ def to_email_html(b: dict) -> str:
     a = "".join(f"<tr><td>{x['rank']}</td><td><b>{x['kind']}</b><br>{x['text']}</td><td>{x['owner']}</td>"
                 f"<td>{x['timeline']}</td><td>{x['trigger']}</td></tr>" for x in b["decide"])
     return f"""<div style="font-family:Calibri,Arial;max-width:760px;background:{T['bg']};color:#fff;padding:18px;border-radius:10px">
-<div style="color:{T['amber']};letter-spacing:3px;font-weight:700;font-size:12px">DATA ANALYTICS COMPETITION 2026 · CONFLICT WATCH</div>
+<div style="color:{T['amber']};letter-spacing:3px;font-weight:700;font-size:12px">DATA ANALYTICS COMPETITION 2026 · CONFLICT EW</div>
 <h2 style="margin:4px 0">{b['theatre']} (notional) · {b['dtg']}</h2>
 <div style="border-left:6px solid {col};padding:6px 12px;background:{T['panel']}"><b style="color:{col}">{b['rating']} {b['arrow']}</b>
  · confidence {b['confidence']}<br><b>BLUF:</b> {b['bluf']}</div>
@@ -910,7 +910,7 @@ def send_email(b: dict, to: list[str]) -> str:
     if not host:
         return "Not sent: CW_SMTP_HOST is not set (demo mode)."
     m = EmailMessage()
-    m["Subject"] = f"[CONFLICT WATCH] {b['code']} daily brief {b['dtg']}: {b['rating']} {b['arrow']} (NOTIONAL)"
+    m["Subject"] = f"[CONFLICT EW] {b['code']} daily brief {b['dtg']}: {b['rating']} {b['arrow']} (NOTIONAL)"
     m["From"] = os.environ.get("CW_MAIL_FROM", os.environ.get("CW_SMTP_USER", "conflict-watch@localhost"))
     m["To"] = ", ".join(to)
     m.set_content(to_markdown(b))

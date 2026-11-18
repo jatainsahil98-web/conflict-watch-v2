@@ -140,7 +140,7 @@ export function scorecardLab(box: HTMLElement, D: Data) {
       </div>
       <button class="btn primary" id="lab-reset">↺ Reset to doctrine</button>
     </div>
-    <div><div class="grid g4" id="lab-cards" style="--h:330px"></div><div class="panel" style="margin-top:16px"><div class="ph"><span class="t">What changed</span></div><div id="lab-diff"></div></div></div>
+    <div><div class="grid g2" id="lab-cards" style="--h:330px"></div><div class="panel" style="margin-top:16px"><div class="ph"><span class="t">What changed</span></div><div id="lab-diff"></div></div></div>
   </div>`;
   const inputs = $$<HTMLInputElement>("input[data-k]", box);
   const sync = () => inputs.forEach((i) => { i.value = String((R as any)[i.dataset.k!]); });

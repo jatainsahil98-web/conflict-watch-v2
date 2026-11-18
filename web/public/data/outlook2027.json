@@ -1,0 +1,270 @@
+{
+ "meta": {
+  "oot_coverage": 0.89,
+  "oot_n": 24336,
+  "method": "Analogue: conflicts in the world file (117 countries, 1989-2025) at the same recent level and momentum; deaths in the 12 months from month +4 to +15 after the last data month, relative to 12x the recent 6-month level. Quarters are also scaled by each war's own month-of-year pattern (2014-2026), capped at ±20%.",
+  "caveat": "Scenario range from history, not a validated forecast. The models were tested only 1-3 months ahead. Shocks (a new war, a ceasefire, a decision to strike) are not in this range; the daily news tripwire is the guard for those.",
+  "data_end": "2026-09",
+  "window": "Jan-Dec 2027 (months +4 to +15 after Sep 2026)",
+  "n_conflicts": 1515,
+  "n_obs": 48241
+ },
+ "cases": {
+  "Afghanistan–Pakistan": {
+   "recent_month": 284,
+   "last12": 3737,
+   "cal2025": 2649,
+   "ytd2026": 2767,
+   "momentum": 1.12,
+   "momentum_class": "flat",
+   "band": "100-999",
+   "basis": "level 100-999 deaths/month, flat",
+   "n_cases": 88,
+   "n_obs": 716,
+   "y2027": {
+    "p10": 201,
+    "p25": 1085,
+    "p50": 2479,
+    "p75": 3801,
+    "p90": 5600
+   },
+   "month2027_p50": 207,
+   "p_up": 0.13,
+   "p_down": 0.37,
+   "p_quiet": 0.06,
+   "rating_now": "AMBER",
+   "oct_forecast": 318,
+   "quarters": {
+    "Q1": {
+     "season_factor": 1.0,
+     "p10": 21,
+     "p50": 600,
+     "p90": 1780,
+     "month_p50": 200,
+     "p_up": 0.17,
+     "level": "AMBER"
+    },
+    "Q2": {
+     "season_factor": 0.94,
+     "p10": 7,
+     "p50": 478,
+     "p90": 1467,
+     "month_p50": 159,
+     "p_up": 0.15,
+     "level": "AMBER"
+    },
+    "Q3": {
+     "season_factor": 1.08,
+     "p10": 7,
+     "p50": 484,
+     "p90": 1517,
+     "month_p50": 161,
+     "p_up": 0.12,
+     "level": "AMBER"
+    },
+    "Q4": {
+     "season_factor": 1.001,
+     "p10": 0,
+     "p50": 451,
+     "p90": 1519,
+     "month_p50": 150,
+     "p_up": 0.14,
+     "level": "AMBER"
+    }
+   },
+   "level2027": "AMBER"
+  },
+  "Israel–Hamas": {
+   "recent_month": 134,
+   "last12": 2052,
+   "cal2025": 14547,
+   "ytd2026": 1191,
+   "momentum": 0.96,
+   "momentum_class": "flat",
+   "band": "100-999",
+   "basis": "level 100-999 deaths/month, flat",
+   "n_cases": 88,
+   "n_obs": 716,
+   "y2027": {
+    "p10": 95,
+    "p25": 512,
+    "p50": 1170,
+    "p75": 1793,
+    "p90": 2641
+   },
+   "month2027_p50": 97,
+   "p_up": 0.13,
+   "p_down": 0.37,
+   "p_quiet": 0.06,
+   "rating_now": "GREEN",
+   "oct_forecast": 128,
+   "quarters": {
+    "Q1": {
+     "season_factor": 0.822,
+     "p10": 8,
+     "p50": 232,
+     "p90": 690,
+     "month_p50": 77,
+     "p_up": 0.17,
+     "level": "GREEN"
+    },
+    "Q2": {
+     "season_factor": 0.8,
+     "p10": 3,
+     "p50": 192,
+     "p90": 589,
+     "month_p50": 64,
+     "p_up": 0.15,
+     "level": "GREEN"
+    },
+    "Q3": {
+     "season_factor": 0.854,
+     "p10": 3,
+     "p50": 181,
+     "p90": 566,
+     "month_p50": 60,
+     "p_up": 0.12,
+     "level": "GREEN"
+    },
+    "Q4": {
+     "season_factor": 1.2,
+     "p10": 0,
+     "p50": 255,
+     "p90": 859,
+     "month_p50": 85,
+     "p_up": 0.14,
+     "level": "GREEN"
+    }
+   },
+   "level2027": "GREEN"
+  },
+  "Russia–Ukraine": {
+   "recent_month": 6358,
+   "last12": 95476,
+   "cal2025": 94765,
+   "ytd2026": 64454,
+   "momentum": 1.07,
+   "momentum_class": "flat",
+   "band": "1,000+",
+   "basis": "level 1,000+ deaths/month (all momentum)",
+   "n_cases": 26,
+   "n_obs": 384,
+   "y2027": {
+    "p10": 0,
+    "p25": 2292,
+    "p50": 36191,
+    "p75": 77642,
+    "p90": 108812
+   },
+   "month2027_p50": 3016,
+   "p_up": 0.08,
+   "p_down": 0.5,
+   "p_quiet": 0.16,
+   "rating_now": "RED",
+   "oct_forecast": 6780,
+   "quarters": {
+    "Q1": {
+     "season_factor": 0.907,
+     "p10": 0,
+     "p50": 7350,
+     "p90": 25555,
+     "month_p50": 2450,
+     "p_up": 0.1,
+     "level": "RED"
+    },
+    "Q2": {
+     "season_factor": 1.2,
+     "p10": 0,
+     "p50": 7808,
+     "p90": 31289,
+     "month_p50": 2603,
+     "p_up": 0.07,
+     "level": "RED"
+    },
+    "Q3": {
+     "season_factor": 1.056,
+     "p10": 0,
+     "p50": 6525,
+     "p90": 27140,
+     "month_p50": 2175,
+     "p_up": 0.07,
+     "level": "RED"
+    },
+    "Q4": {
+     "season_factor": 0.8,
+     "p10": 0,
+     "p50": 4665,
+     "p90": 22492,
+     "month_p50": 1555,
+     "p_up": 0.1,
+     "level": "RED"
+    }
+   },
+   "level2027": "RED"
+  },
+  "US–Iran": {
+   "recent_month": 121,
+   "last12": 3967,
+   "cal2025": 2167,
+   "ytd2026": 3965,
+   "momentum": 0.22,
+   "momentum_class": "falling",
+   "band": "100-999",
+   "basis": "level 100-999 deaths/month, falling",
+   "n_cases": 173,
+   "n_obs": 1434,
+   "y2027": {
+    "p10": 0,
+    "p25": 96,
+    "p50": 568,
+    "p75": 1340,
+    "p90": 2408
+   },
+   "month2027_p50": 47,
+   "p_up": 0.12,
+   "p_down": 0.58,
+   "p_quiet": 0.15,
+   "rating_now": "GREEN",
+   "oct_forecast": 26,
+   "quarters": {
+    "Q1": {
+     "season_factor": 1.2,
+     "p10": 0,
+     "p50": 92,
+     "p90": 807,
+     "month_p50": 31,
+     "p_up": 0.14,
+     "level": "GREEN"
+    },
+    "Q2": {
+     "season_factor": 1.2,
+     "p10": 0,
+     "p50": 155,
+     "p90": 938,
+     "month_p50": 52,
+     "p_up": 0.17,
+     "level": "GREEN"
+    },
+    "Q3": {
+     "season_factor": 0.8,
+     "p10": 0,
+     "p50": 47,
+     "p90": 428,
+     "month_p50": 16,
+     "p_up": 0.1,
+     "level": "GREEN"
+    },
+    "Q4": {
+     "season_factor": 0.8,
+     "p10": 0,
+     "p50": 42,
+     "p90": 453,
+     "month_p50": 14,
+     "p_up": 0.11,
+     "level": "GREEN"
+    }
+   },
+   "level2027": "GREEN"
+  }
+ }
+}

@@ -7,7 +7,7 @@ export const strip = (F: any) => `<div class="strip" role="note"><span>UNCLASSIF
 
 export const navBar = (F: any, mode: "story" | "console" | "command") => `<header class="nav">
   <img class="logo" src="${LOGO_L}" alt="Corps of Signals" />
-  <div class="brand"><span class="dot"></span>CONFLICT WATCH</div>
+  <div class="brand"><span class="dot"></span>CONFLICT EW</div>
   <div class="ragstrip">${F.scorecard.map((s: any) => `<span class="chip-rag" style="color:${RAG_COLOR[s.rating]}" title="${s.name}: ${s.rating}">${s.short} ${s.rating}</span>`).join("")}</div>
   <div class="grow"></div>
   <span class="mono small muted hide-sm" id="net"></span>
@@ -20,7 +20,7 @@ export const navBar = (F: any, mode: "story" | "console" | "command") => `<heade
 </header>`;
 
 export const footer = (F: any) => `<footer>
-  <div>CONFLICT WATCH · ${F.competition.toUpperCase()} · ${F.team.join(" · ")}</div>
+  <div>CONFLICT EW · ${F.competition.toUpperCase()} · ${F.team.join(" · ")}</div>
   <div>RUN ${F.run_id} · EXPORTED ${F.exported} · DATA AS OF ${F.data_as_of} · ${F.sources}</div>
 </footer>`;
 
@@ -33,6 +33,7 @@ export function initTheme() {
       const n = document.documentElement.dataset.theme === "light" ? "dark" : "light";
       document.documentElement.dataset.theme = n;
       try { localStorage.setItem("cw-theme", n); } catch {}
+      try { window.name = "cw-hash:" + location.hash; } catch {}   // keep the view across the reload (see main.ts)
       location.reload();
     }
   });

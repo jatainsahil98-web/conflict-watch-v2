@@ -1,0 +1,65 @@
+prereg 612b65ccfc126b0ff9924e2d424d5a7dd6e12cad232b5297c6859c219b88f577
+2023 lgb_l1 base 5s
+2023 lgb_huber base 3s
+2023 lgb_level base 5s
+2023 lgb_huber_nowcast base 2s
+2023 xgb base 3s
+2023 extratrees base 12s
+2023 ridge base 0s
+2023 lgb_l1 comp 5s
+2023 lgb_huber comp 3s
+2023 lgb_level comp 5s
+2023 lgb_huber_nowcast comp 2s
+2023 xgb comp 2s
+2023 extratrees comp 15s
+2023 ridge comp 0s
+2024 lgb_l1 base 5s
+2024 lgb_huber base 2s
+2024 lgb_level base 5s
+2024 lgb_huber_nowcast base 2s
+2024 xgb base 3s
+2024 extratrees base 13s
+2024 ridge base 0s
+2024 lgb_l1 comp 5s
+2024 lgb_huber comp 2s
+2024 lgb_level comp 5s
+2024 lgb_huber_nowcast comp 2s
+2024 xgb comp 2s
+2024 extratrees comp 15s
+2024 ridge comp 0s
+2025 lgb_l1 base 5s
+2025 lgb_huber base 2s
+2025 lgb_level base 5s
+2025 lgb_huber_nowcast base 2s
+2025 xgb base 2s
+2025 extratrees base 13s
+2025 ridge base 0s
+2025 lgb_l1 comp 5s
+2025 lgb_huber comp 2s
+2025 lgb_level comp 5s
+2025 lgb_huber_nowcast comp 2s
+2025 xgb comp 2s
+2025 extratrees comp 16s
+2025 ridge comp 0s
+CHOICE lgb_huber_nowcast|comp
+lgb_huber_nowcast|comp             1.314
+lgb_huber_nowcast|base             1.325
+tree3_nowcast|comp                 1.344
+lgb_level|comp                     1.351
+tree4+ridge|comp                   1.352
+lgb_huber|comp                     1.357
+tree4|comp                         1.358
+tree3_nowcast|base                 1.366
+xgb|comp                           1.367
+ridge|comp                         1.380
+lgb_level|base                     1.388
+lgb_huber|base                     1.390
+tree4|base                         1.400
+extratrees|comp                    1.403
+tree4+ridge|base                   1.406
+lgb_l1|comp                        1.417
+extratrees|base                    1.428
+xgb|base                           1.436
+rule_3m                            1.455
+lgb_l1|base                        1.468
+ridge|base                         1.482

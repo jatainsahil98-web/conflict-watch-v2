@@ -146,7 +146,7 @@ export function mountOutlook(host: HTMLElement, D: Data, role: string, per = "20
       <div class="o7-india" style="animation-delay:${300 + wars.length * 450}ms"><div class="h">${P.h}</div>
         <div class="row">${P.items.map(([a, b]) => `<div><b>${esc(a)}</b>${esc(b)}</div>`).join("")}</div></div>
     </div>
-    <div class="o7-foot">Level = middle case of a scenario range from history, for the whole year or each quarter of 2027: what happened next to similar conflicts in 117 countries, 1989–2025 (the range held 89% out of time). Not a validated forecast. Chains are our analysis.</div>
+    <div class="o7-foot">${esc(O.meta.footnote ?? "Level = middle case of a scenario range from history, for the whole year or each quarter of 2027: what happened next to similar conflicts in 117 countries, 1989–2025 (the range held 89% out of time). Not a validated forecast. Chains are our analysis.")}</div>
   </div>`;
   host.querySelectorAll<HTMLElement>(".o7-per button").forEach((b) => b.addEventListener("click", () => mountOutlook(host, D, role, b.dataset.per!)));
   const box = host.querySelector(".o7-map") as HTMLElement;

@@ -1,0 +1,5 @@
+made,model,war,target_month,forecast,lo80,hi80,actual,rmsle,inside,hash
+2026-11-18T09:23:45Z,lgb_huber_nowcast|comp,Afghanistan–Pakistan,2026-10,325,124,845,,,,28f2d14b8820d3d1
+2026-11-18T09:23:45Z,lgb_huber_nowcast|comp,Israel–Hamas,2026-10,119,45,311,,,,11d1490159ae3393
+2026-11-18T09:23:45Z,lgb_huber_nowcast|comp,Russia–Ukraine,2026-10,8195,3064,21919,,,,61b890f8bb3654c5
+2026-11-18T09:23:45Z,lgb_huber_nowcast|comp,US–Iran,2026-10,16,3,76,,,,2654978e5b9e6d12

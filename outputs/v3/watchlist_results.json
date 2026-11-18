@@ -1,0 +1,150 @@
+{
+ "v2 baseline (own history)": {
+  "validation_raw": {
+   "pr_auc": 0.333,
+   "roc_auc": 0.88,
+   "brier": 0.0588,
+   "ece": 0.0065,
+   "base_rate": 0.0772,
+   "watch": {
+    "flagged_per_month": 76.8,
+    "recall": 0.751,
+    "precision": 0.265
+   },
+   "act": {
+    "flagged_per_month": 0.0,
+    "recall": 0.0,
+    "precision": 0
+   }
+  },
+  "test_raw": {
+   "pr_auc": 0.336,
+   "roc_auc": 0.885,
+   "brier": 0.0503,
+   "ece": 0.0089,
+   "base_rate": 0.0648,
+   "watch": {
+    "flagged_per_month": 24.4,
+    "recall": 0.758,
+    "precision": 0.235
+   },
+   "act": {
+    "flagged_per_month": 0.0,
+    "recall": 0.0,
+    "precision": 0
+   }
+  },
+  "test_calibrated": {
+   "pr_auc": 0.309,
+   "roc_auc": 0.883,
+   "brier": 0.0505,
+   "ece": 0.0117,
+   "base_rate": 0.0648,
+   "watch": {
+    "flagged_per_month": 26.3,
+    "recall": 0.802,
+    "precision": 0.231
+   },
+   "act": {
+    "flagged_per_month": 3.5,
+    "recall": 0.187,
+    "precision": 0.405
+   }
+  },
+  "watch_threshold_raw": 0.14128480047753092,
+  "act_threshold_calibrated": 0.35714285714285715
+ },
+ "v3 (+ neighbour spill-over)": {
+  "validation_raw": {
+   "pr_auc": 0.346,
+   "roc_auc": 0.883,
+   "brier": 0.0581,
+   "ece": 0.0064,
+   "base_rate": 0.0772,
+   "watch": {
+    "flagged_per_month": 74.1,
+    "recall": 0.751,
+    "precision": 0.274
+   },
+   "act": {
+    "flagged_per_month": 0.0,
+    "recall": 0.0,
+    "precision": 0
+   }
+  },
+  "test_raw": {
+   "pr_auc": 0.313,
+   "roc_auc": 0.878,
+   "brier": 0.0516,
+   "ece": 0.0125,
+   "base_rate": 0.0648,
+   "watch": {
+    "flagged_per_month": 22.8,
+    "recall": 0.692,
+    "precision": 0.23
+   },
+   "act": {
+    "flagged_per_month": 0.0,
+    "recall": 0.0,
+    "precision": 0
+   }
+  },
+  "test_calibrated": {
+   "pr_auc": 0.284,
+   "roc_auc": 0.877,
+   "brier": 0.0514,
+   "ece": 0.012,
+   "base_rate": 0.0648,
+   "watch": {
+    "flagged_per_month": 25.6,
+    "recall": 0.78,
+    "precision": 0.231
+   },
+   "act": {
+    "flagged_per_month": 4.0,
+    "recall": 0.231,
+    "precision": 0.438
+   }
+  },
+  "watch_threshold_raw": 0.15440239300162723,
+  "act_threshold_calibrated": 0.35714285714285715
+ },
+ "reliability_test_v3": [
+  {
+   "bin": "(-0.001, 0.05]",
+   "n": 959,
+   "predicted": 0.006,
+   "observed": 0.009
+  },
+  {
+   "bin": "(0.05, 0.1]",
+   "n": 66,
+   "predicted": 0.07,
+   "observed": 0.061
+  },
+  {
+   "bin": "(0.1, 0.2]",
+   "n": 177,
+   "predicted": 0.164,
+   "observed": 0.158
+  },
+  {
+   "bin": "(0.2, 0.3]",
+   "n": 110,
+   "predicted": 0.239,
+   "observed": 0.182
+  },
+  {
+   "bin": "(0.3, 0.5]",
+   "n": 82,
+   "predicted": 0.355,
+   "observed": 0.317
+  },
+  {
+   "bin": "(0.5, 1.0]",
+   "n": 10,
+   "predicted": 0.538,
+   "observed": 0.4
+  }
+ ]
+}

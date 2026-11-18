@@ -1,0 +1,152 @@
+{
+ "choice": "lgb_huber_nowcast|comp",
+ "test": {
+  "lgb_l1|base": {
+   "pooled": 1.7502081429092717,
+   "Afghanistan\u2013Pakistan": 0.5852701170469523,
+   "Israel\u2013Hamas": 0.20787018196695534,
+   "Russia\u2013Ukraine": 1.3041818408109314,
+   "US\u2013Iran": 3.1884593109625174
+  },
+  "lgb_huber|base": {
+   "pooled": 1.6603074716353625,
+   "Afghanistan\u2013Pakistan": 0.5876027861724062,
+   "Israel\u2013Hamas": 0.4704979540900079,
+   "Russia\u2013Ukraine": 0.9995471063025595,
+   "US\u2013Iran": 3.075832216593513
+  },
+  "lgb_level|base": {
+   "pooled": 1.5797561968969285,
+   "Afghanistan\u2013Pakistan": 0.4996875453462931,
+   "Israel\u2013Hamas": 0.28431486202006756,
+   "Russia\u2013Ukraine": 0.9532644086106307,
+   "US\u2013Iran": 2.9569042849022886
+  },
+  "lgb_huber_nowcast|base": {
+   "pooled": 1.6275749346180635,
+   "Afghanistan\u2013Pakistan": 0.5695097896618491,
+   "Israel\u2013Hamas": 0.5398798423762939,
+   "Russia\u2013Ukraine": 0.8081217602209967,
+   "US\u2013Iran": 3.0540347488396975
+  },
+  "xgb|base": {
+   "pooled": 1.7795984285408577,
+   "Afghanistan\u2013Pakistan": 0.5738884993824119,
+   "Israel\u2013Hamas": 0.3837210742535246,
+   "Russia\u2013Ukraine": 1.1422563236856964,
+   "US\u2013Iran": 3.2994761532568653
+  },
+  "extratrees|base": {
+   "pooled": 1.5696349929649334,
+   "Afghanistan\u2013Pakistan": 0.5754896090753899,
+   "Israel\u2013Hamas": 0.18611427774384823,
+   "Russia\u2013Ukraine": 1.001001736263967,
+   "US\u2013Iran": 2.913277321852963
+  },
+  "ridge|base": {
+   "pooled": 1.543036429186093,
+   "Afghanistan\u2013Pakistan": 0.5139850183160997,
+   "Israel\u2013Hamas": 0.4732493562479098,
+   "Russia\u2013Ukraine": 1.0634039591064415,
+   "US\u2013Iran": 2.811560448344612
+  },
+  "tree4|base": {
+   "pooled": 1.630518316430809,
+   "Afghanistan\u2013Pakistan": 0.557091819033309,
+   "Israel\u2013Hamas": 0.30736174000510735,
+   "Russia\u2013Ukraine": 1.0038695391138528,
+   "US\u2013Iran": 3.0367389310330863
+  },
+  "tree4+ridge|base": {
+   "pooled": 1.6060920231330158,
+   "Afghanistan\u2013Pakistan": 0.546870512816028,
+   "Israel\u2013Hamas": 0.3321068232720164,
+   "Russia\u2013Ukraine": 1.0028316217809292,
+   "US\u2013Iran": 2.983805085053437
+  },
+  "tree3_nowcast|base": {
+   "pooled": 1.5704054329149102,
+   "Afghanistan\u2013Pakistan": 0.5456960398481695,
+   "Israel\u2013Hamas": 0.3080999694155644,
+   "Russia\u2013Ukraine": 0.831919225586793,
+   "US\u2013Iran": 2.963088513351211
+  },
+  "lgb_l1|comp": {
+   "pooled": 1.6638099279258727,
+   "Afghanistan\u2013Pakistan": 0.5679500106868389,
+   "Israel\u2013Hamas": 0.3340763591176171,
+   "Russia\u2013Ukraine": 0.6042845910116578,
+   "US\u2013Iran": 3.2052643899940922
+  },
+  "lgb_huber|comp": {
+   "pooled": 1.6201683800947113,
+   "Afghanistan\u2013Pakistan": 0.5771196347312253,
+   "Israel\u2013Hamas": 0.9102885067387597,
+   "Russia\u2013Ukraine": 0.5222616778489052,
+   "US\u2013Iran": 3.0108691138925896
+  },
+  "lgb_level|comp": {
+   "pooled": 1.6177325946567247,
+   "Afghanistan\u2013Pakistan": 0.4985023585541306,
+   "Israel\u2013Hamas": 0.3047805277017137,
+   "Russia\u2013Ukraine": 1.153914636351941,
+   "US\u2013Iran": 2.9656905151619775
+  },
+  "lgb_huber_nowcast|comp": {
+   "pooled": 1.6122465271700015,
+   "Afghanistan\u2013Pakistan": 0.559897086257444,
+   "Israel\u2013Hamas": 0.8510073102598571,
+   "Russia\u2013Ukraine": 0.640102017219925,
+   "US\u2013Iran": 2.9916428055037945
+  },
+  "xgb|comp": {
+   "pooled": 1.5793458119161947,
+   "Afghanistan\u2013Pakistan": 0.5782388334930422,
+   "Israel\u2013Hamas": 0.8832816646730184,
+   "Russia\u2013Ukraine": 0.4874888020055378,
+   "US\u2013Iran": 2.9368590014982283
+  },
+  "extratrees|comp": {
+   "pooled": 1.5030846239493707,
+   "Afghanistan\u2013Pakistan": 0.5806718138073187,
+   "Israel\u2013Hamas": 0.2965571070547062,
+   "Russia\u2013Ukraine": 0.5127871420287738,
+   "US\u2013Iran": 2.8894596416782
+  },
+  "ridge|comp": {
+   "pooled": 1.4836926675688316,
+   "Afghanistan\u2013Pakistan": 0.5341302984751507,
+   "Israel\u2013Hamas": 0.5383573698824814,
+   "Russia\u2013Ukraine": 0.5701860685850068,
+   "US\u2013Iran": 2.811608034724204
+  },
+  "tree4|comp": {
+   "pooled": 1.5400833115776469,
+   "Afghanistan\u2013Pakistan": 0.5556648723267219,
+   "Israel\u2013Hamas": 0.5858694854271381,
+   "Russia\u2013Ukraine": 0.5280778600075213,
+   "US\u2013Iran": 2.9251587471242018
+  },
+  "tree4+ridge|comp": {
+   "pooled": 1.517189855966558,
+   "Afghanistan\u2013Pakistan": 0.5499884179119399,
+   "Israel\u2013Hamas": 0.5702586719051047,
+   "Russia\u2013Ukraine": 0.44237570213357585,
+   "US\u2013Iran": 2.895527889976692
+  },
+  "tree3_nowcast|comp": {
+   "pooled": 1.5344129893352285,
+   "Afghanistan\u2013Pakistan": 0.5428777968794548,
+   "Israel\u2013Hamas": 0.4720599237600743,
+   "Russia\u2013Ukraine": 0.5305385269265135,
+   "US\u2013Iran": 2.9357562713625045
+  },
+  "rule_3m": {
+   "pooled": 1.753085137140032,
+   "Afghanistan\u2013Pakistan": 0.6166017138627305,
+   "Israel\u2013Hamas": 0.16991457873130725,
+   "Russia\u2013Ukraine": 1.1915164029421992,
+   "US\u2013Iran": 3.2348802166635053
+  }
+ }
+}

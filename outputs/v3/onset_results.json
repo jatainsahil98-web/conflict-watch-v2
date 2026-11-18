@@ -1,0 +1,32 @@
+{
+ "base_rate": 0.398,
+ "n_days": 856,
+ "fixed_rules (site)": {
+  "pr_auc": 0.4,
+  "roc_auc": 0.504
+ },
+ "learned_logistic": {
+  "pr_auc": 0.3,
+  "roc_auc": 0.295
+ },
+ "blend (max of rules and learned)": {
+  "pr_auc": 0.333,
+  "roc_auc": 0.328
+ },
+ "at_alert_level": {
+  "fixed_rules": {
+   "alert_days": 84,
+   "precision": 0.417,
+   "recall": 0.103
+  },
+  "learned (top 15% of days)": {
+   "alert_days": 129,
+   "precision": 0.271,
+   "recall": 0.103
+  }
+ },
+ "us_iran_onset": {
+  "first_learned_alert_before_28_Feb": "2026-02-19 00:00:00",
+  "first_rule_alert_before_28_Feb": "2026-02-16 00:00:00"
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "baseline": "lgb_l1 with base features (the v2 recipe)",
+ "candidates": [
+  "lgb_l1|base",
+  "lgb_huber|base",
+  "lgb_level|base",
+  "lgb_huber_nowcast|base",
+  "xgb|base",
+  "extratrees|base",
+  "ridge|base",
+  "tree4|base",
+  "tree4+ridge|base",
+  "tree3_nowcast|base",
+  "lgb_l1|comp",
+  "lgb_huber|comp",
+  "lgb_level|comp",
+  "lgb_huber_nowcast|comp",
+  "xgb|comp",
+  "extratrees|comp",
+  "ridge|comp",
+  "tree4|comp",
+  "tree4+ridge|comp",
+  "tree3_nowcast|comp"
+ ],
+ "rule": "choose the candidate with the lowest pooled validation RMSLE among those that (a) beat the baseline by >= 3% and (b) are not worse than the baseline by more than 10% on any single war's validation RMSLE; if none qualifies, keep the baseline. Ensembles are equal-weight means (no weights fitted on validation).",
+ "target": "log1p(final deaths next month), four wars, one month ahead, features as known on the day",
+ "test": "frozen at Sep-2025 targets, Jan-Sep 2026 walk-forward, opened once",
+ "validation": "refit once per year 2023, 2024, 2025 with 3-month embargo; pooled RMSLE over 36 war-months",
+ "written": "before any v3 score was seen"
+}

@@ -1,0 +1,86 @@
+{
+ "A_global_v2": {
+  "coverage": 0.778,
+  "mean_width_log": 2.438,
+  "width_factor": 3.38,
+  "per_war": {
+   "Afghanistan\u2013Pakistan": {
+    "coverage": 1.0,
+    "width_log": 2.46
+   },
+   "Israel\u2013Hamas": {
+    "coverage": 0.89,
+    "width_log": 2.46
+   },
+   "Russia\u2013Ukraine": {
+    "coverage": 1.0,
+    "width_log": 2.46
+   },
+   "US\u2013Iran": {
+    "coverage": 0.22,
+    "width_log": 2.37
+   }
+  }
+ },
+ "B_per_band": {
+  "coverage": 0.722,
+  "mean_width_log": 2.213,
+  "width_factor": 3.02,
+  "per_war": {
+   "Afghanistan\u2013Pakistan": {
+    "coverage": 0.89,
+    "width_log": 1.91
+   },
+   "Israel\u2013Hamas": {
+    "coverage": 0.78,
+    "width_log": 1.91
+   },
+   "Russia\u2013Ukraine": {
+    "coverage": 0.89,
+    "width_log": 1.97
+   },
+   "US\u2013Iran": {
+    "coverage": 0.33,
+    "width_log": 3.07
+   }
+  }
+ },
+ "C_cqr_per_band": {
+  "coverage": 0.861,
+  "mean_width_log": 3.491,
+  "width_factor": 5.73,
+  "per_war": {
+   "Afghanistan\u2013Pakistan": {
+    "coverage": 0.89,
+    "width_log": 2.14
+   },
+   "Israel\u2013Hamas": {
+    "coverage": 1.0,
+    "width_log": 3.21
+   },
+   "Russia\u2013Ukraine": {
+    "coverage": 0.89,
+    "width_log": 3.52
+   },
+   "US\u2013Iran": {
+    "coverage": 0.67,
+    "width_log": 5.09
+   }
+  }
+ },
+ "widths": {
+  "A": 1.2299967390252566,
+  "B": {
+   "0": 2.5490950676648607,
+   "1": 1.5098954897697976,
+   "2": 0.9542219514486677,
+   "3": 0.9837035101457361
+  },
+  "C": {
+   "0": 0.9249614361581708,
+   "1": 0.2353258801819801,
+   "2": 0.2241830114737429,
+   "3": 0.2687362545755784
+  }
+ }
+}

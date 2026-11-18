@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conflict EW · Jury Q&amp;A Finder</title>
+<style>
+:root{--bg:#07101A;--p1:#0C1825;--p2:#112233;--ln:#1E3449;--tx:#E6EEF6;--t2:#9FB2C6;--t3:#6E849A;--am:#F2B33D;--cy:#4FD1E0;--rd:#FF6B6B;--gn:#3DD68C;--vi:#A78BFA;
+--mono:ui-monospace,Consolas,'SF Mono',Menlo,monospace;--sans:Inter,'Segoe UI',system-ui,-apple-system,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 var(--sans)}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#07101A 85%,rgba(7,16,26,0));padding:18px 22px 10px}
+.brand{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.brand b{font:800 13px var(--mono);letter-spacing:.28em;color:var(--am)}
+.brand span{font:600 12px var(--mono);letter-spacing:.14em;color:var(--t3)}
+h1{font:800 26px/1.15 var(--sans);margin:6px 0 12px}
+h1 em{font-style:normal;color:var(--cy)}
+.sbox{display:flex;gap:10px;align-items:center}
+#q{flex:1;font:500 18px var(--sans);color:var(--tx);background:var(--p1);border:1.5px solid var(--ln);border-radius:14px;padding:13px 16px;outline:none}
+#q:focus{border-color:var(--cy);box-shadow:0 0 0 3px rgba(79,209,224,.15)}
+.btn{font:700 12px var(--mono);letter-spacing:.12em;color:var(--tx);background:var(--p2);border:1px solid var(--ln);border-radius:12px;padding:12px 14px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--cy)} .btn.am{border-color:var(--am);color:var(--am)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{font:700 11px var(--mono);letter-spacing:.1em;padding:6px 10px;border-radius:999px;border:1px solid var(--ln);color:var(--t2);background:transparent;cursor:pointer}
+.chip.on{background:var(--cy);color:#04121A;border-color:var(--cy)}
+.hint{color:var(--t3);font-size:13px;margin-top:8px}
+.hint kbd{font:600 11px var(--mono);border:1px solid var(--ln);border-radius:5px;padding:1px 5px;color:var(--t2)}
+main{display:grid;grid-template-columns:360px 1fr;gap:18px;padding:6px 22px 40px;align-items:start}
+#list{position:sticky;top:210px;max-height:calc(100vh - 225px);overflow:auto;padding-right:4px}
+.item{display:block;width:100%;text-align:left;background:var(--p1);border:1px solid var(--ln);border-radius:12px;padding:10px 12px;margin-bottom:8px;color:var(--tx);cursor:pointer;font:inherit}
+.item:hover{border-color:#2E4D69}.item.sel{border-color:var(--cy);background:#0E2030}
+.item .t{font-weight:700;font-size:14.5px}
+.item .m{font:600 10.5px var(--mono);letter-spacing:.1em;color:var(--t3);margin-top:3px}
+.item .sn{color:var(--t2);font-size:12.5px;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.count{font:700 11px var(--mono);letter-spacing:.14em;color:var(--t3);margin:0 0 8px}
+#detail{min-width:0}
+.card{background:var(--p1);border:1px solid var(--ln);border-radius:16px;padding:22px 24px;margin-bottom:14px}
+.kick{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tag{font:700 10.5px var(--mono);letter-spacing:.14em;padding:4px 8px;border-radius:6px;border:1px solid}
+.tag.c{color:var(--cy);border-color:rgba(79,209,224,.4)} .tag.s{color:var(--am);border-color:rgba(242,179,61,.4)}
+h2{font:800 24px/1.2 var(--sans);margin:10px 0 12px}
+h3{font:800 11.5px var(--mono);letter-spacing:.2em;color:var(--t3);margin:20px 0 10px;text-transform:uppercase}
+.x{font-size:16px;color:#D9E3EE}
+.nums{display:flex;flex-wrap:wrap;gap:8px}
+.num{font:600 13px var(--sans);background:var(--p2);border:1px solid var(--ln);border-left:3px solid var(--am);border-radius:8px;padding:6px 10px}
+.qa{border:1px solid var(--ln);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.qa .qq{display:flex;gap:10px;padding:12px 14px;background:var(--p2);font-weight:700;cursor:pointer}
+.qa .qq i{font-style:normal;font:800 12px var(--mono);color:var(--am);padding-top:2px}
+.qa .aa{display:flex;gap:10px;padding:12px 14px;color:#DCE6F0}
+.qa .aa i{font-style:normal;font:800 12px var(--mono);color:var(--gn);padding-top:2px}
+.qa .cp{margin-left:auto;font:700 10px var(--mono);letter-spacing:.1em;color:var(--t3);background:none;border:1px solid var(--ln);border-radius:6px;padding:3px 7px;cursor:pointer;align-self:flex-start}
+.lim{border:1px dashed rgba(255,107,107,.45);background:rgba(255,107,107,.06);border-radius:12px;padding:12px 14px;color:#F3D3D3}
+.lim b{font:800 11px var(--mono);letter-spacing:.16em;color:var(--rd);display:block;margin-bottom:4px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel button{font:600 13px var(--sans);color:var(--cy);background:transparent;border:1px solid rgba(79,209,224,.35);border-radius:999px;padding:5px 11px;cursor:pointer}
+mark{background:rgba(242,179,61,.28);color:inherit;border-radius:3px;padding:0 1px}
+.qhits .h{background:var(--p1);border:1px solid var(--ln);border-left:3px solid var(--cy);border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer}
+.qhits .h .q{font-weight:700}.qhits .h .a{color:var(--t2);font-size:13.5px;margin-top:4px}.qhits .h .f{font:600 10.5px var(--mono);letter-spacing:.1em;color:var(--t3);margin-top:4px}
+.empty{color:var(--t2);padding:30px 6px}
+.qa{cursor:pointer;transition:border-color .15s}.qa:hover{border-color:var(--cy)}
+.qa .pv{display:flex;gap:10px;padding:10px 14px 12px;color:var(--t2);font-size:14px}
+.qa .pv i{font-style:normal;font:800 11px var(--mono);color:var(--gn);padding-top:2px;white-space:nowrap}
+.qa .go{margin-left:auto;font:700 10.5px var(--mono);letter-spacing:.12em;color:var(--cy);white-space:nowrap;align-self:center}
+.qhits .h:hover{border-color:var(--cy)}
+#qm{position:fixed;inset:0;background:rgba(3,8,14,.88);z-index:25;display:none;align-items:flex-start;justify-content:center;padding:28px 18px;overflow:auto}
+#qm.on{display:flex}
+#qm .box{max-width:900px;width:100%;background:var(--p1);border:1px solid var(--ln);border-radius:18px;padding:24px 26px 20px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#qm .mq{font:800 23px/1.3 var(--sans);margin:12px 0 4px}
+#qm .say{font:700 18px/1.45 var(--sans);color:#fff;background:rgba(61,214,140,.08);border:1px solid rgba(61,214,140,.35);border-left:4px solid var(--gn);border-radius:12px;padding:14px 16px}
+#qm .full{font-size:16px;color:#DCE6F0}
+#qm .more{font-size:15.5px;color:#C9D6E3}
+#qm .fu{display:flex;flex-direction:column;gap:8px}
+#qm .fu button{text-align:left;font:600 14px var(--sans);color:var(--tx);background:var(--p2);border:1px solid var(--ln);border-radius:10px;padding:9px 12px;cursor:pointer}
+#qm .fu button small{display:block;font:700 10px var(--mono);letter-spacing:.12em;color:var(--t3);margin-top:2px}
+#qm .fu button:hover{border-color:var(--cy)}
+#qm .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;align-items:center}
+#qm .pos{font:700 11px var(--mono);letter-spacing:.12em;color:var(--t3)}
+.share{display:none;margin-top:8px;font:600 12.5px var(--mono);color:var(--gn)}
+#drill{position:fixed;inset:0;background:rgba(3,8,14,.86);z-index:20;display:none;align-items:center;justify-content:center;padding:20px}
+#drill.on{display:flex}
+#drill .box{max-width:820px;width:100%;background:var(--p1);border:1px solid var(--ln);border-radius:18px;padding:26px}
+#drill .dq{font:700 22px/1.35 var(--sans);margin:10px 0 18px}
+#drill .da{display:none;color:#DCE6F0;font-size:16.5px;border-top:1px solid var(--ln);padding-top:14px}
+#drill .row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+footer{color:var(--t3);font-size:12px;padding:0 22px 30px}
+@media (max-width:860px){main{display:flex;flex-direction:column}#detail{order:-1}#list{position:static;max-height:none}header{position:static}h1{font-size:21px}.sbox{flex-wrap:wrap}#q{flex-basis:100%}.card{padding:18px 16px}h2{font-size:21px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><b>CONFLICT EW · TEAM FCE</b><span>JURY Q&amp;A FINDER · DATA ANALYTICS COMPETITION 2026</span></div>
+  <h1>Type a keyword. Get the <em>explanation</em>, the ways it may be asked, and <em>our answer</em>.</h1>
+  <div class="sbox">
+    <input id="q" type="search" placeholder="e.g. SHA-256, false alarms, Galwan, AMBER, 13%, FATA, SAMBHAV, why LightGBM…" autocomplete="off" autofocus>
+    <button class="btn am" id="b-drill" title="Random jury question for practice">DRILL ME</button><button class="btn" id="b-share" title="Copy the public link to this page">SHARE ⧉</button>
+  </div>
+  <div class="chips" id="cats"></div>
+  <div class="hint">Press <kbd>/</kbd> to search · <kbd>↑</kbd><kbd>↓</kbd> to move · Answers follow the final deck and detailed slide script; red boxes are honest limits to say only if probed.</div>
+</header>
+<main>
+  <div id="list"></div>
+  <div id="detail"></div>
+</main>
+<div id="qm"><div class="box" id="qm-b"></div></div>
+<div id="drill"><div class="box">
+  <div class="kick"><span class="tag s">PRACTICE</span><span class="tag c" id="d-topic"></span></div>
+  <div class="dq" id="d-q"></div>
+  <div class="da" id="d-a"></div>
+  <div class="row"><button class="btn am" id="d-show">SHOW OUR ANSWER</button><button class="btn" id="d-next">NEXT QUESTION</button><button class="btn" id="d-open">OPEN TOPIC</button><button class="btn" id="d-x" style="margin-left:auto">CLOSE ✕</button></div>
+</div></div>
+<footer>Share: <span style="color:var(--cy)">jatainsahil98-web.github.io/conflict-watch-v2/qa.html</span> · Built from the final speaker script, the detailed slide script, the pipeline's output tables and the Conflict EW website. Live dashboard: conflictmonitor2026.streamlit.app</footer>
+<script>// Knowledge base: Conflict Early Warning (Team FCE). Sources: final deck speaker script, detailed slide script, pipeline outputs, website.
+// Each entry: id, t title, cat, s slides, k keywords, x explanation, n key numbers, qa [[question, answer]...], lim honest limits, r related ids
+window.KB = [
+// ───────────── OVERVIEW
+{id:"oneline",t:"The project in one line",cat:"Overview",s:"1, 20",k:["summary","pitch","elevator","what is it","conflict early warning","conflict ew","conflict watch","product","overview","one line"],
+x:"Conflict Early Warning (website name: Conflict EW) predicts where conflict will escalate and turns that prediction into the reports a theatre commander already acts on: a SITREP, a Warning Order and an Op Order. Three outputs: a FORECAST of monthly deaths per war (1–3 months, with an 80% band), an EARLY WARNING (monthly country watch-list plus a daily news tripwire) and DECISION SUPPORT (theatre COP and three auto-drafted reports at 0600).",
+n:["Tagline: 'a month to look, hours to act'","65 of 83 escalations flagged a month ahead (sealed 2025 test)","9 days' warning of the 2026 Gulf war","13% better than the best rule on unseen 2026"],
+qa:[["Explain your project in one minute.","We built a system that warns before conflict escalates and drafts the reports a theatre commander acts on. A monthly watch-list held 65 of the world's 83 escalations of 2025 a month ahead on a sealed test; a daily news tripwire warned of the 2026 Gulf war nine days out; and every morning at 0600 it drafts a SITREP, Warning Order and Op Order for the duty officer to release."],
+["What problem are you solving?","Casualty data arrive about six weeks late and staff collation takes days. We give a month's warning from open data, and cut the event-to-decision time from days to hours by automating collation and drafting."],
+["Who is the user?","The theatre commander and his staff, not an analyst. Every output ends in a staff product the Army already uses."],
+["What is new in your approach compared to a normal forecasting project?","Three things: it learns escalation from 117 countries rather than four wars; it was pre-registered and sealed with SHA-256 before the test was opened; and it does not stop at a chart, it drafts orders in Army formats on a theatre COP."]],
+r:["prototype","approach","novelty","trust"]},
+{id:"team",t:"Team FCE and naming",cat:"Overview",s:"1",k:["fce","team","members","who","names","presenter","conflict ew","conflict watch","name","title"],
+x:"Team FCE: Maj Shivam Mehta, Capt Siddharth Sangwan (presenter, single speaker) and Capt Sahil Singh. Corps of Signals and MCTE. The entry is titled Conflict Early Warning; the website is branded Conflict EW (earlier drafts used 'Conflict Watch').",
+n:["3 members, 1 speaker","Deck: Conflict_Early_Warning_MCTE_v4, slides 1–20, backups A and B"],
+qa:[["What does FCE stand for?","It is our team name for the competition. (Give the expansion only if the team has agreed one.)"],
+["Why is the website called Conflict EW and the deck Conflict Early Warning?","Same product: EW is short for Early Warning. Earlier drafts were called Conflict Watch; the name changed, the system did not."],
+["Who did what in the team?","Answer with the team's agreed split. Keep it short and credit all three; the presenter speaks for the team."]],
+r:["oneline"]},
+{id:"prototype",t:"Prototype or operational?",cat:"Overview",s:"1, 16, 18, 19",k:["prototype","operational","real","deployed","notional","in service","production","ready"],
+x:"A working prototype on open data. The live dashboard runs today on the internet. Theatre commands, units, HQs and SAMBHAV delivery are notional (simulated). The way ahead (slide 20) shows how it would be adopted.",
+n:["Live: conflictmonitor2026.streamlit.app","Delivery to SAMBHAV simulated","NTC uses labelled synthetic data"],
+qa:[["Is this an operational system or a prototype?","A working prototype on open data. The live dashboard runs today; the theatre commands, units and SAMBHAV delivery are notional. Slide 20 shows how it would be adopted."],
+["Can the Army use this tomorrow?","The first step needs nothing new: put the watch-list and RAG rating in the HQ IDS monthly brief. Integration with SAMBHAV and classified indicators comes later, over six months."],
+["What is real and what is simulated?","Real: all data, models, scores, forecasts, ratings and the drafted text. Simulated: the delivery to SAMBHAV, the notional HQs and units, and the Northern theatre drill (synthetic, labelled)."]],
+lim:"Theatre commands are not yet notified; boundaries are illustrative.",r:["sambhav","ntc","wayahead"]},
+{id:"novelty",t:"What is novel / why better than others",cat:"Overview",s:"3–6, 15–19",k:["novel","unique","innovation","different","better","competitors","existing","views","acled","state of the art","contribution","usp"],
+x:"Our differentiators: (1) transfer learning from 117 countries over 36 years; (2) a pre-registered, SHA-256-sealed test opened once; (3) two clocks, a monthly watch-list and a daily news tripwire; (4) outputs in Army staff formats (SITREP, WO, Op O) with a theatre COP for four commanders; (5) an India lens: LoC, Gulf diaspora, oil, rupee and evacuations.",
+n:["7 models + 6 variants tested","3 SHA-256 fingerprints","4 commander views","3 reports at 0600"],
+qa:[["There are existing early-warning systems like ViEWS or ACLED CAST. What do you add?","We did not benchmark against them on this data, so we do not claim to beat them. What we add is a sealed, pre-registered test on the issued data, a daily news tripwire for deliberate wars, and the last mile: theatre-filtered COP and auto-drafted Army orders with an India lens."],
+["What is your single biggest contribution?","Turning a forecast into a decision: the watch-list and tripwire feed pre-agreed decision points and three drafted orders, so the commander gets hours instead of days."],
+["Why should the jury rank you above teams with fancier models?","Because our numbers are sealed and honest. We chose the model by a rule written before testing, opened the test once, and show our misses. A fancier model with tuned results is worth less to a commander."]],
+r:["transfer","prereg","tripwire","copp"]},
+{id:"trust",t:"Why should we trust your numbers?",cat:"Overview",s:"6",k:["trust","believe","credibility","cherry pick","tuned","overfit","cheat","honest","verify","fake"],
+x:"Everything was locked before we looked: pre-registration (targets, windows, models, metric, selection rule) hashed; one written amendment hashed; weights, bands, alert line and code frozen and hashed; the test opened once, and the script refuses to run twice. Any reviewer can re-hash the files.",
+n:["Pre-registration 602c97d3f113ab69…","Amendment 1 d06aea5242849ed4…","Freeze 335178b3c56a218b…","Totals reconciled: 554,396 and 3,944,161 deaths"],
+qa:[["How do we know you did not tune after seeing results?","Because the plan, weights, alert line and code were hashed before the test was opened, and the test script writes a flag file and refuses a second run. Any change to those files changes the hash."],
+["Could you have run the test many times and hashed the best one?","No. The pre-registration hash and timestamp come before validation, the freeze before the test, and the test script checks the hashes and refuses to run twice. The order is in the files."],
+["You show only your successes.","No: we show the misses on the slides. US-Iran onset (forecast 0, actual 414), Galwan, Thailand-Cambodia and US-Venezuela not seen, 18 of 83 escalations missed, 4 in 5 alerts false alarms."]],
+r:["sha","prereg","amendment","freeze","testonce"]},
+{id:"approach",t:"Approach: the six-step daily cycle",cat:"Overview",s:"3",k:["approach","methodology","pipeline","cycle","workflow","process","steps","data to decision","architecture"],
+x:"One cycle that runs every day: 1 DATA (12 files, 14.0 M rows, 117 countries, 1989–2026) → 2 CLEANING (36 logged checks, nothing deleted, only what was known on the day) → 3 MODELS (7 tested, data chose the ensemble) → 4 PREDICTION (65 of 83 escalations flagged) → 5 THEATRE COP (4 views, rebuilt 0600) → 6 REPORTS (SITREP, WO, Op O to SAMBHAV). Then the next day's data arrive and it repeats.",
+n:["12 files","14.0 M rows","36 checks","7 models","65 of 83","4 views","3 reports"],
+qa:[["Walk us through your methodology.","Data from all 12 issued files, cleaned with 36 logged checks under an as-of rule; seven models tested on the same leak-free validation; the data chose a two-model ensemble; it feeds a watch-list, a theatre COP and three drafted reports, rebuilt daily at 0600."],
+["Is this a one-time study or a running system?","A running system: the pipeline rebuilds the brief every morning at 0600, a daily battle rhythm."],
+["What is your tech stack?","Python for the pipeline (pandas, LightGBM, statsmodels), a Streamlit app hosting the dashboard, and a TypeScript website with ECharts and maps. A single-file offline copy of the site also runs from a USB stick."]],
+r:["data12","cleaning","models7","alert2025","cop","reports"]},
+{id:"order",t:"Why the talk is in this order",cat:"Overview",s:"2",k:["preview","order","structure","agenda","sections","total slides","21","20"],
+x:"Proof first, then results, then India's stake, then how the commander uses it. Five sections: approach/models/proof (slides 3–6), results (7–11), geopolitics & economy (12–14), COPP/SAMBHAV/COP (15–18), live dashboard & conclusion (19–20).",
+n:["20 main slides; 21–22 backups","Slide 2 says 'Total Slides: 21': do not read it aloud"],
+qa:[["Why this order?","Proof first, then results, then India's stake, then how the commander uses it. A jury should trust the method before it sees the claims."],
+["Slide 2 says 21 slides but you showed 20?","The main deck is 20 slides; 21 and 22 are backups held for questions."]],
+r:["discrep"]},
+
+// ───────────── DATA
+{id:"data12",t:"The data: 12 issued files",cat:"Data",s:"3",k:["data","dataset","files","12 files","sources","inputs","issued","participant pack","what data"],
+x:"All 12 files the organisers issued were used or audited: participant pack (conflict events, event sources, country-year context, bilateral displacement, displacement reference stocks, UNHCR demographics), two pre-joined panels (audited, not trusted), the Middle East conflict-type workbook, the 200k world file, and two GDELT files.",
+n:["Conflict-event file: 61,055 events, Jan 2014–Sep 2026","Event sources: 85,406 references","World file: 200,000 events, 117 countries, 1989–2025","GDELT: ~13.5 M rows"],
+qa:[["Which data did you use?","All 12 issued files. The casualty backbone is the conflict-event file (61,055 events) with its 85,406 source references and the 200k world file; the two GDELT files give daily news for the tripwire."],
+["Did you use any outside data?","Only for context, always marked [domain]: e.g. ~9 M Indians in the Gulf, 4.8 mb/d crude imports, remittances, and market prices for the economic slides. The models use only the issued data."],
+["Why did you not trust the pre-joined panels?","We audited them and rebuilt the panel ourselves from event level, so every total reconciles exactly to the raw files (554,396 and 3,944,161 deaths)."]],
+r:["rows14m","countries117","gdelt","ucdp","totals","domain"]},
+{id:"rows14m",t:"14 million rows",cat:"Data",s:"3",k:["14 million","14.0 m","rows","volume","big data","size"],
+x:"14.0 M rows across all 12 files, counted on load. Most are the two GDELT news files (~13.5 M). The four wars are only a few hundred country-months, so the world file and news are what make learning possible.",
+n:["14.0 M total","~13.5 M GDELT","61,055 conflict events","200,000 world events"],
+qa:[["Why 14 million rows if you only forecast four wars?","The four wars are a few hundred country-months. To learn what escalation looks like you need many more examples, so the model learns from 117 countries; and the daily tripwire needs the 13.5 M news rows."]],
+r:["data12","transfer","gdelt"]},
+{id:"countries117",t:"117 countries, 1989–2026",cat:"Data",s:"3, 5",k:["117","countries","world file","1989","36 years","history","coverage","time span"],
+x:"117 = unique countries in the world file (war_terror_violence_200k.csv), 1989–2025. Conflict-event file runs to Sep 2026, GDELT to Nov 2026. 36 years of escalation history make transfer learning possible.",
+n:["World file 1989–2025","Events to 30 Sep 2026","GDELT to 12 Nov 2026"],
+qa:[["Why include 117 countries if the competition is about four wars?","Four wars hold too few escalations to learn from. Learning from 117 countries cut validation error from 1.40 to 1.26."],
+["Does data from Africa or Latin America really help forecast Ukraine?","Escalation has common shapes: build-ups, lulls, spikes after a quiet spell. The model learns those shapes from many conflicts; the four wars are weighted 5x so it still focuses on them. Validation confirmed it."]],
+r:["transfer","weight5x"]},
+{id:"enddate",t:"Dataset end dates",cat:"Data",s:"3, 16",k:["end date","up to","till when","latest","cut off","30 sep","september 2026","november","date range"],
+x:"Casualty (UCDP conflict-event) data run to 30 Sep 2026; Jan–Sep 2026 records are provisional UCDP Candidate data. GDELT news runs to 12 Nov 2026. The world file ends in 2025; country-year context (World Bank) ends 2025.",
+n:["Events: to 30 Sep 2026","GDELT: to 12 Nov 2026","World file: to 2025","Context: to 2025"],
+qa:[["Up to what date is your data?","Casualty events to 30 September 2026, news to 12 November 2026. That is why the outlook is for October 2026 and the brief is dated 13 November."],
+["Why is the alert test on 2025 and not 2026?","The alert test needs final counts for every country in the world, and the world file ends in 2025. The forecast test uses 2026 conflict-event data for the four wars."]],
+r:["ucdpcand","outlook","alert2025"]},
+{id:"ucdp",t:"UCDP (casualty data)",cat:"Data",s:"glossary",k:["ucdp","uppsala","casualty","fatalities","deaths","conflict events","ged"],
+x:"Uppsala Conflict Data Program: the source behind the issued conflict-event (casualty) files. Each event has low/best/high death estimates, dates, location and source references. 2026 records are UCDP Candidate (provisional).",
+n:["61,055 events","Low/best/high estimates","~43-day publication lag"],
+qa:[["What is UCDP and why rely on it?","The Uppsala Conflict Data Program, the standard academic source of geocoded conflict deaths, and the source behind the issued files. We use the 'best' estimate and keep low/high for checks."],
+["UCDP is slow. How can it warn?","That is exactly why we added GDELT news: casualty data arrive about 43 days late, news the next day."]],
+r:["ucdpcand","latency","gdelt"]},
+{id:"ucdpcand",t:"Provisional 2026 data (UCDP Candidate)",cat:"Data",s:"3, 7",k:["provisional","candidate","2026 data","preliminary","4,644","4644"],
+x:"4,644 records for Jan–Sep 2026 are UCDP Candidate (provisional). They were used only as the sealed test, never for training or choosing a model.",
+n:["4,644 provisional records","176 more flagged 'under review'"],
+qa:[["How do you handle provisional 2026 data?","The 4,644 provisional records are used only as the sealed test, never for training or choosing."],
+["What if the provisional numbers are revised?","Then the test score would change slightly, but no choice depended on them; the model was frozen before they were opened."]],
+r:["sealed","enddate"]},
+{id:"gdelt",t:"GDELT (news events)",cat:"Data",s:"10",k:["gdelt","news","media","event data","posture news","machine coded","tone"],
+x:"Global Database of Events, Language and Tone: machine-coded daily news events. Two issued files (~13.5 M rows). We count, per war and per day, violent events and military-posture plus threat events. Used only as a fast tripwire, not as an input to the casualty model.",
+n:["~13.5 M rows","Daily, next-day latency","Posture z ≥ 3 → Warning","Violent ≥ 4× median and ≥ 100 → RED"],
+qa:[["Is GDELT reliable?","It is noisy, so we use it only as a fast tripwire with strict thresholds and confirm against casualty data; it is not an input to the casualty model."],
+["Couldn't an adversary flood the news to trigger false alerts?","Possible in principle, which is why a news alert is a warning for the staff to check, not an automatic action, and RED is confirmed against casualties. In service it would be fused with classified I&W."],
+["Why not use GDELT in the main forecast?","It did not improve the monthly death forecast reliably; its value is speed. So we keep it as a separate daily clock."]],
+r:["tripwire","posture","redalert"]},
+{id:"asof",t:"'Only what was known on the day' (as-of rule)",cat:"Data",s:"3, 5",k:["as of","as-of","known on the day","leakage","look ahead","leak","real time","publication","first report","24%"],
+x:"A forecast made at the end of month T uses only events whose first news report (from the issued event_sources file) is dated on or before the last day of T. Late-reported deaths enter later, exactly as a staff officer would have seen them. Scoring on final counts flatters every model.",
+n:["Only 24% of a month's RU-UA deaths known at month-end","Af-Pak 96% known at month-end","3-month embargo in validation"],
+qa:[["What does 'only what was known on the day' mean in practice?","For a forecast made at the end of a month, an event counts only if its first news report is dated by that day. Late-reported deaths enter later, as a staff officer would have seen them."],
+["Why does it matter?","Because only about 24% of a month's Russia-Ukraine deaths are known at month-end. A model scored on final counts gets credit for information nobody had."],
+["How did you prevent data leakage?","As-of features, a three-month embargo between training and validation, and a sealed test opened once."]],
+r:["completeness","sealed","features"]},
+{id:"completeness",t:"Reporting completeness (24% known at month-end)",cat:"Data",s:"5",k:["24%","completeness","reporting lag","late reporting","known at month end","96%"],
+x:"Measured from event_sources: the share of each month's final deaths whose first report existed at month-end. Russia-Ukraine 24%; Af-Pak 96%. This is why the pre-registered hurdle model under-predicted RU-UA and was amended.",
+n:["RU-UA 24%","Af-Pak 96%"],
+qa:[["How did you measure 24%?","From the source file: for each month we compared final deaths with the deaths whose first report was published by month-end."],
+["Why is Russia-Ukraine so low?","Attrition-war casualty reports are compiled and published late; Af-Pak events are reported almost immediately."]],
+r:["asof","amendment"]},
+{id:"cleaning",t:"Cleaning: 36 logged checks",cat:"Data",s:"3",k:["cleaning","data quality","dq","checks","36","preprocessing","validation checks","errors in data"],
+x:"36 data-quality checks over all tables, each logged with rows affected and action taken; 23 found something. Rule: flag, never delete; missing is never turned into zero. Shown on the dashboard's Data quality page.",
+n:["36 checks, 23 found something, 0 rows deleted","692 out-of-order low/best/high","731 events crossing a month (spread by day)","602 FATA→KP harmonised","3,043 blank area names kept as 'unspecified'","7,515 repeated same-outlet references","62 extreme records flagged"],
+qa:[["What cleaning did you do?","36 logged checks; 23 found issues. For example 692 out-of-order estimates, 731 events spanning months spread by day, 602 FATA records harmonised to Khyber Pakhtunkhwa, 3,043 blank area names kept as unspecified. Nothing was deleted."],
+["Did you delete outliers?","No. 62 extreme records above the 99.9th percentile were flagged and kept; the model uses an absolute-error loss so a spike cannot drag it."],
+["How did you handle missing values?","Never filled with zero. Blank areas are kept as 'unspecified'; missing context values stay missing, and LightGBM handles them natively."],
+["Where can we see the cleaning?","On the dashboard's Data quality page: each check, rows affected and the action."]],
+r:["fata","outliers","totals","spread"]},
+{id:"fata",t:"FATA merged into Khyber Pakhtunkhwa",cat:"Data",s:"3",k:["fata","kp","khyber pakhtunkhwa","tribal areas","boundary change","2018","admin1","harmonise","pakistan provinces"],
+x:"In 2018 Pakistan merged the Federally Administered Tribal Areas (FATA) into Khyber Pakhtunkhwa (25th Amendment). Older records say FATA, newer say KP, so the same ground appears under two names. 602 records were harmonised to KP so area history is continuous.",
+n:["602 records","Check DQ13","2018 merger"],
+qa:[["Why does a boundary change matter for your data?","The model learns each area's history. If pre-2018 events sit under FATA and later ones under KP, the area looks new in 2018 and its history is split. Harmonising keeps one continuous series."],
+["Why harmonise to KP and not keep FATA?","KP is the current administrative unit used in recent records and maps, so the dashboard and watch-list match today's geography."]],
+r:["cleaning","areas222"]},
+{id:"totals",t:"Totals conserved: 554,396 and 3.94 M deaths",cat:"Data",s:"6",k:["totals","conserved","reconciled","554,396","3,944,161","3.94","sum","deaths total"],
+x:"Multi-month records are spread across months by day, and panel totals equal the raw files exactly: 554,396 deaths in the participant pack (four wars) and 3,944,161 in the world file. No deaths gained or lost in cleaning.",
+n:["RU-UA 447,452","Israel-Hamas 67,933","Af-Pak 31,082","US-Iran 7,929","Total 554,396"],
+qa:[["How do we know cleaning did not distort the counts?","Panel totals reconcile exactly with the raw files: 554,396 and 3,944,161 deaths."],
+["How many deaths in each war in your data?","Russia-Ukraine 447,452; Israel-Hamas 67,933; Afghanistan-Pakistan 31,082; US-Iran 7,929 (best estimates, 2014–Sep 2026)."]],
+r:["spread","cleaning","wars4"]},
+{id:"spread",t:"Events spanning months (spread by day)",cat:"Data",s:"3, 6",k:["spread","multi month","month boundary","731","allocation","date range"],
+x:"731 events have a date range crossing a month boundary. Their deaths are spread across months in proportion to days, so monthly totals are not inflated in one month and totals still reconcile.",
+n:["731 events"],
+qa:[["What did you do with events spanning two months?","Spread their deaths by day across the months they cover, so totals stay exact."]],
+r:["totals","cleaning"]},
+{id:"outliers",t:"Outliers and extreme records",cat:"Data",s:"3",k:["outlier","extreme","spike","99.9","1225","anomaly"],
+x:"62 records above the 99.9th percentile (1,225 deaths) were flagged and kept. Instead of deleting, the model uses an absolute-error (L1) loss so one freak month cannot drag it.",
+n:["62 records","Threshold 1,225 deaths"],
+qa:[["Did you remove outliers?","No: flagged and kept. Real wars have real spikes; we made the model robust instead with an L1 loss."]],
+r:["l1","cleaning"]},
+{id:"wars4",t:"The four wars (competition cases)",cat:"Data",s:"7, 11",k:["four wars","cases","russia ukraine","israel hamas","afghanistan pakistan","af-pak","us iran","which wars"],
+x:"Russia–Ukraine, Israel–Hamas, Afghanistan–Pakistan and US–Iran: the four competition conflicts. Each is a war-level monthly series with areas (admin-1) for the watch-list.",
+n:["RU-UA: 447,452 deaths, peak Mar 2022 (27,245), civilian share 7%","IL-H: 67,933, peak Oct 2023 (11,211), civilian share 49%","Af-Pak: 31,082, civilian share 20%","US-Iran: 7,929, peak Mar 2026 (2,825), 15 countries affected"],
+qa:[["Which war is most dangerous for India?","For WTC, Af-Pak: it is AMBER and rising, all three top hotspots are Af-Pak, and it puts Pakistan on two fronts. For MTC, US-Iran: it reached 14 countries and the Indian Ocean, and it moves oil."],
+["Why are the four wars so different?","Scale differs a hundredfold, from thousands of deaths a month in Ukraine to tens in a quiet US-Iran month; that is why we score on a log scale."]],
+r:["rmsle","outlook","geo"]},
+{id:"domain",t:"[domain] and [data × domain] figures",cat:"Data",s:"12, 14",k:["domain","outside data","public figures","assumption","estimate","marked","not from data"],
+x:"A figure not from the issued data but from public knowledge is marked [domain]; one that combines our data with a public figure is [data × domain]. Examples: ~9 M Indians in the Gulf [domain]; $52B crude bill and $57B remittances [data × domain]. Always called estimates.",
+n:["~9 M diaspora","4.8 mb/d imports","$150.7B remittances × 38% Gulf share"],
+qa:[["Where does 9 million come from?","Public figures for Indians in the Gulf. It is not from the issued data, which is why the slide marks it [domain]."],
+["Are the economic numbers from the dataset?","The price moves are public market series aligned to our war dates; volumes like 4.8 mb/d are domain figures. Each is marked."]],
+r:["indiabill","diaspora"]},
+{id:"otherfiles",t:"Displacement, UNHCR and World Bank files",cat:"Data",s:"3",k:["displacement","refugees","unhcr","idp","unrwa","world bank","context","gdp","inflation","demographics"],
+x:"Audited and used for context: bilateral displacement stocks (6,273 rows), UNHCR demographics (19,830), displacement reference stocks (IDMC IDPs and UNRWA registrations: two non-comparable series kept separate), and World Bank country-year context (1,764 rows, ends 2025). They inform the appreciation of the environment, not the monthly death forecast.",
+n:["DQ: IDMC vs UNRWA kept separate","124 missing inflation, 36 missing GDP growth: left missing"],
+qa:[["Did you use the refugee and economic files in the model?","Not as monthly forecast inputs: they are yearly and end in 2025. They were cleaned and used for context, the India angle and the dashboard's background pages."],
+["Why not?","The model must use only what is known at the forecast date, monthly. Yearly context lags and added nothing measurable on validation."]],
+r:["cleaning","features"]},
+
+// ───────────── MODELS
+{id:"models7",t:"Seven models tested",cat:"Models",s:"4, 21",k:["models","which models","seven","7 models","candidates","leaderboard","comparison","baseline"],
+x:"Validation RMSLE, 2023–25, one month ahead (lower is better). Same leak-free data, same rules for every model.",
+n:["Global ensemble 1.262 (chosen)","Competition LightGBM-Delta 1.318","3-month mean (best rule) 1.427","LightGBM, 4 wars only 1.569","Last month 1.587","Damped ETS 1.599","Previous month 1.664"],
+qa:[["Which models did you try?","Seven: three simple rules (last month, previous month, three-month mean), damped ETS, a four-war LightGBM, our competition LightGBM-Delta and a global LightGBM; plus six variants. The two-model ensemble won."],
+["Why did you choose this model?","By a rule written before testing: deploy only if at least 10% better than the best simple rule on validation. The ensemble was 11.6% better (1.26 vs 1.43), and the order held on the sealed test."],
+["Why not deep learning or LSTMs?","Monthly conflict data are short and tabular: a few hundred months per war. Gradient-boosted trees are the standard winner on such data, train fast, handle missing values, and are easier to explain. We chose by validation score, not by fashion."]],
+lim:"No single model wins every war: on the 2026 test the four-war ablation was better on Russia-Ukraine (0.37 vs 0.54) and the 3-month rule beat the ensemble on Israel-Hamas. The ensemble wins pooled, the pre-registered measure.",
+r:["ensemble","rule10","rmsle","lgbm","deeplearning"]},
+{id:"ensemble",t:"The ensemble and its weights",cat:"Models",s:"4, 21",k:["ensemble","stack","weights","0.90","0.10","blend","combination","who chose weights"],
+x:"A weighted average in log space of five candidates; weights are non-negative, sum to 1 and were fitted on pooled validation forecasts per horizon. The data kept two: global LightGBM and competition LightGBM-Delta. ETS, the four-war model and the rules got exactly 0.",
+n:["1 month: 0.90 global / 0.10 competition","2 months: 0.74 / 0.26","3 months: 0.65 / 0.35","Ensemble 1.261 vs global alone 1.262 at one month"],
+qa:[["Who chose the weights?","The validation data, by an optimiser. Five candidates went in; three came out at exactly zero."],
+["Why does the ensemble score the same as the global model alone?","At one month the global model carries 0.90 of the weight, so they are nearly identical. The second member earns its place at two and three months (0.26 and 0.35), where it lowers error (two months: 1.89 vs 1.92 on the test)."],
+["Why not a simple average of all models?","ETS fails badly on Russia-Ukraine (1.82) and the four-war model on US-Iran (2.08). Equal or guessed weights would import those failures."]],
+r:["models7","globallgbm","complgbm"]},
+{id:"lgbm",t:"LightGBM (what it is)",cat:"Models",s:"glossary",k:["lightgbm","gradient boosting","boosted trees","decision trees","gbm","xgboost","algorithm"],
+x:"A gradient-boosted decision-tree method: hundreds of small decision trees, each correcting the errors of the last. Fast, handles missing values, standard for tabular data.",
+n:["Global: 600 trees, 15 leaves, learning rate 0.03","Competition: 300 trees, 7 leaves"],
+qa:[["Explain LightGBM simply.","Many small decision trees added one after another, each fixing what the previous ones got wrong. Think of a staff that refines an appreciation in rounds."],
+["Why LightGBM over Random Forest or XGBoost?","All are tree ensembles; LightGBM is fast, handles missing values natively and did well on validation. The choice of target and training data mattered far more than the library."]],
+r:["globallgbm","complgbm","models7"]},
+{id:"globallgbm",t:"Global LightGBM (CW-2), main model",cat:"Models",s:"4, 5",k:["global","cw-2","cw2","main model","global lightgbm","117 countries model"],
+x:"Trained on 117 countries 1989–2025 plus the four wars (war rows weighted 5×). It predicts the change in log deaths from the recent 3-month as-known average, with an absolute-error (L1) loss. 600 trees, 15 leaves, learning rate 0.03.",
+n:["Validation 1.262","Weight 0.90 at one month","Worst single war on validation US-Iran 1.79, still better than every other model there"],
+qa:[["What exactly does your main model predict?","The change in log deaths next month relative to the three-month average as known at the time. Adding it back gives the forecast; this lets it forecast a new high."],
+["Why does it 'never fail badly'?","Because it has seen escalation in 117 countries; on validation its worst war was still better than every other model's score on that war."]],
+r:["transfer","delta","l1","weight5x"]},
+{id:"complgbm",t:"Competition LightGBM-Delta (v1)",cat:"Models",s:"4",k:["competition model","lightgbm delta","v1","first round","second member","four war delta"],
+x:"Our own first-round model for this competition, trained on the four wars only, also predicting change in log deaths with an L1 loss. 300 trees, 7 leaves. Kept as a candidate; the data gave it 0.10 weight at one month, more at longer horizons. Best on Af-Pak.",
+n:["Validation 1.318; test 1.472","Weight 0.10 / 0.26 / 0.35 (1/2/3 months)"],
+qa:[["What is a 'competition model'?","Our own model from the first round, trained on the four wars. We kept it as a candidate and the data gave it 10% weight."],
+["Why does it get more weight further ahead?","War-specific detail helps more at two and three months, where the global model's general patterns are less sharp."]],
+r:["ensemble","ablation"]},
+{id:"ablation",t:"1.57 vs 1.40: the two 'four-war' numbers",cat:"Models",s:"4, 5",k:["1.57","1.569","1.40","1.400","four wars only","ablation","discrepancy","different numbers","slide 4 vs slide 5"],
+x:"Not an error: two different four-war models. 1.57 (slide 4) is a separate four-war LightGBM ablation that forecasts the level with area-spread features (400 trees). 1.40 (slide 5) is our chosen global recipe retrained on the four wars only; it isolates the value of the data. So 1.40 → 1.26 measures only the value of learning from 117 countries.",
+n:["Four-war level model 1.569 (test 1.734)","Global recipe on four wars 1.400","Global recipe on 117 countries 1.262 (−9.9%)"],
+qa:[["Slide 4 says four wars only scores 1.57 but slide 5 says 1.40. Which is it?","Both, for two different models. 1.57 is a separate four-war model that forecasts levels. 1.40 is our chosen recipe trained on four wars only. Comparing 1.40 with 1.26 isolates the value of learning from the world."],
+["Why is the four-war LightGBM so poor?","Only four wars to learn from, too few escalations, and it forecasts levels so it cannot go past an old high. Good on Russia-Ukraine, fails badly on US-Iran (2.08)."]],
+r:["transfer","delta","discrep"]},
+{id:"transfer",t:"Transfer learning from the world",cat:"Models",s:"4, 5",k:["transfer learning","learn from world","global data","117","why world","decision 1","generalise"],
+x:"Decision 1: train on 117 countries, not four wars. The model learns what escalation looks like (build-ups, lulls, spikes) from many conflicts over 36 years, then applies it to the four wars. Same recipe: four wars only 1.40; with the world 1.26 (about 10% lower error).",
+n:["1.400 → 1.262 (−9.9%)"],
+qa:[["What is transfer learning here?","The model learns escalation from 117 countries over 36 years, then applies it to the four wars. On validation that cut error by about 10% against the same model trained on the four wars alone."],
+["Isn't a war in Congo irrelevant to Ukraine?","The dynamics repeat: a quiet spell before a surge, momentum, peaks. The war rows are weighted 5× so the model stays focused on our four."]],
+r:["weight5x","countries117","ablation"]},
+{id:"weight5x",t:"War rows weighted 5×",cat:"Models",s:"5",k:["5x","five times","weight","sample weight","weighting"],
+x:"The four competition wars are weighted 5× in training so the model pays most attention to the conflicts it must forecast while still learning patterns from the rest of the world. Pre-registered, not tuned.",
+n:["5×"],
+qa:[["Why weight the four wars 5×?","So the model focuses on the conflicts we must forecast while still learning from the world. The value was pre-registered, not tuned."]],
+r:["transfer","prereg"]},
+{id:"delta",t:"Forecast the change, not the level",cat:"Models",s:"5",k:["change","delta","level","target","log","new high","surge","decision 2","target variable"],
+x:"Decision 2: target = log(1 + deaths next month) minus log of the 3-month as-known mean. Tree models predicting levels cannot exceed the highest value seen in training, so they miss surges; predicting change can forecast a new high.",
+n:["L1 change model 1.275 vs L2 1.317","Active countries only 1.262 (chosen)"],
+qa:[["Why predict change rather than deaths directly?","A tree model forecasting levels cannot go past the highest value it has seen, so it misses exactly the surge a commander needs to see. Forecasting change can."],
+["Why logs?","Deaths range from 0 to over 10,000 a month; logs make proportional change comparable across wars."]],
+r:["l1","rmsle","globallgbm"]},
+{id:"l1",t:"Absolute-error (L1) loss",cat:"Models",s:"5",k:["l1","absolute error","mae","loss function","robust","l2","squared error"],
+x:"The model minimises absolute error instead of squared error, so one freak month cannot drag it. L1 beat L2 on validation (1.275 vs 1.317).",
+n:["L1 1.275 vs L2 1.317"],
+qa:[["Why L1 loss?","Robust to spikes: a squared loss lets one extreme month pull every forecast; absolute error does not. It also scored better on validation."]],
+r:["outliers","delta"]},
+{id:"features",t:"Features used for prediction",cat:"Models",s:"5",k:["features","inputs","variables","predictors","what does the model use","lags","feature engineering","explainability"],
+x:"Only the conflict's own history as known on the day: recent deaths (lags 0–11 months), 3/6/12/24-month averages, 12-month maximum, volatility, months since last death, event counts, momentum and acceleration, ratio to peak, season, horizon, and how complete the latest months are.",
+n:["Lags 0–11","Rolling 3/6/12/24","Completeness feature"],
+qa:[["What features does the model use?","Only the conflict's own history as known on the day: recent deaths and lags, rolling averages, 12-month maximum, volatility, months since last death, event counts, momentum, ratio to peak, season, horizon, and reporting completeness."],
+["Why no political or economic variables?","They are yearly, end in 2025 and are published late. The as-of rule would make them stale; they added nothing measurable on validation."],
+["Which feature matters most?","Recent as-known deaths relative to the recent average, plus momentum and reporting completeness. The classifier's ranking is driven by the conflict's own trajectory."],
+["Is it explainable?","The forecast is a tree model on a handful of interpretable history features, and the RAG rating is a fully transparent points rule; the evidence sheet on the dashboard shows why each rating was given."]],
+r:["asof","rag","completeness"]},
+{id:"rmsle",t:"RMSLE (the error measure)",cat:"Models",s:"4, 7",k:["rmsle","error","metric","log error","accuracy","how measured","score","1.26","1.40"],
+x:"Root mean squared log error: the typical error on log(1 + deaths). Lower is better. Working in logs means a miss of 100 in a small war weighs about as much as a proportionate miss in a big war, so Russia-Ukraine cannot swamp the score. Roughly, RMSLE 1.4 means a typical forecast within a factor of about 4 either way; it is a ranking measure, not a percentage.",
+n:["Primary metric: RMSLE at one month pooled over 36 forecasts"],
+qa:[["Why RMSLE and not plain error?","Deaths range from zero to over 10,000 a month. On a plain scale Russia-Ukraine would dominate; the log scale scores proportional error, which a planner needs across theatres."],
+["What does an RMSLE of 1.4 mean in plain words?","A typical forecast is within a factor of about four either way. Use it to rank models, not as a percentage."],
+["What is your accuracy?","For forecasts: 13% lower error than the best rule on unseen 2026, and 83% of outcomes inside our 80% band. For warning: 65 of 83 escalations on the list a month ahead."]],
+r:["models7","test2026","band80"]},
+{id:"rule10",t:"The 10% selection rule (11.6% achieved)",cat:"Models",s:"4, 5",k:["10%","11.6","selection rule","deploy rule","bar","threshold","best rule"],
+x:"Written in the pre-registration before any score: deploy only if at least 10% better than the best simple rule on validation. Achieved 11.6%: (1.427 − 1.262) / 1.427.",
+n:["1.26 vs 1.43 = 11.6%","Held on test: 13%"],
+qa:[["Is 11.6% a big improvement?","It is above the 10% bar we set before testing, and it held on the sealed test at 13%."],
+["Why a 10% bar?","To guard against fooling ourselves: a complex model must clearly beat a rule of thumb before it is worth deploying."]],
+r:["prereg","test2026"]},
+{id:"variants",t:"Six model variants and the hurdle model",cat:"Models",s:"3, 6",k:["variants","6 variants","hurdle","two part","searched","model search"],
+x:"Six versions of the global model were tried on validation and logged: hurdle model (two weightings), change model with L1 and L2 loss, L1 change model on active countries (chosen), and the same recipe on four wars only. The pre-registered hurdle model under-predicted RU-UA, which led to Amendment 1.",
+n:["Hurdle 1.321 → change model 1.262"],
+qa:[["How many models did you really try?","Seven models plus six variants, every one logged on validation. Nothing was hand-picked."]],
+r:["amendment","models7"]},
+{id:"band80",t:"80% band (honest ranges)",cat:"Models",s:"7",k:["band","interval","uncertainty","range","conformal","80%","83%","confidence interval","calibration","prediction interval"],
+x:"Split-conformal interval: the 80th percentile of the model's own absolute log errors on validation, applied around each new forecast. If honest, about 80% of outcomes fall inside; on the 2026 test, 83% did (30 of 36).",
+n:["1 month 83%","2 months 81%","3 months 75%"],
+qa:[["What does 83% in an 80% band mean?","The ranges are honest. If we said 80% and only 50% fell inside, planners would be misled."],
+["Why are the bands so wide?","Monthly deaths are volatile; an honest 80% band at one month spans roughly a factor of three either side. A narrow band that is often wrong is worse for planning."],
+["How would a commander use the band?","Plan logistics and force levels on the band, not the point: the upper end for reserves, the forecast for the base plan."]],
+r:["test2026","outlook"]},
+{id:"horizons",t:"Horizons and embargo",cat:"Models",s:"6, 21",k:["horizon","1 month","2 months","3 months","ahead","embargo","lead time"],
+x:"Forecasts 1, 2 and 3 months ahead. Validation refits each model once per year with a 3-month embargo. Test RMSLE: two months 1.89 vs rule 2.13; three months 2.05 vs 2.26.",
+n:["2-month 1.89 vs 2.13","3-month 2.05 vs 2.26"],
+qa:[["How far ahead can you forecast?","Up to three months, with the error growing with range. At three months the ensemble still beats the best rule (2.05 vs 2.26)."]],
+r:["ensemble","test2026"]},
+{id:"deeplearning",t:"Why not deep learning / AI / LLM",cat:"Models",s:"4",k:["deep learning","neural network","lstm","transformer","ai","llm","chatgpt","machine learning","why not"],
+x:"The data are short monthly tabular series. Trees are the standard performer there, fast to retrain daily, and explainable enough for staff. Selection was by validation score against a pre-set bar, not by model fashion. The drafting of orders is template-driven from the data, so nothing is invented.",
+n:[],
+qa:[["Why didn't you use deep learning?","Each war has only a few hundred monthly points; deep networks need far more and are harder to explain. Gradient-boosted trees won on validation, and that rule decided."],
+["Do you use an LLM to write the orders?","No. The SITREP, Warning Order and Op Order are filled from the data by templates in Army formats, so the system cannot invent troops or facts; the duty officer checks and releases."]],
+r:["models7","reports"]},
+{id:"classifier",t:"Escalation classifier (alert model)",cat:"Models",s:"5, 8",k:["classifier","alert model","escalation model","binary","probability","watch-list model","decision 4"],
+x:"Decision 4: a binary LightGBM on the same features gives each country a probability of escalating next month. PR-AUC 0.32 on the sealed 2025 test (ROC-AUC 0.88), against 0.13 for ranking by last month's deaths; a logistic regression scored 0.21.",
+n:["PR-AUC 0.319","ROC-AUC 0.88","Logistic 0.21","Rank by last month 0.13"],
+qa:[["How is the watch-list made?","A LightGBM classifier gives every country a probability of escalating next month; those at or above 0.13 go on the list."],
+["Why not just watch the countries with the most deaths?","That is the default, and it scores a PR-AUC of 0.13. Ours scores 0.32, 2.5 times the precision."]],
+r:["prauc","alertline","alert2025","escalation"]},
+{id:"escalation",t:"Definition of 'escalation'",cat:"Models",s:"6, 8",k:["escalation","definition","what counts","target","1.5x","10 deaths"],
+x:"A country-month where next month's deaths are at least 1.5 times the average of the last three months AND at least 10. Fixed in the pre-registration before any score.",
+n:["≥ 1.5× three-month mean","≥ 10 deaths","Base rate 5.9% of country-months in 2025"],
+qa:[["How is escalation defined?","Next month's deaths at least 1.5 times the average of the last three months and at least 10. Fixed before any score."],
+["Why 10 deaths minimum?","So a jump from 1 to 2 deaths in a quiet country does not count as escalation."]],
+r:["classifier","prereg"]},
+{id:"prauc",t:"PR-AUC (and why not accuracy)",cat:"Models",s:"5, 8",k:["pr-auc","precision recall","auc","roc","accuracy","precision","recall","f1","imbalanced"],
+x:"Area under the precision-recall curve. It rewards ranking the true escalations at the top. A random list scores the base rate (5.9% in 2025), so 0.32 is about 5.4× random.",
+n:["0.32 vs 0.13 default","Base rate 5.9%","ROC-AUC 0.88"],
+qa:[["Why PR-AUC and not accuracy?","Escalations are rare (5.9% of country-months). A model that never alerts is 94% 'accurate' and useless. PR-AUC measures whether true escalations are ranked at the top."],
+["What is your precision and recall?","At the 0.13 line: recall 78% (65 of 83), precision 21% (65 of 311 alerts)."]],
+r:["classifier","alert2025"]},
+{id:"alertline",t:"Alert line 0.13",cat:"Models",s:"5, 6, 9",k:["0.13","threshold","alert line","cut off","why 0.13","watch list threshold"],
+x:"If the classifier gives a country probability ≥ 0.13 of escalating next month, it goes on the watch-list. 0.13 maximised F1 on 2022–24 validation and was frozen before the test.",
+n:["0.13 ≈ 2× base rate"],
+qa:[["Why is the alert line so low, 0.13?","Because escalations are rare. 0.13 is more than twice the base rate; it best balanced catches against false alarms on validation, and it was frozen before the test."],
+["Could you raise it to cut false alarms?","Yes, at the cost of missing more escalations. A watch level should catch most; the action triggers are narrower."]],
+lim:"'On the watch-list' is a low bar: Kargil (0.134) and the Parliament attack (0.133) only just cleared it.",
+r:["classifier","freeze","falsealarm"]},
+
+// ───────────── PROOF
+{id:"sha",t:"SHA-256 fingerprint",cat:"Proof",s:"6",k:["sha","sha-256","hash","fingerprint","cryptographic","tamper","proof"],
+x:"A cryptographic fingerprint of a file: 64 hexadecimal characters. Change one character anywhere and the fingerprint changes completely. Publishing the hash proves the file has not changed since.",
+n:["Pre-reg 602c97d3f113ab69327c5a6f7a570323851d1015e2ee5d5e514f874de6429e7f","Amendment d06aea5242849ed463cd7f364abbc35b4a6889b7dff0bc4aea38d86c53de577b","Freeze 335178b3c56a218bc5c2d8ed606e2c8ca22600b1a55ef2c70541a31795450c22 (run ID CW2-335178B3)"],
+qa:[["What exactly does the hash prove?","That the plan, weights, bands, alert line and code were fixed before the test was opened. It does not prove the data are accurate; for that we show the cleaning log and reconciled totals."],
+["How can I verify?","Run any SHA-256 tool on the three JSON files and compare with the hashes on the slide."],
+["Explain SHA-256 to a non-technical person.","A digital fingerprint of a file. Change a single comma and the fingerprint is completely different, so a published fingerprint shows the file was not touched afterwards."]],
+r:["prereg","amendment","freeze","testonce"]},
+{id:"prereg",t:"Pre-registration",cat:"Proof",s:"6",k:["pre-registration","preregistration","prereg","plan","before any score","protocol"],
+x:"Written before validation and hashed: escalation definition (≥ 1.5× and ≥ 10), horizons 1–3 months, validation folds, 3-month embargo, sealed test windows, RMSLE at one month pooled over 36 forecasts as primary metric, and the 10% rule.",
+n:["Hash 602c97d3f113ab69…"],
+qa:[["What did you pre-register?","Targets, test windows, models, metric and the selection rule, all before any score was seen."],
+["Why pre-register at all?","It stops moving the goalposts: we cannot change the definition of success after seeing results."]],
+r:["sha","amendment","rule10"]},
+{id:"amendment",t:"Amendment 1",cat:"Proof",s:"6",k:["amendment","change","one change","hurdle","isnt that tuning"],
+x:"After validation, before the freeze or test: the pre-registered hurdle model under-predicted Russia-Ukraine (latest months only ~24% known), so we switched to the change-from-known-mean model (1.321 → 1.262) and fixed the stack's candidate list. Written with reasons and hashed.",
+n:["1.321 → 1.262","Hash d06aea5242849ed4…"],
+qa:[["Why one amendment? Isn't that tuning?","It was made after validation and before the freeze or test, written down with its reason, and hashed. That is the honest way to change a plan: in the open, before the answer is known."]],
+r:["sha","completeness","variants"]},
+{id:"freeze",t:"Freeze",cat:"Proof",s:"6",k:["freeze","frozen","locked","freeze.json","run id","cw2-335178b3"],
+x:"freeze.json locks the weights per horizon, the 80% band widths, the alert line 0.13, the deploy decision, and hashes of the code, features and final counts. Its hash is also our run ID (CW2-335178B3).",
+n:["Hash 335178b3c56a218b…"],
+qa:[["What was frozen?","Everything the test would use: weights, bands, alert line, deploy decision and code hash. Nothing could be adjusted after seeing the test."]],
+r:["sha","testonce"]},
+{id:"testonce",t:"Test opened once (test_opened.flag)",cat:"Proof",s:"6",k:["opened once","flag","test_opened","run twice","single opening","sealed"],
+x:"The test script checks the code and freeze hashes, writes test_opened.flag and refuses to run if it exists. This stops re-running until the numbers look good.",
+n:["1 opening"],
+qa:[["What stops you from rerunning the test?","The script writes a flag file and refuses a second run, and it checks the hashes first."]],
+r:["sealed","freeze"]},
+{id:"sealed",t:"Validation vs sealed test",cat:"Proof",s:"glossary, 7, 8",k:["validation","test set","sealed test","holdout","out of sample","unseen","train test split"],
+x:"Validation (2023–25 for forecasts; 2022–24 for the alert) is where every choice was made. The sealed test (Jan–Sep 2026 for forecasts; all of 2025 for the alert) was opened once, after everything was frozen.",
+n:["Forecast test: 36 forecasts (4 wars × 9 months)","Alert test: 1,404 country-months (117 × 12)"],
+qa:[["What is the difference between your validation and test?","Validation is where we chose; the sealed test was opened once after everything was frozen. Only test numbers are claimed as results."]],
+r:["test2026","alert2025"]},
+
+// ───────────── RESULTS
+{id:"test2026",t:"Result 1: 2026 wars tracked (−13%)",cat:"Results",s:"7",k:["result 1","2026","unseen","-13%","13%","1.40 vs 1.61","month by month","tracked","forecast accuracy"],
+x:"Frozen at Dec 2025, forecasting one month ahead for Jan–Sep 2026. White = actual, cyan = ensemble, shaded = 80% band, dashed = best rule; log scale. Error 1.401 vs 1.609 for the best rule: 12.9% lower. 83% of outcomes inside the band.",
+n:["RMSLE 1.401 vs 1.609","36 forecasts","83% in band","1 big miss: US-Iran onset Feb 2026 (0 vs 414)"],
+qa:[["Is 13% statistically significant?","On 36 forecasts it is suggestive rather than conclusive: a month-block bootstrap puts the gain between −3% and +36%, positive in 90% of resamples. The stronger evidence is the 2025 alert test on 1,404 country-months."],
+["Why did all errors rise on the test compared with validation?","2026 contained the start of a new war, US-Iran, that no casualty model could see; every model suffered, but the order held."],
+["How did each war do?","The running wars stayed inside the band almost every month; the miss was the US-Iran onset."]],
+lim:"Per war the ensemble is not best everywhere (3-month rule better on Israel-Hamas; four-war ablation better on Russia-Ukraine 0.37 vs 0.54). Bootstrap interval crosses zero (−3% to +36%).",
+r:["usiranmiss","band80","rmsle"]},
+{id:"usiranmiss",t:"The US-Iran miss (forecast 0, actual 414)",cat:"Results",s:"7, 10",k:["miss","us-iran","414","february","onset","failed","why wrong","zero"],
+x:"The Feb 2026 forecast made at end-January was about 0.1 deaths; actual 414 (UCDP Candidate). The war started by decision on 28 February with no deaths before. No casualty model can see a decision to strike, which is why we built the news tripwire.",
+n:["Forecast ~0.1","Actual 414","Tripwire fired 19 Feb"],
+qa:[["Why is US-Iran so far off in February?","The war began by decision on 28 February; with no deaths in January, no casualty model could forecast it. That is why we added the posture-news tripwire, which fired nine days before."],
+["So your model failed at the most important moment?","The monthly model is built for running wars; onsets are caught by the second clock. Together they warned nine days ahead, while casualty data arrived six weeks later."]],
+r:["tripwire","test2026"]},
+{id:"alert2025",t:"Result 2: 65 of 83 escalations flagged",cat:"Results",s:"8",k:["65 of 83","78%","result 2","watch list","2025","flagged","recall","escalations caught","13x","lift"],
+x:"Alert model frozen at Dec 2024, scored once on all 117 countries × 12 months of 2025 (1,404 country-months). 83 escalations in 38 countries; 65 were on the list the month before (78%), covering 31 of 38 countries. After an alert the escalation rate was 21% vs 1.6% without: 13×. About 26 countries a month on the list.",
+n:["65/83 = 78%","311 alerts, 65 escalated = 20.9%","~1,093 not on list, 18 escalated = 1.6%","Lift 13×","~26 countries/month"],
+qa:[["Is 78% good?","Ranking by last month's deaths scores a PR-AUC of 0.13, ours 0.32, with a 13-fold lift. A random list of 26 countries would catch only about 22%."],
+["Which big escalations were missed?","Mostly sudden jumps in countries that looked quiet, and Sudan's two largest 2025 escalations (El Fasher)."],
+["Name some it caught.","M23 taking Goma, the US strikes on the Houthis, the Israel-Iran war, the Af-Pak clashes, Swaida, Catatumbo."]],
+lim:"18 of 83 missed. Weighted by deaths the list caught 47% because Sudan's two largest escalations were missed; excluding Sudan, 80%. About 79% of alerts are false alarms.",
+r:["falsealarm","classifier","escalation","crises"]},
+{id:"falsealarm",t:"False alarms (4 in 5 alerts)",cat:"Results",s:"8, 20",k:["false alarm","false positive","79%","4 in 5","cry wolf","noise","trust alerts"],
+x:"79% of alerts did not escalate the following month. The list is a watch level, not a trigger: it tells collection and NEO planners where to look. Action triggers are narrower: the 15-day clock, a posture alert, a RED news alert.",
+n:["21% hit rate vs 1.6% without alert"],
+qa:[["Four in five false alarms: why should a commander trust it?","Because it is a watch level, not an order. A list of about 26 countries holding four in five of next month's escalations tells collection and NEO planners where to look. The action triggers are narrower."],
+["Won't staff ignore it after a few false alarms?","Each alert costs only attention, not deployment. Being on the list raises the escalation rate thirteenfold, which is the reason to look."]],
+r:["alert2025","clock","redalert"]},
+{id:"crises",t:"Result 3: wars our model saw coming (14 of 17)",cat:"Results",s:"9",k:["result 3","crises","17","14 of 17","saw coming","history","back test","replay","hindsight"],
+x:"For each crisis the alert model is refitted with a cut-off at the end of the month before the event; P = probability of escalation next month, rank among 117 countries. 17 crises (9 India, 8 international) from Kargil 1999 to US-Iran 2026; 14 were on the watch-list before they broke.",
+n:["India: Kargil 1999, Parliament 2001, 26/11 2008, Uri 2016, Balakot 2019, Galwan 2020, Manipur 2023, Sindoor 2025, Delhi Red Fort blast 2025","World: Russia invades Ukraine 2022, Hamas attack 2023, Israel-Iran 2025, Thailand-Cambodia 2025, Af-Pak Oct 2025, US-Venezuela 2025–26, Af-Pak war 2026, US-Iran 2026","Not seen: Galwan, Thailand-Cambodia, US-Venezuela"],
+qa:[["Is this hindsight?","No. Each case uses a model refitted with data only up to the month before the event."],
+["What are the 17 crises?","India: Kargil, Parliament attack, 26/11, Uri, Balakot, Galwan, Manipur, Sindoor, Delhi Red Fort blast. World: Russia's invasion, the Hamas attack, Israel-Iran, Thailand-Cambodia, Af-Pak Oct 2025, US-Venezuela, the Af-Pak war 2026, US-Iran 2026."],
+["Where do the event dates come from?","Death counts are all from the issued files; event dates and context were checked against public timelines."]],
+lim:"'On the watch-list' = P ≥ 0.13, a low bar. Only 5 of 17 had a timed, specific warning (Uri, Balakot, Sindoor, Af-Pak Oct 2025, US-Iran 2026), and Uri and Sindoor were timed by the clock after the trigger attack. Israel-Iran and Russia's invasion were on the list but with no timed warning.",
+r:["uri","balakot","sindoor","galwan","clock"]},
+{id:"uri",t:"Uri 2016 → surgical strikes",cat:"Results",s:"9",k:["uri","surgical strikes","2016","pakistan top 1%","11 days"],
+x:"Pakistan P = 0.43 for the month before: top 1% of the world. Uri attack 18 Sep 2016 (22 killed) → India-Pakistan state fighting 11 days later.",
+n:["P 0.426","Top 1%","11 days"],
+qa:[["Did your model predict Uri?","It could not predict the attack itself. It had Pakistan in the world's top 1% for escalation, and once the attack happened the tactical clock rang: state fighting followed in 11 days."]],
+r:["clock","crises","pahalgam"]},
+{id:"balakot",t:"Pulwama 2019 → Balakot",cat:"Results",s:"9",k:["balakot","pulwama","2019","12 days","top 3%"],
+x:"Pakistan P = 0.37, top 3%. Pulwama 14 Feb 2019 (46 deaths in the record) → state fighting 12 days later.",
+n:["P 0.372","Top 3%","12 days"],
+qa:[["What did the model say before Balakot?","Pakistan was in the top 3% of the world, and the 12-day clock rang after Pulwama."]],
+r:["clock","crises"]},
+{id:"sindoor",t:"Pahalgam 2025 → Op Sindoor",cat:"Results",s:"9",k:["sindoor","op sindoor","pahalgam","2025","15 days","may 2025"],
+x:"Pakistan P = 0.31, top 2%. Pahalgam 22 Apr 2025 (26 killed) → state fighting 15 days later (7 May).",
+n:["P 0.308","Top 2%","15 days"],
+qa:[["Could the model have predicted Pahalgam itself?","No. A terror attack is not forecastable from casualty data. The model says Pakistan was high-risk, and once such an attack happens, state fighting followed in 11–15 days in all three cases since 2016."]],
+r:["clock","pahalgam","crises"]},
+{id:"pahalgam",t:"Can it predict a terror attack?",cat:"Results",s:"9",k:["terror","terrorist attack","predict attack","pahalgam","pulwama","intelligence"],
+x:"No. Terror attacks are not forecastable from casualty data. What the system gives is (1) strategic risk: Pakistan in the top 1–3% beforehand, and (2) the tactical clock after an attack: state fighting has followed within 11–15 days in 3 of 4 qualifying attacks since 2016.",
+n:[],
+qa:[["Can your system predict the next terror attack?","No, and we do not claim it. It ranks countries by escalation risk and, after a qualifying attack, starts a 45-day clock for retaliation and state fighting."],
+["Then what use is it after Pahalgam?","It sizes the time available: historically 11–15 days to state fighting since 2016, which drives the Warning Order and readiness timings."]],
+r:["clock","sindoor"]},
+{id:"clock",t:"The tactical clock (15-day clock)",cat:"Results",s:"9, 15",k:["clock","15 day","45 day","tactical clock","retaliation","india pakistan","2016 policy","0 of 27","3 of 4"],
+x:"Our rule for the fast India-Pakistan signal: a terror attack in India by a Pakistan-based or Kashmir group with ≥ 15 deaths starts a 45-day clock; it 'rings' if India-Pakistan state fighting then reaches ≥ 20 deaths and ≥ 3× the 45 days before. Since 2016 it rang after 3 of 4 qualifying attacks; from 2001 to 2015, 0 of 27.",
+n:["Since 2016: 3 of 4","2001–2015: 0 of 27","11, 12, 15 days"],
+qa:[["Three cases is very few for a clock.","Agreed: medium confidence. The stronger evidence is the contrast: 0 of 27 qualifying attacks from 2001 to 2015 were followed by state fighting, against 3 of 4 since 2016."],
+["What does the clock tell a commander?","After a qualifying attack, expect state fighting within about two weeks: readiness, notice to move and the O group should be keyed to that."],
+["Isn't this just India's political decision?","Yes, and the data show the policy shift since 2016. That is exactly why it is useful: it is a pattern of decision, visible in the data."]],
+r:["uri","balakot","sindoor","copp"]},
+{id:"afpak2025",t:"Af-Pak clashes, October 2025",cat:"Results",s:"9, 12",k:["af-pak","afghanistan","october 2025","taliban","border clashes","two front"],
+x:"Afghanistan P = 0.45 at end-September 2025, top 2%: warned a month ahead. First month of interstate Af-Pak fighting in the data is Oct 2025; 411 killed in March 2026.",
+n:["P 0.452","Top 2%","411 killed Mar 2026"],
+qa:[["Did you see the Af-Pak war coming?","Yes, Afghanistan was in the top 2% a month before the October 2025 clashes."],
+["Did the news tripwire fire for Af-Pak in Feb 2026?","No: peak z 0.4. That is why we present the posture tripwire as a signal for deliberate, announced wars, not all wars."]],
+r:["twofront","crises","outlook"]},
+{id:"galwan",t:"Why Galwan was missed",cat:"Results",s:"9, 20",k:["galwan","china","lac","missed","2020","northern"],
+x:"The India-China dyad had no recorded death since 1975 and the May 2020 face-offs were non-fatal. Fatality data cannot warn of a first clash. Remedy: add non-fatal LAC and LoC indicators (way ahead, 6 months).",
+n:["No deaths since 1975","3 of 17 not seen: Galwan, Thailand-Cambodia, US-Venezuela"],
+qa:[["Why was Galwan missed?","The India-China dyad had no recorded death since 1975 and the May 2020 face-offs were non-fatal. Fatality data cannot warn of a first clash; that is why we recommend non-fatal LAC indicators."],
+["So it is useless for the northern front?","On fatality data alone, yes for a first clash, which we say openly. With non-fatal indicators (patrol face-offs, build-ups) the same pipeline applies; NTC is shown as a labelled synthetic drill."]],
+r:["ntc","wayahead","limits"]},
+{id:"tripwire",t:"Result 4: Gulf war warned nine days out",cat:"Results",s:"10",k:["result 4","tripwire","9 days","nine days","19 feb","28 feb","gulf war","us-iran war","news warning","fast clock"],
+x:"Daily GDELT posture + threat events for the US-Iran pair. On 19 Feb 2026 they crossed 3 standard deviations, nine days before the 28 Feb strikes, while the casualty model said zero: a Warning Order. On 28 Feb violent news went RED: SITREP and Op Order the same day. Casualty data arrived ~6 weeks later.",
+n:["z ≥ 3 on 19 Feb; peak z 7.1","~70 events/day vs 47 in 1–14 Feb","9 days lead","Brent +1% at warning, +55% at 20 trading days"],
+qa:[["Is three standard deviations arbitrary?","It is a standard threshold for an unusual day, fixed before scoring. The peak before the war was over seven."],
+["One case is not proof.","Agreed; it is one posture case. The broader evidence is the RED alerts: 4 of 5 confirmed within three days across four wars, p = 0.004."],
+["What would the commander have done with nine days?","Issue a Warning Order: probable tasks, notice to move, ISR tasking, NEO and fuel planning, before the price and the war moved."]],
+lim:"One case of nine-day posture warning; Af-Pak 2026 gave no posture signal. Posture AMBER spikes in general were confirmed by casualties only 2 of 17 times: the value is time to prepare, not certainty.",
+r:["posture","zscore","redalert","gdelt","indiabill"]},
+{id:"posture",t:"'Posture news'",cat:"Results",s:"10",k:["posture","military posture","mobilisation","deployment","threat events","cameo"],
+x:"GDELT codes each news event by type. We count events coded as military posture (mobilisation, deployment, force demonstration) and threats between the two countries, per day.",
+n:[],
+qa:[["What is 'posture news'?","News events coded as mobilisation, deployment, force demonstration or threats between the two sides, counted daily."],
+["Why does posture warn before casualties?","Deliberate wars are prepared in the open: deployments and threats are reported before the first strike. Casualties come only after."]],
+r:["tripwire","zscore"]},
+{id:"zscore",t:"z-score (3 standard deviations)",cat:"Results",s:"10",k:["z score","z-score","standard deviation","sigma","3 sd","anomaly detection"],
+x:"z = (today − mean of previous 14 days) / standard deviation of those 14 days. z ≥ 3 marks a statistically unusual day.",
+n:["Window 14 days","Threshold 3"],
+qa:[["Explain the z-score simply.","How unusual today is compared with the last two weeks. Three means far outside normal day-to-day variation."]],
+r:["tripwire"]},
+{id:"redalert",t:"RED news alerts: 4 of 5 confirmed (p = 0.004)",cat:"Results",s:"10, 15",k:["red alert","4 of 5","p value","0.004","confirmed","violent news","statistical significance","permutation"],
+x:"RED = violent news events ≥ 4× the median of the previous 14 days and ≥ 100. Confirmed = a casualty escalation day (deaths ≥ 3× the previous 14-day mean and ≥ 20) within ±3 days. Across four wars, Feb–Nov 2026, 4 of 5 confirmed. Chance test: 2,000 random placements of 5 alerts gave on average 1.2 confirmed; p = 0.0035.",
+n:["4 of 5","Random ~1.2","p = 0.004"],
+qa:[["p = 0.004: what does it mean?","If RED alerts were placed on random days, getting 4 of 5 confirmed would happen less than 1 time in 250."],
+["Why act on RED the same day?","Because it is reliable enough: 4 of 5 were confirmed by casualties within three days, and casualty data take six weeks."]],
+lim:"1 of 5 RED alerts was not confirmed.",
+r:["tripwire","gdelt"]},
+{id:"outlook",t:"Result 5: October 2026 outlook",cat:"Results",s:"11",k:["result 5","october","outlook","forecast october","6,780","128","318","26","next month","forward forecast"],
+x:"Forward forecast on data to end-Sep 2026, same RAG rules as the live site. Not yet scored.",
+n:["RU-UA RED 6,780 (3,316–16,708), +7%; top areas Chernihiv 15%, Dnipropetrovsk 14% (Sumy 14%)","IL-H GREEN 128 (62–317), −4%; Gaza Strip 14%, West Bank 11%","Af-Pak AMBER 318 (155–786), +12%; Kandahar 23%, Balochistan 21% (Kunar 21%)","US-Iran AMBER 26 (12–66), −78%; Hormozgan 16%, Khuzestan 12%"],
+qa:[["Is the October forecast from the same frozen model?","It is from the dashboard's monthly forecast run on data to end-September 2026, with the same RAG rules as the live site. The sealed test scored January to September only."],
+["Why such a wide range for Russia-Ukraine?","Monthly deaths in an attrition war swing widely and the latest months are only about a quarter reported at month-end. An honest 80% range is wide."],
+["How is 'trend' calculated?","Forecast divided by the mean of the last six months: e.g. RU-UA 6,780 / 6,358 = +7%."]],
+lim:"October 2026 is a forward forecast; it has not been scored.",
+r:["rag","amber","usiranamber","areas222","evac"]},
+{id:"rag",t:"RAG rating rule (RED / AMBER / GREEN)",cat:"Results",s:"11",k:["rag","red amber green","rating","threat level","points","scorecard","how colour set","threat rating"],
+x:"Points: intensity (forecast ≥ 1,000 = 2; ≥ 100 = 1), trend (≥ +20% = 1; ≤ −20% = −1), hotspots (≥ 3 areas at ≥ 15% = 2; ≥ 1 = 1), spread (more countries hit than last year = 1), volatility (a month ≥ 1,000 deaths in last 12 = 1). RED if forecast ≥ 1,000 or points ≥ 5; AMBER if points ≥ 2; else GREEN.",
+n:["RU-UA 3 pts + forecast > 1,000 = RED","Af-Pak 3 = AMBER","US-Iran 2 = AMBER","IL-H 1 = GREEN"],
+qa:[["How do you decide RED, AMBER or GREEN?","A transparent points rule on intensity, trend, hotspots, spread and volatility. RED at a forecast of 1,000 or five points; AMBER at two points."],
+["Who set the thresholds?","We did, as staff rules, and they are open on the dashboard's Scorecard page: change a threshold and see the result. The rating is explainable line by line."]],
+r:["amber","usiranamber","outlook"]},
+{id:"amber",t:"What AMBER means",cat:"Results",s:"11, 16, 18",k:["amber","meaning","yellow","caution","middle level","what is amber"],
+x:"AMBER = elevated: the conflict scores at least 2 points on the RAG rule but is below RED. Staff action: watch closely, task collection, review plans and decision points; not yet a trigger for execution. WTC and MTC are AMBER; Af-Pak and US-Iran are AMBER.",
+n:["AMBER ≥ 2 points","RED ≥ 5 points or forecast ≥ 1,000"],
+qa:[["What does AMBER mean for the commander?","Elevated risk: watch, task ISR, keep NEO and contingency plans current. RED would mean act; GREEN, routine monitoring."],
+["What does 'AMBER easing' mean?","The rating is AMBER and the trend arrow is down versus the previous brief."]],
+r:["rag","usiranamber"]},
+{id:"usiranamber",t:"Why US-Iran is AMBER with only 26 deaths",cat:"Results",s:"11",k:["us-iran amber","26","low deaths","why amber","quiet month"],
+x:"The rating is not only deaths: the war spread to 14 countries this year (+1), it has an area above the hotspot line (+1), and it had a month over 1,000 deaths in the last year (+1), with a falling trend (−1). A quiet month is not a closed war.",
+n:["14 countries in 2026 vs 4 in 2025","Last-6-month mean 121","Trend −78%"],
+qa:[["Why is US-Iran AMBER if only 26 deaths are forecast?","Because the rating is not only deaths: the war spread to 14 countries this year, it has an area above the hotspot line, and it had a month over 1,000 deaths in the last year, so it can resume."]],
+r:["rag","gulf"]},
+{id:"areas222",t:"District watch-list: 222 areas and area percentages",cat:"Results",s:"11, 16, 19",k:["222","areas","district","admin1","province","hotspot","area percentage","kandahar","balochistan","kunar","flash line","15%"],
+x:"An area-level (admin-1) escalation probability for 222 areas across the four wars, scored monthly. The percentage is the probability that the area escalates next month. Hotspot / FLASH line: 15%. On 2026 data the top-ten areas escalated 14% of the time against a 4.1% base rate (about 3.5×).",
+n:["Top-10 areas: 14% vs 4.1% base (~3.4–3.5×)","Kandahar 23%, Balochistan 21%, Kunar 21%","Chernihiv 15%"],
+qa:[["What do the area percentages mean?","The probability that this area escalates next month, from the district watch-list. On 2026 data its top ten areas escalated 14% of the time against a 4.1% base rate."],
+["What is the FLASH line?","15%: an area above it is a hotspot and would raise the next report's precedence."],
+["Your website says the top-10 list is 3.5× better than chance. Where is that from?","The same figure: 14% against a 4.1% base rate is about 3.5 times chance."]],
+r:["outlook","flash","rag"]},
+{id:"evac",t:"Evacuations: 6 of 7 seen coming",cat:"Results",s:"11, 12",k:["evacuation","neo","op raahat","kaveri","ganga","ajay","sindhu","devi shakti","sankat mochan","6 of 7","diaspora"],
+x:"Seven Indian evacuations since 2015, scored at the month before each crisis: Raahat (Yemen 2015, rank 1), Sankat Mochan (South Sudan 2016, rank 2), Devi Shakti (Afghanistan 2021, rank 55, missed), Ganga (Ukraine 2022, rank 19), Kaveri (Sudan 2023, rank 4), Ajay (Israel 2023, rank 8), Sindhu (Iran 2025, rank 16).",
+n:["6 of 7","Yemen #1 before Op Raahat","Sudan #4 before Op Kaveri","Afghanistan 2021 missed (rank 55)"],
+qa:[["Which evacuation was missed?","Afghanistan 2021. The collapse came with few deaths in the month before; rank 55 of 117."],
+["How does this help NEO planning?","A month's notice is enough for advisories, registration of nationals and pre-positioning ships and aircraft."]],
+r:["diaspora","copp"]},
+
+// ───────────── GEOPOLITICS
+{id:"geo",t:"Geopolitics: the wars reach India's neighbourhood",cat:"Geopolitics",s:"12",k:["geopolitics","neighbourhood","india impact","so what for india","map","spillover"],
+x:"West: Pakistan on two fronts (Af-Pak clashes since Oct 2025; 411 killed Mar 2026; all 3 top hotspots Af-Pak). Gulf & IOR: US-Iran war hit 14 countries in 2026 (4 in 2025), 5 Gulf states struck, 104 killed off Sri Lanka. Diaspora: ~9 M in the Gulf [domain]. Eurasia: Ukraine front widening (Donetsk share 55% → 30%; 10,358 killed inside Russia in 2024).",
+n:["411","14 countries","104 off Sri Lanka","~9 M","55% → 30%","10,358"],
+qa:[["What does all this mean for India?","A Pakistan Army committed in the west raises LoC diversion risk; the Gulf war reaches the Indian Ocean, our diaspora and our oil; so Gulf NEO and sea-lane plans must track the watch-list."]],
+r:["twofront","gulf","diaspora","ukraine"]},
+{id:"twofront",t:"Pakistan on two fronts and the LoC",cat:"Geopolitics",s:"12",k:["two front","loc","pakistan","diversion","western front","wtc","line of control"],
+x:"Pakistan now fights Afghanistan directly. Two-front pressure can push Pakistan to divert attention through the LoC, or to reduce its posture there. Either way WTC should watch the LoC more closely when Af-Pak is AMBER or RED.",
+n:["411 killed Mar 2026","Kandahar 23%, Balochistan 21%, Kunar 21%"],
+qa:[["Why does a Pakistan-Afghanistan war matter to the LoC?","Two-front pressure can push Pakistan to divert attention through the LoC, or to thin out there. Either way the WTC should watch the LoC more closely when Af-Pak is AMBER or RED."]],
+r:["afpak2025","geo"]},
+{id:"gulf",t:"Gulf and Indian Ocean spillover",cat:"Geopolitics",s:"12",k:["gulf","indian ocean","ior","sri lanka","104","hormuz","sea lanes","shipping","mtc","maritime"],
+x:"Countries with US-Iran conflict deaths: 14 in 2026, 4 in 2025; 5 Gulf states struck. A single strike off Sri Lanka on 4 Mar 2026 killed 104, recorded in the issued data. Hormozgan (borders the Strait of Hormuz) is the top US-Iran area at 16%.",
+n:["14 countries","5 Gulf states","104 killed 4 Mar 2026","Hormozgan 16%"],
+qa:[["What was the strike off Sri Lanka?","A single strike on 4 March 2026, recorded in the issued event data, with 104 killed. It shows the Gulf war reached the Indian Ocean."],
+["What should the Maritime theatre do?","Track the watch-list for sea-lane and NEO planning; Hormozgan above the line means shipping risk at the Strait of Hormuz."]],
+r:["geo","usiranamber"]},
+{id:"diaspora",t:"~9 million Indians in the Gulf",cat:"Geopolitics",s:"12, 14",k:["9 million","diaspora","indians abroad","nri","gulf indians","remittances"],
+x:"~9 M Indians live inside the US-Iran strike envelope. Public figure [domain], not from the issued data. Linked to NEO planning and $57B of Gulf remittances.",
+n:["~9 M [domain]","$57B remittances [data × domain]"],
+qa:[["Where is 9 million from?","Public figures for Indians in the Gulf; it is not from the issued data, which is why it is marked [domain]."]],
+r:["evac","indiabill","domain"]},
+{id:"ukraine",t:"Ukraine: the front is widening",cat:"Geopolitics",s:"12",k:["ukraine","russia","donetsk","widening","front","eurasia","attrition"],
+x:"Donetsk oblast's share of RU-UA events fell from 55% (2022) to 30% (2026): the war is spreading geographically, not moving. 10,358 deaths were located inside Russia in 2024. A widening front means a long war and lasting energy and fertiliser effects.",
+n:["55% → 30%","10,358 inside Russia 2024","RU-UA RED 6,780 Oct"],
+qa:[["Why should India care about Ukraine?","A long, widening war keeps energy and fertiliser prices high and shapes our defence supply relationships."]],
+r:["geo","outlook"]},
+
+// ───────────── ECONOMY
+{id:"onsets",t:"Economic front: war onsets move markets",cat:"Economy",s:"13",k:["markets","onset","economy","stock market","10% vs 1.7%","market shock","moex","brent","economic front"],
+x:"Worst market move within 60 trading days of each war onset (public series: Yahoo Finance for Brent, Nifty, rupee; MOEX). Across 20 escalation spikes in the four wars 2014–2026, only the 3 war onsets moved markets: median 20-day move 9.9% vs 1.7% for 17 routine spikes. 52% of onset moves significant vs 16% for routine.",
+n:["RU-UA 2022: MOEX −33.3% in a day; Brent +32.2; Nifty −7.5","IL-H 2023: TA-35 −12.3; Brent +9.2; Nifty −4.1","Af-Pak 2025: Nifty −1.6 (local, Brent blank)","US-Iran 2026: Brent +63.3; Nifty −11.3"],
+qa:[["Is the link causal?","We show timing, not a causal model. The useful point is order: our posture warning came when Brent had moved 1%, and the 55% rise came after."],
+["Why 60 and 20 trading days?","Twenty trading days is about a month, the planning horizon; 60 captures the full peak. Both fixed before looking at results."],
+["Why are some bars blank?","No reliable Pakistan index in our sources, and Brent did not move in a way attributable to Af-Pak, so we show blanks rather than invent numbers."]],
+lim:"Shows timing, not causality.",
+r:["indiabill","tripwire"]},
+{id:"indiabill",t:"India's cost: $52B oil bill, rupee, Nifty",cat:"Economy",s:"14",k:["52 billion","$52b","oil","crude","rupee","nifty","india cost","brent","4.8","import bill","57 billion"],
+x:"Index = 100 at the last close before 28 Feb 2026. 20 trading days in: Brent +55% (peak +63%), Nifty −9.9%, rupee −5.8% at worst within 60 days. Brent rise ~$29.5/bbl × 4.8 mb/d × 365 = $51.7B a year (each +$10/bbl ≈ $17.5B). Gulf remittances: $150.7B × 38% = $57B. At our warning Brent had moved ~1% (98.9): a nine-day window.",
+n:["$52B/yr [data × domain]","Brent +55% / +63%","Nifty −9.9%","Rupee −5.8%","$57B remittances"],
+qa:[["Is $52B a forecast?","It is the annualised cost of the observed price rise at India's import volume, not a forecast; if prices stayed high for a year, that is the bill."],
+["Why should the Army care about oil prices?","Fuel, budget and national resilience: a nine-day warning lets MoPNG top up strategic reserves and the RBI prepare, and the services plan fuel stocks before the price moves."],
+["Where does 4.8 mb/d come from?","Public figures for India's crude imports; domain knowledge, so the slide says [data × domain]."],
+["What actions do you recommend on a posture alert?","Top up strategic reserves, hedge crude, RBI rupee readiness, shipping insurance cover."]],
+lim:"$52B and $57B combine data with domain figures; timing, not causality.",
+r:["onsets","tripwire","domain"]},
+
+// ───────────── OPERATIONS
+{id:"copp",t:"COPP: faster decisions (6 phases)",cat:"Operations",s:"15",k:["copp","planning process","comprehensive operations planning","six phases","decision making","mdmp","appreciation","planning"],
+x:"Comprehensive Operations Planning Process (NATO's COPD), six phases, each supported: 1 Initial situational awareness — monthly watch-list (65 of 83). 2 Appreciation of the environment — 36 years of history, RAG, India impact. 3 Operational estimate — 1–3 month forecast with range; 15-day clock. 4 Plan development — warnings as pre-agreed decision points; NEO keyed to watch-list. 5 Execution — daily news tripwire (4 of 5 confirmed). 6 Transition — theatre back to GREEN (proposed, untested).",
+n:["+1 month warning lead","Data latency 43 d → <1 d (measured)","Event to decision 4–10 d → 4–28 h (staff estimate)"],
+qa:[["Why COPP and not our own Indian planning process?","COPP is a well-documented six-phase frame; each phase maps cleanly to a product we provide. The same products fit our own appreciation and planning process."],
+["Where do 4–10 days and 4–28 hours come from?","Data latency (43 days to under a day) is measured. The staff timings are our estimate of a typical cycle, labelled as such."],
+["You say 6 of 6 phases, but Transition is untested.","Correct: Transition is supported by the rating but proposed, not yet validated, and the slide says so."],
+["Does the model make the decision?","No. It takes collation, scoring and drafting off the commander's critical path; the commander decides."]],
+lim:"Staff timings are estimates; Transition phase not tested. Slide header typo 'PROCES' → 'PROCESS'.",
+r:["latency","human","reports"]},
+{id:"latency",t:"Latency: 43 days → under 1 day",cat:"Operations",s:"10, 15",k:["latency","43 days","delay","speed","hours","days to hours","4-28 h","time saved"],
+x:"Typical lag before casualty records are available is about 43 days (measured); daily GDELT news arrives the next day. Event to decision falls from 4–10 days to 4–28 hours (staff estimate) by automating collation and drafting.",
+n:["43 d → <1 d","4–10 d → 4–28 h (estimate)","Brief built in 2.1 s"],
+qa:[["How did you measure 43 days?","From the publication lag of casualty records in the issued source file."],
+["Is 4–28 hours measured?","No, it is our staff estimate of a typical cycle with and without automated collation and drafting, and it is labelled as an estimate."]],
+r:["copp","tripwire"]},
+{id:"reports",t:"The three reports at 0600",cat:"Operations",s:"16, 17",k:["reports","orders","three reports","0600","sitrep","warning order","op order","documents","drafted","auto drafted"],
+x:"At 0559 the dashboard pulls inputs for Western Theatre Command (UCDP events to 30 Sep, GDELT to 12 Nov, warning model 222 areas, threat AMBER). At 0600 the brief is built in 2.1 s and three drafts follow: SITREP No 7, Warning Order No 7, Op Order No 07/2026 (Op SENTINEL WEST). The duty staff officer checks and releases them to the commander's SAMBHAV.",
+n:["2.1 s build","SITREP No 7","WO No 7 (12 hr notice wef 131000)","Op O No 07/2026, Op SENTINEL WEST"],
+qa:[["Does the system make up troop details?","No. Own troops and dispositions are added by the staff; the system fills only what the data support."],
+["Who is accountable for the orders?","The duty staff officer checks and releases every draft; the commander decides. The system drafts only."],
+["Why these three documents?","They are what the staff already produce: the SITREP for situation, the Warning Order to forward troops to prepare, and the Op Order to the CDS, Chiefs and commanders."]],
+r:["sitrep","warno","opo","sambhav","human"]},
+{id:"sitrep",t:"SITREP",cat:"Operations",s:"16, 17",k:["sitrep","situation report","brief format","daily brief"],
+x:"Situation report generated from the brief: threat (AMBER easing, confidence MEDIUM), areas of concern (Kandahar, Balochistan, Kunar over the FLASH line), actions and triggers. TO Cdr WTC, HQ IDS. On the website the brief itself is shown in SITREP format.",
+n:["SITREP No 7"],
+qa:[["What does your SITREP contain?","Threat level and trend, areas of concern over the FLASH line, recommended actions with owners, and the triggers that would change the picture."],
+["Why SITREP format for the brief?","It is the format commanders already read; no training needed."]],
+r:["reports","flash"]},
+{id:"warno",t:"Warning Order",cat:"Operations",s:"16, 17",k:["warning order","warno","wo","forward troops","notice to move","o gp","message form"],
+x:"Warning Order No 7 in message form, to forward formations and units: Op SENTINEL WEST, probable tasks, 12 hr notice wef 131000, O gp HQ WTC 131200, Op O by 131800, FLASH conditions. Notice depends on rating (RED 2 hr, AMBER 12 hr, GREEN 24 hr on the site).",
+n:["12 hr notice","DTG 131000 = 13th, 1000 h"],
+qa:[["Who gets the Warning Order?","Forward deployed formations and units, so they can start preparing before the Op Order."],
+["How is the notice period decided?","By the rating: AMBER gives 12 hours' notice; RED would shorten it."]],
+r:["reports","flash"]},
+{id:"opo",t:"Operation Order (Op SENTINEL WEST)",cat:"Operations",s:"16, 17",k:["op order","operation order","opo","op sentinel west","cds","chiefs","mission","execution"],
+x:"Op Order No 07/2026 in standard format: Situation, Mission, Execution (Ph 1 SENSE, Ph 2 POSTURE; J2 ISR, J3 readiness, J1 with MEA evacuation), Adm, Comn, C&C. TO CDS, COAS, CNS, CAS and theatre commanders.",
+n:["Op O No 07/2026"],
+qa:[["Who receives the Op Order?","The CDS, the three Service Chiefs and the theatre commanders."],
+["Is the mission written by the machine?","The structure and data-driven parts are drafted; the staff check, add own troops and release. Nothing is sent without human release."]],
+r:["reports","human"]},
+{id:"flash",t:"FLASH conditions / precedence",cat:"Operations",s:"16, 17",k:["flash","precedence","priority","immediate","triggers","flash line"],
+x:"Pre-set triggers, such as an area crossing its escalation threshold (15%), a RED news alert or the 15-day clock, that would raise the next report to FLASH precedence.",
+n:["Hotspot line 15%"],
+qa:[["What are FLASH conditions?","Pre-set triggers, an area crossing its threshold, a RED news alert or the 15-day clock, that raise the next report to FLASH precedence."]],
+r:["areas222","redalert","clock"]},
+{id:"sambhav",t:"SAMBHAV delivery",cat:"Operations",s:"16",k:["sambhav","mobile","handset","phone","delivery","secure network","encrypted","transmission"],
+x:"SAMBHAV is the Army's secured mobile handset system. In our demo the delivery to SAMBHAV is simulated on the dashboard (animated 0600 sequence: release → SITREP to Cdr WTC → Warning Order to six forward units with ACK → Op Order to CDS and Chiefs). We are not connected to any service network.",
+n:["3 PRIORITY messages with ACK / OPEN"],
+qa:[["Is this really connected to SAMBHAV?","No. The delivery is a simulation on our dashboard to show the workflow. In service it would go through the approved network after the duty officer releases it."],
+["What would integration need?","An approved interface on the secure network and the duty officer's release step; the drafts themselves are plain text and already formatted."]],
+r:["reports","human","security"]},
+{id:"human",t:"Human in the loop",cat:"Operations",s:"15, 16",k:["human in the loop","accountability","who decides","automation","autonomous","release","duty officer"],
+x:"The model does not decide. It collates, scores and drafts; the duty staff officer checks and releases; the commander decides. Own troops are never invented.",
+n:[],
+qa:[["What if the system is wrong and an order goes out?","Nothing goes out without the duty officer's release. The system is a drafting aid; accountability stays with the staff and the commander."]],
+r:["reports","copp"]},
+{id:"cop",t:"Theatre COP: four commanders, one dataset",cat:"Operations",s:"18",k:["cop","common operating picture","theatre","wtc","ntc","mtc","cds","views","aor","login","role"],
+x:"Log in as Western, Northern or Maritime theatre commander, or as CDS; the dashboard filters to that area of responsibility. WTC AMBER (down): Af-Pak, Kandahar, Balochistan, Kunar over threshold. NTC RED (up): synthetic drill. MTC AMBER (steady): US-Iran, tanker and oil easing. CDS AMBER (down): all theatres, main effort chosen on real data only.",
+n:["4 views","Same data, same rules"],
+qa:[["Are these real theatre commands?","They are notional, since theatre commands are not yet notified; the areas are illustrative."],
+["Why one dataset for all?","So every commander sees the same facts and the same rules, filtered to his AOR: no competing pictures."]],
+r:["ntc","dashboard"]},
+{id:"ntc",t:"Northern theatre is a synthetic drill",cat:"Operations",s:"18",k:["ntc","northern","synthetic","drill","lac","tawang","depsang","china","fake data"],
+x:"The issued data contain no LAC events, so a seeded synthetic generator is used for NTC and clearly labelled SYNTHETIC (Tawang and Depsang surge). It shows how a FLASH would flow. CDS main-effort choice excludes it.",
+n:["NTC RED (synthetic)"],
+qa:[["Why is NTC RED?","It is a drill on synthetic data, clearly labelled. The issued data contain no LAC events. It shows how a FLASH would flow."],
+["Isn't using synthetic data misleading?","It is labelled on every screen and excluded from the CDS main-effort choice. It demonstrates the workflow, not a forecast."]],
+r:["galwan","cop"]},
+{id:"dashboard",t:"Live dashboard (website)",cat:"Operations",s:"19",k:["dashboard","website","site","live","demo","streamlit","url","link","qr","app","hosted"],
+x:"Hosted at conflictmonitor2026.streamlit.app; any phone or laptop, no installation. Demo: select Western Theatre Command → COP (threat AMBER, easing) → district watch-list (Kandahar, Balochistan, Kunar above FLASH) → 0600 brief → three reports released to SAMBHAV. Backup slide B has a recorded demo.",
+n:["Free host may take 30–60 s to wake: open it before the talk"],
+qa:[["Is it really live, or recorded?","Live, at conflictmonitor2026.streamlit.app, on any phone or laptop. A recorded demo is in backup slide B in case the network fails."],
+["Where is it hosted? Is data secure?","On a public cloud host, with open data only. A service version would run on a secure network."],
+["What else is on the site?","A command view per role, an evidence sheet behind every rating, the SITREP/Warning Order/Op Order with dispatch buttons, a briefing story, and an Ops Console: early warning, map, forecast, what-if, scorecard lab and data quality."]],
+lim:"If the free host is asleep, the first load can take 30–60 seconds.",
+r:["sitefeatures","security","cop"]},
+{id:"sitefeatures",t:"Website features (Conflict EW)",cat:"Operations",s:"19",k:["features of site","ops console","what if","scorecard lab","evidence sheet","more detail","briefing","map page","data quality page","whatsapp","email","print"],
+x:"Command view: pick a role (CDS/WTC/NTC/MTC); tiles with threat level per conflict, India-impact map and this month's orders; MORE DETAIL adds trends and full watch-list; click a tile for its evidence. SITREP / WARNING ORDER / OP ORDER buttons with WhatsApp, e-mail, copy and print. Briefing: chapter-by-chapter story. Ops Console: Brief, Theatre, Early warning (month slider, replay), Map, Area, Forecast, What-if (shock slider updates forecast and rating live), Scorecard lab (change RAG thresholds), Data quality (36 checks), About.",
+n:["10 console pages","Offline single-file copy for USB"],
+qa:[["What can the what-if page do?","Apply a shock to a conflict's forecast and see the forecast and its RAG rating update live, to test how sensitive the rating is."],
+["Can it run without internet?","Yes: the site also builds as a single HTML file that runs offline from a USB stick."],
+["Why WhatsApp and e-mail buttons if you have SAMBHAV?","For the demo and for unclassified exercise use; in service the release would go through SAMBHAV only."]],
+r:["dashboard","rag","cleaning"]},
+{id:"security",t:"Security, classification and open data",cat:"Operations",s:"19, 20",k:["security","classified","secure","open data","osint","cyber","privacy","network","air gapped"],
+x:"Everything uses open, issued data and is unclassified. The public host is only for the demo. A service version would run on a secure network, fuse classified I&W, and deliver through SAMBHAV after human release. The offline single-file build suits an air-gapped machine.",
+n:[],
+qa:[["Is it safe to run military planning on a public website?","The public site holds only open competition data, for demonstration. In service it would run on a secure network with classified indicators fused in."],
+["Why rely on open data at all?","It is free, fast and global, and it complements intelligence: open data gave a month's warning on 65 of 83 escalations. Classified I&W would sharpen it."]],
+r:["wayahead","sambhav"]},
+{id:"wayahead",t:"Way ahead",cat:"Operations",s:"20",k:["way ahead","next steps","future","roadmap","adoption","implementation","what next","scale","cost"],
+x:"No new platform needed. NOW: put the watch-list and RAG in the HQ IDS monthly brief. 30 DAYS: task ISR on the monthly top-10 districts. 6 MONTHS: fuse with classified I&W, and add non-fatal LAC and LoC indicators (fixes the Galwan-type blind spot).",
+n:["Now / 30 days / 6 months"],
+qa:[["What would you need to make this operational?","Nothing new to start: put the watch-list and RAG in the HQ IDS monthly brief. Then task ISR on the top ten districts, and within six months fuse classified indicators and non-fatal LAC and LoC data."],
+["How much would it cost?","The first step costs nothing beyond staff time; it runs on a laptop and rebuilds in minutes. Integration with secure networks is the main later cost."],
+["Can it cover other conflicts, like Myanmar or the LAC?","Yes: the model already scores 117 countries. Adding a theatre means adding its areas to the COP; the LAC needs non-fatal indicators."]],
+r:["galwan","security","conclusion"]},
+{id:"conclusion",t:"Conclusion: proven, operational, India's stake",cat:"Operations",s:"20",k:["conclusion","summary","takeaway","closing","final","recap","month to look hours to act"],
+x:"PROVEN: 65 of 83 escalations flagged a month ahead; 9 days' warning of the Gulf war; −13% error on unseen data. OPERATIONAL: SITREP, WO and Op O on SAMBHAV at 0600; 6 of 6 COPP phases; decisions in hours. INDIA'S STAKE: $52B a year on the crude bill in one war; ~9 M Indians in the Gulf; 6 of 7 evacuations seen coming.",
+n:["65 of 83 | 9 days | −13%","0600 | 6 of 6 | 4–28 h","$52B | ~9 M | 6 of 7"],
+qa:[["Sum up in three points.","Proven on a sealed test; operational in Army formats at 0600; and it matters to India in oil, diaspora and the LoC. Open data can give India a month to look, and hours to act."]],
+r:["oneline","wayahead"]},
+{id:"limits",t:"Biggest limitations (say plainly if asked)",cat:"Overview",s:"7–11, 20",k:["limitations","weakness","drawback","flaws","shortcomings","risks","what can go wrong","criticism"],
+x:"About 4 in 5 alerts are false alarms (a watch level, not a trigger). A first clash with no fatal precursors (Galwan) leaves no trace in fatality data. 18 of 83 escalations missed (incl. Sudan's two largest). The 13% gain on 36 forecasts has a bootstrap interval crossing zero. One posture case (US-Iran); Af-Pak gave no posture signal. Staff timings and the Transition phase are estimates/untested. NTC is synthetic; HQs and SAMBHAV delivery notional.",
+n:[],
+qa:[["What are the biggest limitations?","Four in five alerts are false alarms, so it is a watch level, not a trigger; and a first clash like Galwan, with no fatal precursors, leaves no trace in fatality data."],
+["What would make you lose confidence in the system?","If alerts stopped carrying lift over the base rate, or RED news alerts stopped being confirmed. Both are monitored every month."]],
+r:["falsealarm","galwan","test2026"]},
+{id:"discrep",t:"Numbers that differ across deck, report and site",cat:"Overview",s:"2, 4, 5, 15",k:["discrepancy","mismatch","inconsistent","different number","29%","3.5x","website number","typo","error in slide"],
+x:"Known differences and how to answer: (1) Slide 4 '4 wars only' 1.57 vs slide 5 1.40: two different models. (2) Website says '29% fewer errors than no change' while the deck says −13%: different baselines. Deck test: ensemble 1.401 vs best rule (3-month mean) 1.609 = −13%; vs the no-change rules 1.97–2.02 = about 29–31%. (3) Website '3.5× better than chance' = district top-10 14% vs 4.1% base rate. (4) Slide 2 'Total Slides: 21' (main deck is 20). (5) Slide 15 header typo 'PROCES'. (6) One-page brief '20 days' = 20 trading days. (7) Slide 11 notes mention Kunar, which appears on 12, 16, 18.",
+n:["−13% vs best rule","~29–31% vs no-change rule"],
+qa:[["Your website says 29% fewer errors but your slide says 13%. Which is right?","Both, against different baselines. 13% is against the best simple rule, the three-month average. Against 'no change', last month's figure carried forward, the error cut is about 30%. We lead with the tougher comparison."],
+["Your site says 3.5× better than chance, your slide says 13×. Why?","Different lists. 13× is the country watch-list lift in 2025 (21% vs 1.6%). 3.5× is the district top-10 in 2026 (14% vs 4.1%)."]],
+r:["ablation","areas222","test2026"]},
+];
+</script>
+<script>
+(() => {
+const SHARE_URL = "https://jatainsahil98-web.github.io/conflict-watch-v2/qa.html";
+const KB = window.KB, byId = Object.fromEntries(KB.map(e => [e.id, e]));
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm = s => String(s).toLowerCase().replace(/[‐-–—]/g,"-").replace(/[’']/g,"'");
+const STOP = new Set("the a an of to in on and or is are was were what why how do does did you your we our for with it this that be by as at from which who can could would should there their about me tell explain".split(" "));
+const toks = q => norm(q).split(/[^a-z0-9.%×$+#-]+/).map(t => t.replace(/^[.\-]+|[.\-]+$/g,"")).filter(t => t && !STOP.has(t));
+const SYN = {ml:"machine learning",ai:"ai",accuracy:"rmsle",acc:"rmsle",threshold:"alert line",hash:"sha",warno:"warning order",wo:"warning order",opo:"op order",cop:"common operating picture",neo:"evacuation",lac:"galwan",loc:"line of control",ew:"early warning",nifty:"nifty",brent:"oil",kp:"khyber pakhtunkhwa",fata:"fata",pak:"pakistan",iran:"us-iran",ukraine:"russia ukraine",hamas:"israel hamas",gaza:"israel hamas",xgboost:"lightgbm",rf:"lightgbm",overfitting:"overfit",leakage:"leak",lstm:"deep learning",neural:"deep learning",significance:"p value",significant:"p value",uncertainty:"band",interval:"band"};
+// precompute haystacks
+KB.forEach(e => {
+  e._t = norm(e.t); e._k = e.k.map(norm).join(" | "); e._q = (e.qa||[]).map(p => norm(p[0])).join(" | ");
+  e._b = norm([e.x, (e.n||[]).join(" "), (e.qa||[]).map(p => p[1]).join(" "), e.lim||"", e.cat, "slide " + e.s].join(" "));
+});
+function score(e, q) {
+  const nq = norm(q).trim(); if (!nq) return 0;
+  let s = 0;
+  if (e._t.includes(nq)) s += 40; if (e._k.includes(nq)) s += 32; if (e._q.includes(nq)) s += 14; if (e._b.includes(nq)) s += 8;
+  let ts = toks(q); ts = ts.concat(ts.map(t => SYN[t]).filter(Boolean).flatMap(toks));
+  let hit = 0;
+  for (const t of new Set(ts)) {
+    let h = 0;
+    const re = new RegExp("(^|[^a-z0-9])" + t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"));
+    if (re.test(e._t)) h += 9; if (re.test(e._k)) h += 8; if (re.test(e._q)) h += 3; if (re.test(e._b)) h += 1.5;
+    if (!h && t.length >= 4) { if (e._k.includes(t) || e._t.includes(t)) h += 3; else if (e._b.includes(t)) h += .6; }
+    if (h) hit++; s += h;
+  }
+  if (ts.length > 1) s *= (0.6 + 0.4 * hit / new Set(ts).size);
+  return s;
+}
+function hl(text, q) {
+  let out = esc(text); const ts = [...new Set(toks(q))].filter(t => t.length > 1).sort((a,b) => b.length - a.length);
+  if (!ts.length) return out;
+  const re = new RegExp("(" + ts.map(t => esc(t).replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|") + ")", "gi");
+  return out.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, txt) => tag ? tag : txt.replace(re, "<mark>$1</mark>"));
+}
+let cat = "All", sel = null, results = [];
+const CATS = ["All", ...new Set(KB.map(e => e.cat))];
+$("#cats").innerHTML = CATS.map(c => `<button class="chip${c==="All"?" on":""}" data-c="${esc(c)}">${esc(c.toUpperCase())} <span style="opacity:.6">${c==="All"?KB.length:KB.filter(e=>e.cat===c).length}</span></button>`).join("");
+$("#cats").onclick = ev => { const b = ev.target.closest(".chip"); if (!b) return; cat = b.dataset.c; document.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x === b)); run(); };
+function run(keepSel) {
+  const q = $("#q").value.trim();
+  let pool = KB.filter(e => cat === "All" || e.cat === cat);
+  if (q) { results = pool.map(e => [score(e, q), e]).filter(r => r[0] > 0.9).sort((a,b) => b[0]-a[0]); const top = results.length ? results[0][0] : 0; results = results.filter(r => r[0] >= top * 0.22).slice(0, 25).map(r => r[1]); }
+  else results = pool;
+  const L = $("#list");
+  if (!results.length) { L.innerHTML = `<div class="empty">No topic matches “${esc(q)}”. Try a shorter word (e.g. <b>hash</b>, <b>band</b>, <b>oil</b>, <b>Galwan</b>).</div>`; $("#detail").innerHTML = ""; return; }
+  L.innerHTML = `<div class="count">${results.length} TOPIC${results.length>1?"S":""}${q?" FOR “"+esc(q.toUpperCase())+"”":""}</div>` + results.map(e =>
+    `<button class="item" data-id="${e.id}"><div class="t">${hl(e.t, q)}</div><div class="m">${esc(e.cat.toUpperCase())} · SLIDE ${esc(e.s)}</div><div class="sn">${hl(e.x, q)}</div></button>`).join("");
+  if (!(keepSel && sel && results.includes(byId[sel]))) sel = results[0].id;
+  show(sel, q);
+}
+function qHits(q) {
+  if (!q || toks(q).length < 2) return [];
+  const out = [];
+  KB.forEach(e => (e.qa||[]).forEach(([qq, aa]) => {
+    const h = norm(qq + " " + aa); let s = 0; const ts = toks(q);
+    ts.forEach(t => { if (new RegExp("(^|[^a-z0-9])" + t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).test(h)) s++; });
+    if (s >= Math.max(2, Math.ceil(ts.length * .6))) out.push([s, e, qq, aa]);
+  }));
+  return out.sort((a,b) => b[0]-a[0]).slice(0, 4);
+}
+function show(id, q = $("#q").value.trim()) {
+  sel = id; const e = byId[id];
+  document.querySelectorAll(".item").forEach(x => x.classList.toggle("sel", x.dataset.id === id));
+  const hits = qHits(q).filter(h => h[1] !== e);
+  $("#detail").innerHTML = `<div class="card">
+    <div class="kick"><span class="tag c">${esc(e.cat.toUpperCase())}</span><span class="tag s">SLIDE ${esc(e.s)}</span></div>
+    <h2>${hl(e.t, q)}</h2>
+    <h3>Explanation</h3><div class="x">${hl(e.x, q)}</div>
+    ${e.n && e.n.length ? `<h3>Key numbers to quote</h3><div class="nums">${e.n.map(n => `<span class="num">${hl(n, q)}</span>`).join("")}</div>` : ""}
+    <h3>How the jury may ask it — and our answer</h3>
+    <div class="hint" style="margin:-4px 0 10px">Click a question for the detailed answer.</div>
+    ${(e.qa||[]).map(([qq, aa], i) => `<div class="qa" data-open="${e.id}:${i}"><div class="qq"><i>Q${i+1}</i><span>${hl(qq, q)}</span><span class="go">DETAILED ▸</span></div><div class="pv"><i>SAY FIRST</i><span>${hl(first(aa), q)}</span></div></div>`).join("")}
+    ${e.lim ? `<h3>Honest limit</h3><div class="lim"><b>ONLY IF PROBED — NEVER DENY</b>${hl(e.lim, q)}</div>` : ""}
+    ${e.r && e.r.length ? `<h3>Related</h3><div class="rel">${e.r.filter(r => byId[r]).map(r => `<button data-go="${r}">${esc(byId[r].t)}</button>`).join("")}</div>` : ""}
+  </div>
+  ${hits.length ? `<div class="card qhits"><h3 style="margin-top:0">Close questions in other topics</h3>${hits.map(([, he, qq, aa]) => `<div class="h" data-open="${he.id}:${he.qa.findIndex(p => p[0] === qq)}"><div class="q">${hl(qq, q)}</div><div class="a">${hl(aa, q)}</div><div class="f">${esc(he.t.toUpperCase())}</div></div>`).join("")}</div>` : ""}`;
+  if (innerWidth <= 860 && q) {}
+}
+$("#list").onclick = ev => { const b = ev.target.closest(".item"); if (b) { show(b.dataset.id); if (innerWidth <= 860) $("#detail").scrollIntoView({behavior:"smooth"}); } };
+$("#detail").onclick = ev => {
+  const o = ev.target.closest("[data-open]"); if (o) { const [id, i] = o.dataset.open.split(":"); openQ(id, +i); return; }
+  const g = ev.target.closest("[data-go]"); if (g) { const id = g.dataset.go; if (!results.includes(byId[id])) { $("#q").value = ""; cat = "All"; document.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x.dataset.c === "All")); run(); } show(id, ""); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  const c = ev.target.closest("[data-cp]"); if (c) { try { navigator.clipboard.writeText(c.dataset.cp).then(() => { c.textContent = "COPIED"; setTimeout(() => c.textContent = "COPY", 1200); }, () => {}); } catch (e) {} }
+};
+let tmr; $("#q").addEventListener("input", () => { clearTimeout(tmr); tmr = setTimeout(() => run(), 90); });
+document.addEventListener("keydown", ev => {
+  if (ev.key === "/" && document.activeElement !== $("#q")) { ev.preventDefault(); $("#q").focus(); $("#q").select(); }
+  if ((ev.key === "ArrowDown" || ev.key === "ArrowUp") && results.length) { ev.preventDefault(); const i = results.indexOf(byId[sel]); const j = Math.max(0, Math.min(results.length-1, i + (ev.key === "ArrowDown" ? 1 : -1))); show(results[j].id); const it = document.querySelector(`.item[data-id="${results[j].id}"]`); it && it.scrollIntoView({block:"nearest"}); }
+  if (ev.key === "Escape") { $("#drill").classList.remove("on"); if ($("#qm").classList.contains("on")) closeQ(); }
+  if ($("#qm").classList.contains("on") && (ev.key === "ArrowRight" || ev.key === "ArrowLeft")) { ev.preventDefault(); const k = allQ.findIndex(z => z[0] === qcur[0] && z[1] === qcur[1]); openQ(...allQ[(k + (ev.key === "ArrowRight" ? 1 : allQ.length - 1)) % allQ.length]); return; }
+});
+function first(a) { const re = /^.*?[.!?](\s|$)/; const m = String(a).match(re); if (!m) return a; let f = m[0].trim(); if (f.length < 28) { const m2 = String(a).slice(m[0].length).match(re); if (m2) f += " " + m2[0].trim(); } return f; }
+let qcur = null;
+const allQ = KB.flatMap(e => (e.qa||[]).map((p, i) => [e.id, i]));
+function openQ(id, i, noHash) {
+  const e = byId[id]; if (!e || !e.qa[i]) return; qcur = [id, i];
+  const [qq, aa] = e.qa[i];
+  const rest = aa.slice(first(aa).length).trim();
+  const sib = e.qa.map((p, j) => [e, j]).filter(([, j]) => j !== i);
+  const rel = (e.r||[]).map(r => byId[r]).filter(x => x && x.qa && x.qa.length).slice(0, 4).map(x => [x, 0]);
+  const k = allQ.findIndex(z => z[0] === id && z[1] === i);
+  $("#qm-b").innerHTML = `<div class="kick"><span class="tag c">${esc(e.cat.toUpperCase())}</span><span class="tag s">SLIDE ${esc(e.s)}</span><span class="tag c" style="cursor:pointer" data-topic="${e.id}">${esc(e.t.toUpperCase())} ▸</span></div>
+    <div class="mq">${esc(qq)}</div>
+    <h3>Say first</h3><div class="say">${esc(first(aa))}</div>
+    ${rest ? `<h3>Then, if they want more</h3><div class="full">${esc(rest)}</div>` : ""}
+    <h3>Background to add if pressed</h3><div class="more">${esc(e.x)}</div>
+    ${e.n && e.n.length ? `<h3>Numbers to have ready</h3><div class="nums">${e.n.map(n => `<span class="num">${esc(n)}</span>`).join("")}</div>` : ""}
+    ${e.lim ? `<h3>If they probe further</h3><div class="lim"><b>HONEST LIMIT — SAY PLAINLY, NEVER DENY</b>${esc(e.lim)}</div>` : ""}
+    ${sib.length || rel.length ? `<h3>Likely follow-up questions</h3><div class="fu">${sib.concat(rel).map(([x, j]) => `<button data-open="${x.id}:${j}">${esc(x.qa[j][0])}<small>${esc(x.t.toUpperCase())}</small></button>`).join("")}</div>` : ""}
+    <div class="row"><button class="btn am" id="qm-cp">COPY ANSWER</button><button class="btn" id="qm-ln">COPY LINK TO THIS QUESTION</button><button class="btn" id="qm-p">◂ PREV</button><button class="btn" id="qm-n">NEXT ▸</button><span class="pos">${k + 1} / ${allQ.length}</span><button class="btn" id="qm-x" style="margin-left:auto">CLOSE ✕</button></div>
+    <div class="share" id="qm-ok"></div>`;
+  $("#qm").classList.add("on"); $("#qm").scrollTop = 0;
+  if (!noHash) setHash("q-" + id + "-" + (i + 1));
+}
+function closeQ() { $("#qm").classList.remove("on"); setHash(sel ? "t-" + sel : ""); }
+function setHash(h) { try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch (e) { try { location.hash = h; } catch (_) {} } }
+function copy(txt, msg) { const ok = $("#qm-ok"); const done = () => { ok.textContent = msg; ok.style.display = "block"; setTimeout(() => ok.style.display = "none", 1800); };
+  try { navigator.clipboard.writeText(txt).then(done, () => { ok.textContent = txt; ok.style.display = "block"; }); } catch (e) { ok.textContent = txt; ok.style.display = "block"; } }
+$("#qm").addEventListener("click", ev => {
+  if (ev.target.id === "qm") return closeQ();
+  const o = ev.target.closest("[data-open]"); if (o) { const [id, i] = o.dataset.open.split(":"); return openQ(id, +i); }
+  const t = ev.target.closest("[data-topic]"); if (t) { closeQ(); $("#q").value = ""; cat = "All"; document.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x.dataset.c === "All")); run(); show(t.dataset.topic, ""); return; }
+  const k = allQ.findIndex(z => z[0] === qcur[0] && z[1] === qcur[1]);
+  if (ev.target.id === "qm-x") closeQ();
+  if (ev.target.id === "qm-n") openQ(...allQ[(k + 1) % allQ.length]);
+  if (ev.target.id === "qm-p") openQ(...allQ[(k - 1 + allQ.length) % allQ.length]);
+  if (ev.target.id === "qm-cp") copy(byId[qcur[0]].qa[qcur[1]][1], "Answer copied.");
+  if (ev.target.id === "qm-ln") copy(SHARE_URL + "#q-" + qcur[0] + "-" + (qcur[1] + 1), "Link copied.");
+});
+function fromHash() {
+  const h = decodeURIComponent((location.hash || "").slice(1));
+  let m = h.match(/^q-([a-z0-9]+)-(\d+)$/i); if (m && byId[m[1]]) { show(m[1], ""); openQ(m[1], +m[2] - 1, true); return; }
+  m = h.match(/^t-([a-z0-9]+)$/i); if (m && byId[m[1]]) show(m[1], "");
+}
+window.addEventListener("hashchange", fromHash);
+// drill
+let cur = null;
+function drill() {
+  const pool = (results.length ? results : KB).flatMap(e => (e.qa||[]).map(p => [e, p]));
+  cur = pool[Math.floor(Math.random() * pool.length)];
+  $("#d-topic").textContent = cur[0].t.toUpperCase(); $("#d-q").textContent = cur[1][0];
+  $("#d-a").textContent = cur[1][1]; $("#d-a").style.display = "none"; $("#drill").classList.add("on");
+}
+$("#b-drill").onclick = drill;
+$("#b-share").onclick = () => { const b = $("#b-share"); try { navigator.clipboard.writeText(SHARE_URL).then(() => { b.textContent = "LINK COPIED ✓"; setTimeout(() => b.textContent = "SHARE ⧉", 1600); }, () => { b.textContent = SHARE_URL; }); } catch (e) { b.textContent = SHARE_URL; } }; $("#d-next").onclick = drill;
+$("#d-show").onclick = () => $("#d-a").style.display = "block";
+$("#d-x").onclick = () => $("#drill").classList.remove("on");
+$("#d-open").onclick = () => { $("#drill").classList.remove("on"); $("#q").value = ""; cat = "All"; document.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x.dataset.c === "All")); run(); show(cur[0].id, ""); openQ(cur[0].id, cur[0].qa.indexOf(cur[1])); };
+$("#d-open").textContent = "DETAILED ANSWER";
+run(); fromHash();
+})();
+</script>
+</body>
+</html>

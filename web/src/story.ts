@@ -196,7 +196,7 @@ export function renderStory(D: Data) {
         <div class="chart short" id="abl-ch" style="height:250px"></div>
         <div class="ph" style="margin-top:6px"><span class="t">What drives the forecast (mean |SHAP|)</span></div><div class="chart short" id="shap-ch" style="height:250px"></div></div>
     </div>
-    <p class="small muted" style="margin-top:12px">Ensemble = 3-month mean + ETS (damped, log) + LightGBM-Δ, chosen on the 2022–25 back-test only. Known failure: the Feb 2026 US–Iran war began with no build-up in the death series. ${tag("data")}</p>
+    <p class="small muted" style="margin-top:12px">Dashboard model: 3-month mean + ETS (damped, log) + LightGBM-Δ, chosen on the 2022–25 back-test only. The deck's final model is the global ensemble (global LightGBM 0.90 + competition LightGBM-Δ 0.10). Known failure: the Feb 2026 US–Iran war began with no build-up in the death series. ${tag("data")}</p>
   </div></section>
 
   <section class="ch" id="warning"><div class="wrap">
